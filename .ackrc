@@ -1,0 +1,4 @@
+--type-add
+css=.sass,.scss
+--type-add
+js=.coffee

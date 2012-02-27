@@ -1,0 +1,31 @@
+[user]
+	name = Aaron Lasseigne
+	email = aaron.lasseigne@gmail.com
+[core]
+	editor = vim
+	pager = less
+[color]
+	ui = true
+[alias]
+	br = branch
+	ci = commit
+	cim = commit -m
+	co = checkout
+	st = status
+	cp = cherry-pick
+  p = push
+  po = push origin
+  l = pull
+  lo = pull origin
+	lr = pull --rebase
+	d = diff --word-diff
+	dc = diff --cached --word-diff
+	dp = "!sh -c 'git d --word-diff $1^..$1' -"
+	lp = log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\"
+	la = "!sh -c 'git l --author=\"$1\"' -"
+	lpa = "!sh -c 'git lp --author=\"$1\"' -"
+	lpw = "!git --no-pager log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" && echo ''"
+	lpwa = "!sh -c 'git --no-pager log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" --author=\"$1\" && echo \"\"' -"
+[diff]
+	mnemonicprefix = true
+	renames = copies
