@@ -1,0 +1,13 @@
+#!/bin/bash
+
+current_dir=`pwd`
+# copy files to home dir
+for file in \.*; do
+  # skip .git, . and ..
+  if [[ "${file}" != '.git' && "${file}" != '.' && "${file}" != '..' ]]; then
+    ln -sf "$current_dir/$file" ~/$file
+  fi
+done
+
+ln -sf "$current_dir/mine.zsh" ~/.oh-my-zsh/custom/mine.zsh
+ln -sf "$current_dir/mine.zsh-theme" ~/.oh-my-zsh/themes/mine.zsh-theme
