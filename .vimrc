@@ -102,6 +102,10 @@ map <F7> :set nonumber!<CR>
 nmap <F10> :setlocal spell! spelllang=en_us<CR>
 imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 
+" easier number increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
 " make search results appear in the middle of the screen
 nmap n nzz
 nmap N Nzz
