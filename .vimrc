@@ -1,7 +1,15 @@
 " leader
 let mapleader=','
 
-" display
+" turn on filetype detection
+filetype plugin indent on
+
+" ==== DISPLAY ====
+
+" encoding
+set encoding=utf-8
+
+" colors
 set t_Co=256
 set background=dark
 syntax on
@@ -39,72 +47,35 @@ hi DiffText     ctermbg=54
 
 hi LineNr       ctermfg=137 ctermbg=234
 
-set encoding=utf-8
+" show the tab line
+set showtabline=2
 
-set title
+" show the ruler
 set ruler
+
+" show line numbers
 set number
 
-set backspace=indent,eol,start " intuitive backspacing in insert mode
-
-" scrolling
+" add lines above and below the current scroll point
 set scrolloff=5
 
-" search
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-" clear search 
-noremap <silent><leader>cs :nohls<CR>
-
-" tab completion
-set iskeyword+=: " allows completion of namespaces
-set wildmenu
-set wildmode=list:longest " only completes up to the point of ambiguity
-
-" tabs
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
-set expandtab
-
-" indenting
-set autoindent
-set smartindent
-set cindent
-set cinkeys-=0# " stops VIM from indenting comments
-
+" highlight the opening/closing parens, braces, etc
 set showmatch
 
-let $wrapOn=0
-let $indentOn=1
+" /==== DISPLAY ====
 
-" pasting
-set pastetoggle=<F8>
 
-" sudo write
-ca w!! w !sudo tee >/dev/null "%"
+" ==== SEARCH ====
 
-" mappings
-map ; :
-map :W :w
-map :Q :q
-map :ack :Ack
+" find as you type
+set incsearch
 
-map <F1> <ESC>
-map <F2> :NERDTreeToggle<CR>
-map <F5> :tabe 
-map <S-F5> :tabe<CR>
-map <F6> :qa<CR>
-map <S-F6> :qa!<CR>
-map <F7> :set nonumber!<CR>
-nmap <F10> :setlocal spell! spelllang=en_us<CR>
-imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
+" highlight matches
+set hlsearch
 
-" easier number increment/decrement
-nnoremap + <C-a>
-nnoremap - <C-x>
+" only search case when an uppercase letter appears
+set ignorecase
+set smartcase
 
 " make search results appear in the middle of the screen
 nmap n nzz
@@ -120,20 +91,60 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 " Ack for the last search.
 nnoremap <silent> <leader>? :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
-" Clean whitespace
-map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" clear search highlighting
+noremap <silent><leader>cs :nohls<CR>
 
-" shortcuts via misspell
-iabbrev al@ aaron.lasseigne@gmail.com
+" /==== SEARCH ====
 
-" multilingual editting
-filetype plugin on
-filetype indent on
 
-" vim tabs
-set showtabline=2
+" ==== SPACING ====
+
+" tabs are 2 spaces
+set softtabstop=2
+set tabstop=2
+
+" use spaces when tabbing
+set expandtab
+
+" indent is 2 spaces
+set shiftwidth=2
+
+" keeps indentation going on the next line
+set autoindent
+
+" indent automatically when needed
+set smartindent
+
+" turns on the C indentation standard
+set cindent
+
+" stop comment indenting
+set cinkeys-=0#
+
+" /==== SPACING ====
+
+
+" ==== Addons ====
 
 " vim addon manager
+"
+" ack                             = adds support for the ack command
+" matchit.zip                     = more complete '%' matching
+" rails                           = RoR support
+" The_NERD_tree                   = file browsing
+" delimitMate                     = automatically adds closing paren, quote, etc
+" fugitive                        = built in support for git
+" extradite                       = plugin for fugitive that provides tig like interface
+" tabular                         = alignment helper
+" vim-coffee-script               = cs support
+" ctrlp                           = file searching
+" tComment                        = easily add/remove commenting
+" vim-ruby                        = ruby support
+" YankRing                        = cycle through previous pastes after pasting
+" IndexedSearch                   = shows 'Nth match out of M' when searching
+" endwise                         = adds 'end' to Ruby blocks
+" neocomplcache                   = completion as you type
+" neocomplcache-snippets-complete = expandable snippets
 fun ActivateAddons()
   set runtimepath+=~/.vim-addons/vim-addon-manager
   try
@@ -145,13 +156,25 @@ fun ActivateAddons()
 endf
 call ActivateAddons()
 
-" for YankRing
+" == YankRing ==
+
+" I had to set this as a fix for version 13
+let g:yankring_manual_clipboard_check = 0
+
+" make the history file a dotfile so it disappears
 let g:yankring_history_file = '.yankring_history'
 
-" for neocomplchache
+" /== YankRing ==
+
+" == neocomplcache ==
+
+" turn it on
 let g:neocomplcache_enable_at_startup = 1
+
+" only search case when an uppercase letter appears
 let g:neocomplcache_enable_smart_case = 1
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" add completion for various file types
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -159,16 +182,38 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" for ctrlp
-let g:ctrlp_map = '<leader>t'
+" tab key completion
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" /== neocomplcache ==
+
+" == ctrlp ==
+
+" ignore stuff when searching
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp
+
+" map the search command
+let g:ctrlp_map = '<leader>t'
+
+" allow more than one file to be opened at a time
 let g:ctrlp_open_multi = '1t'
 
-" for nerd tree
+" /== ctrlp ==
+
+" == The_NERD_tree ==
+
+" reduces clutter in the UI
 let NERDTreeMinimalUI = 1
+
+" use prettier arrows
 let NERDTreeDirArrows = 1
 
-" for fugitive
+map <F2> :NERDTreeToggle<CR>
+
+" /== The_NERD_tree ==
+
+" == fugitive (and extradite) ==
+
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
@@ -180,12 +225,31 @@ nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Extradite<cr>
 
-" for the ack.vim plugin
+" /== fugitive ==
+
+" == ack ==
+
+" -H = print filename
+" --nogroup = do not group results by file
+" --column = show the column number of the first match
 let g:ackprg="ack -H --nocolor --nogroup --column"
 
-" rails file opening
+" no shift needed
+map :ack :Ack
+
+" /== ack ==
+
+" == rails ==
+
+" open in a new tab
 map gn <C-W>gf
+
+" open in the current tab
 map go gf
+
+" /== rails ==
+
+" == tabular ==
 
 " auto align pipes using tabular
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>palign()<CR>a
@@ -256,7 +320,6 @@ function! s:halign()
   endif
 endfunction
 
-" Tabular mappings
 nmap <Leader>a= :Tabularize /=\+<CR>
 vmap <Leader>a= :Tabularize /=\+<CR>
 nmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
@@ -268,11 +331,55 @@ vmap <Leader>a, :Tabularize /,/l0l1<CR>
 nmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 
+" /== tabular ==
+
+" /==== Addons ====
+
+" intuitive backspacing in insert mode
+set backspace=indent,eol,start
+
+" sudo write
+ca w!! w !sudo tee >/dev/null "%"
+
+" no more shift
+map ; :
+
+" arg!
+map <F1> <ESC>
+
+" new
+map <F4> :tabe<CR>
+
+" open
+map <F5> :tabe 
+
+" close
+map <F6> :qa<CR>
+
+" toggle line numbers
+map <F7> :set nonumber!<CR>
+
+" toggle pasting
+set pastetoggle=<F8>
+
+" toggle spell checking
+nmap <F10> :setlocal spell! spelllang=en_us<CR>
+imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
+
+" easier number increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" clean whitespace
+map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" shortcuts via misspell
+iabbrev al@ aaron.lasseigne@gmail.com
+
 function BetterComments ()
   setlocal comments-=:# " remove standard comments
   setlocal comments+=f:# " replace with comments that don't get automatically created on a return
 endfunction
-
 autocmd FileType ruby,eruby,perl call BetterComments()
 
 " link file types
