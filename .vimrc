@@ -20,16 +20,16 @@ hi TabLineFill  ctermfg=233
 
 hi LineNr       ctermfg=238 ctermbg=233
 
-hi Comment      ctermfg=240
+hi Comment      ctermfg=238
 
-hi Constant     ctermfg=29
-hi Special      ctermfg=29
+hi Constant     ctermfg=243
+hi Special      ctermfg=243
 
-hi Character    ctermfg=254
-hi String       ctermfg=254
-hi Number       ctermfg=254
-hi Boolean      ctermfg=254
-hi Float        ctermfg=254
+hi Character    ctermfg=29
+hi String       ctermfg=29
+hi Number       ctermfg=29
+hi Boolean      ctermfg=29
+hi Float        ctermfg=29
 
 hi Function     ctermfg=38 cterm=bold
 hi Type         ctermfg=38 cterm=bold
