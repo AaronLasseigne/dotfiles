@@ -10,6 +10,7 @@ alias rspec="bundle exec rspec -c -f doc"
 alias ll='ls -lh'
 alias l.='ll -Ad \.*'
 alias rc='pry -r ./config/environment'
+alias less='less -i'
 
 # custom functions
 bak() {
