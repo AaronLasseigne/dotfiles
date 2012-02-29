@@ -14,13 +14,3 @@ else # MacRuby
     end
   end.new
 end
-
-if ENV['RAILS_ENV']
-  def logger
-    rails_logger = ActiveRecord::Base.logger == Rails.logger ? Logger.new(STDOUT) : Rails.logger
-    ActiveRecord::Base.logger = rails_logger
-    ActiveResource::Base.logger = rails_logger
-    reload!
-    'toggled console logger'
-  end
-end
