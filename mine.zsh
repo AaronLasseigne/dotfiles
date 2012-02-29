@@ -1,23 +1,37 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# aliases
-alias df="df -h"
+# human readable sizes
+alias df="df -H"
+
+# human readable sizes
 alias du="du -h"
-alias g="git"
+
+# create sub directories all at once
 alias mkdir="mkdir -p"
+
+# add tabs
 alias v="vim -p"
-alias rspec="bundle exec rspec -c -f doc"
+
+# list with human readable sizes
 alias ll='ls -lh'
+
+# list only dot files/directories
 alias l.='ll -Ad \.*'
-alias rc='pry -r ./config/environment'
+
+# ignore case when searching
 alias less='less -i'
 
-# custom functions
+alias g="git"
+alias rspec="bundle exec rspec -c -f doc"
+alias rc='pry -r ./config/environment'
+
+# create a quick backup
 bak() {
   timestamp=`date +%Y%m%d%H%M%S`
   cp $1 "$1.$timestamp"
 }
 
+# make directory and change
 mdc() { 
   mkdir $1 
   cd $1
