@@ -11,32 +11,34 @@ set encoding=utf-8
 
 " colors
 set t_Co=256
-set background=dark
 syntax on
 
-hi TabLine      ctermfg=252 ctermbg=240
-hi TabLineFill  ctermfg=240
+hi Normal       ctermfg=254 ctermbg=0
 
-hi Comment      ctermfg=114 cterm=bold
+hi TabLine      ctermfg=250 ctermbg=233
+hi TabLineFill  ctermfg=233
 
-hi Constant     ctermfg=245
-hi String       ctermfg=255
-hi Character    ctermfg=255
-hi Number       ctermfg=255
-hi Boolean      ctermfg=255
-hi Float        ctermfg=255
+hi LineNr       ctermfg=238 ctermbg=233
 
-hi Identifier   ctermfg=38 cterm=NONE
+hi Comment      ctermfg=240
+
+hi String       ctermfg=254
+hi Constant     ctermfg=29
+hi Character    ctermfg=29
+hi Number       ctermfg=29
+hi Boolean      ctermfg=29
+hi Float        ctermfg=29
+hi Special      ctermfg=29
+
 hi Function     ctermfg=38 cterm=bold
-
-hi Statement    ctermfg=160
-hi PreProc      ctermfg=160
-
 hi Type         ctermfg=38 cterm=bold
 
-hi Special      ctermfg=245
+hi Identifier   ctermfg=180 cterm=NONE
 
-hi Underlined   ctermfg=250
+hi Statement    ctermfg=124
+hi PreProc      ctermfg=124
+
+hi Underlined   ctermfg=254
 
 hi Search       ctermfg=0 ctermbg=228
 hi Pmenu        ctermfg=0 ctermbg=137
@@ -44,8 +46,6 @@ hi PmenuSel     ctermfg=137 ctermbg=240
 
 hi DiffChange   ctermbg=88
 hi DiffText     ctermbg=54
-
-hi LineNr       ctermfg=137 ctermbg=234
 
 " show the tab line
 set showtabline=2
