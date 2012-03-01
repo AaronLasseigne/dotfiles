@@ -1,5 +1,5 @@
 collapse_hostname() {
-  echo $(hostname | sed -e "s,^.*\.localhost,local,")
+  echo $(hostname | sed -e "s,^.*\.local,local,")
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}"
