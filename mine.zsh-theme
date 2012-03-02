@@ -49,4 +49,6 @@ GREEN=$'\e[0;32m'
 BLUE=$'\e[1;34m'
 RED=$'\e[1;31m'
 
-PROMPT='%{$GREEN%}%D{%L:%M}%{$reset_color%} %{$RED%}$(collapse_hostname)%{$fg[white]%}:%{$BLUE%}%~%{$reset_color%}$(git_current_branch) [$(rbenv_prompt_info)] ) '
+PROMPT='
+%D{%L:%M} %{$RED%}$(rbenv_prompt_info) %{$GREEN%}$(collapse_hostname)%{$fg[white]%}:%{$BLUE%}%~%{$reset_color%}$(git_current_branch)
+) '
