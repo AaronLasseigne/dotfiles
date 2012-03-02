@@ -15,9 +15,38 @@ git_current_branch() {
   fi
 }
 
+# rbenv plugin for oh-my-zsh is broken
+eval "$(rbenv init -)"
+alias rubies="rbenv versions"
+alias gemsets="rbenv gemset list"
+
+function current_ruby() {
+  echo "$(rbenv version-name)"
+}
+
+function current_gemset() {
+  echo "$(rbenv gemset active 2&>/dev/null | sed -e ":a" -e '$ s/\n/+/gp;N;b a' | head -n1)"
+}
+
+function gems {
+  local rbenv_path=$(rbenv prefix)
+  gem list $@ | sed \
+    -Ee "s/\([0-9\.]+( .+)?\)/$fg[blue]&$reset_color/g" \
+    -Ee "s|$(echo $rbenv_path)|$fg[magenta]\$rbenv_path$reset_color|g" \
+    -Ee "s/$current_ruby@global/$fg[yellow]&$reset_color/g" \
+    -Ee "s/$current_ruby$current_gemset$/$fg[green]&$reset_color/g"
+}
+
+function rbenv_prompt_info() {
+  if [[ -n $(current_gemset) ]] ; then
+    echo "$(current_ruby)@$(current_gemset)"
+  else
+    echo "$(current_ruby)"
+  fi
+}
+
 GREEN=$'\e[0;32m'
 BLUE=$'\e[1;34m'
 RED=$'\e[1;31m'
 
-# PROMPT='%{$GREEN%}%D{%L:%M}%{$reset_color%} %{$RED%}$(collapse_hostname)%{$fg[white]%}:%{$BLUE%}%~%{$reset_color%}$(git_current_branch) ) '
-PROMPT='%{$GREEN%}%D{%L:%M}%{$reset_color%} %{$RED%}$(collapse_hostname)%{$fg[white]%}:%{$BLUE%}%~%{$reset_color%} ) '
+PROMPT='%{$GREEN%}%D{%L:%M}%{$reset_color%} %{$RED%}$(collapse_hostname)%{$fg[white]%}:%{$BLUE%}%~%{$reset_color%}$(git_current_branch) [$(rbenv_prompt_info)] ) '

@@ -25,9 +25,9 @@ ZSH_THEME="mine"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler git rails3 rvm cap)
+plugins=(brew bundler git rails3 rbenv cap)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/$HOME/.rvm/gems/ruby-1.9.2-p290/bin:/$HOME/.rvm/gems/ruby-1.9.2-p290@global/bin:/$HOME/.rvm/rubies/ruby-1.9.2-p290/bin:/$HOME/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/$HOME/bin:/$HOME/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/$HOME/bin
