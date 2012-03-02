@@ -16,7 +16,6 @@ git_current_branch() {
 }
 
 # rbenv plugin for oh-my-zsh is broken
-eval "$(rbenv init -)"
 alias rubies="rbenv versions"
 alias gemsets="rbenv gemset list"
 
