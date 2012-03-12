@@ -18,6 +18,7 @@ alias l.='ll -Ad \.*'
 
 # ignore case when searching
 alias less='less -i'
+alias ack='ack -i'
 
 alias g="git"
 alias rspec="bundle exec rspec -c -f doc"
