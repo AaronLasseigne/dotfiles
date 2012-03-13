@@ -146,10 +146,11 @@ call SetupVAM()
 " endwise                         = adds 'end' to Ruby blocks
 " neocomplcache                   = completion as you type
 " neocomplcache-snippets-complete = expandable snippets
+" surround                        = change surrounding stuff (parens, quotes, tags, etc)
 fun ActivateAddons()
   set runtimepath+=~/.vim-addons/vim-addon-manager
   try
-    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete'])
+    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround'])
   catch /.*/
 
     echoe v:exception
