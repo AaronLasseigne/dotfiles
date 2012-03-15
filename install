@@ -4,7 +4,7 @@ current_dir=`pwd`
 # copy files to home dir
 for file in \.*; do
   # skip .git, . and ..
-  if [[ "${file}" != '.git' && "${file}" != '.' && "${file}" != '..' ]]; then
+  if [[ "${file}" != '.git' && "${file}" != '.gitignore' && "${file}" != '.' && "${file}" != '..' ]]; then
     ln -sf "$current_dir/$file" ~/$file
   fi
 done
