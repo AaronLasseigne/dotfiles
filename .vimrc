@@ -168,6 +168,12 @@ let g:yankring_history_file = '.yankring_history'
 
 " /== YankRing ==
 
+" == neocomplcache-snippets-complete ==
+
+let g:neocomplcache_snippets_dir = '~/.vim/snippets'
+
+" /== neocomplcache-snippets-complete ==
+
 " == neocomplcache ==
 
 " turn it on
