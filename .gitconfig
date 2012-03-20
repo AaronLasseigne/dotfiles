@@ -29,3 +29,5 @@
 [diff]
 	mnemonicprefix = true
 	renames = copies
+[push]
+	default = upstream
