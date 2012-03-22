@@ -206,6 +206,9 @@ let g:ctrlp_map = '<leader>t'
 " allow more than one file to be opened at a time
 let g:ctrlp_open_multi = '1t'
 
+" increase the max height
+let g:ctrlp_max_height = 20
+
 " /== ctrlp ==
 
 " == The_NERD_tree ==
