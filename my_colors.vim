@@ -5,7 +5,7 @@ hi TabLineFill  ctermfg=233
 
 hi LineNr       ctermfg=238 ctermbg=233
 
-hi Comment      ctermfg=238
+hi Comment      ctermfg=240
 
 hi Constant     ctermfg=243
 hi Special      ctermfg=243
