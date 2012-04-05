@@ -198,7 +198,7 @@ imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>
 " == ctrlp ==
 
 " ignore stuff when searching
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*
 
 " map the search command
 let g:ctrlp_map = '<leader>t'
