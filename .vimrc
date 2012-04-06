@@ -331,8 +331,8 @@ function! s:halign()
   endif
 endfunction
 
-nmap <Leader>a= :Tabularize /=\+<CR>
-vmap <Leader>a= :Tabularize /=\+<CR>
+nmap <Leader>a= :Tabularize /^[^=]*\zs=\+<CR>
+vmap <Leader>a= :Tabularize /^[^=]*\zs=\+<CR>
 nmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
 vmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
 nmap <Leader>a> :Tabularize /=><CR>
