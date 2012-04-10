@@ -2,3 +2,5 @@
 css=.sass,.scss
 --type-add
 js=.coffee
+--type-set
+markdown=.md,.mdown,.markdown
