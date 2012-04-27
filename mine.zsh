@@ -35,3 +35,5 @@ mdc() {
   mkdir $1 
   cd $1
 }
+
+export EDITOR=vim
