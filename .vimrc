@@ -147,10 +147,11 @@ call SetupVAM()
 " neocomplcache                   = completion as you type
 " neocomplcache-snippets-complete = expandable snippets
 " surround                        = change surrounding stuff (parens, quotes, tags, etc)
+" repeat                          = adds "." support for surround
 fun ActivateAddons()
   set runtimepath+=~/.vim-addons/vim-addon-manager
   try
-    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround'])
+    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat'])
   catch /.*/
 
     echoe v:exception
