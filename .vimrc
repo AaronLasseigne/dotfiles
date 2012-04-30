@@ -148,10 +148,13 @@ call SetupVAM()
 " neocomplcache-snippets-complete = expandable snippets
 " surround                        = change surrounding stuff (parens, quotes, tags, etc)
 " repeat                          = adds "." support for surround
+" tagbar                          = ctag support
+" textobj-user                    = required (manually for now) for textobj-rubyblock
+" textobj-rubyblock               = use "ar" and "ir" to select ruby blocks
 fun ActivateAddons()
   set runtimepath+=~/.vim-addons/vim-addon-manager
   try
-    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat'])
+    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'textobj-user', 'textobj-rubyblock'])
   catch /.*/
 
     echoe v:exception
