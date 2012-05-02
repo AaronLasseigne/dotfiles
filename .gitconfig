@@ -22,7 +22,7 @@
 	dc = diff --cached --word-diff
 	dp = "!sh -c 'git d --word-diff $1^..$1' -"
 	lp = log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\"
-	la = "!sh -c 'git l --author=\"$1\"' -"
+	la = "!sh -c 'git log --author=\"$1\"' -"
 	lpa = "!sh -c 'git lp --author=\"$1\"' -"
 	lpw = "!git --no-pager log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" && echo ''"
 	lpwa = "!sh -c 'git --no-pager log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" --author=\"$1\" && echo \"\"' -"
