@@ -20,6 +20,7 @@ alias l.='ll -Ad \.*'
 alias less='less -i'
 alias ack='ack --smart-case'
 
+alias git="hub"
 alias g="git"
 alias rspec="bundle exec rspec -c -f doc"
 alias rc='pry -r ./config/environment'
