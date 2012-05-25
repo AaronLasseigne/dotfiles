@@ -15,4 +15,4 @@ ln -sf "$current_dir/mine.zsh-theme" ~/.oh-my-zsh/themes/mine.zsh-theme
 mkdir -p ~/.vim/colors
 ln -sf "$current_dir/my_colors.vim" ~/.vim/colors/my_colors.vim
 
-ln -sf "$current_dir/snippets" ~/.vim/snippets
+ln -sfh "$current_dir/snippets" ~/.vim/snippets
