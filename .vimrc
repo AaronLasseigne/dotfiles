@@ -150,10 +150,11 @@ call SetupVAM()
 " repeat                          = adds "." support for surround
 " tagbar                          = ctag support
 " textobj-rubyblock               = use "ar" and "ir" to select ruby blocks
+" zencoding                       = easy html creation using css selector like syntax
 fun ActivateAddons()
   set runtimepath+=~/.vim-addons/vim-addon-manager
   try
-    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'textobj-rubyblock'])
+    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'textobj-rubyblock', 'ZenCoding'])
   catch /.*/
 
     echoe v:exception
