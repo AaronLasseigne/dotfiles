@@ -26,7 +26,14 @@ alias ack='ack --smart-case'
 alias git="hub"
 alias g="git"
 alias rspec="bundle exec rspec -c -f doc"
-alias rc='pry -r ./config/environment'
+
+rails() {
+  if [[ "$1" == 'pry' ]]; then
+    pry -r ./config/environment
+  else
+    bundle exec rails $*
+  fi
+}
 
 # create a quick backup
 bak() {
