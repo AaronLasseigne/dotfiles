@@ -47,4 +47,15 @@ mdc() {
   cd $1
 }
 
+va() {
+  match=`ack --no-color -1 $* | head -n1 | cut -d: -f1,2`
+
+  if [[ "$match" != '' ]]; then
+    output=("${(s/:/)match}")
+    vim $output[1] +$output[2]
+  else
+    echo 'No matches found.'
+  fi
+}
+
 export EDITOR=vim
