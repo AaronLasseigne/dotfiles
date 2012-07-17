@@ -4,3 +4,5 @@ css=.sass,.scss
 js=.coffee
 --type-set
 markdown=.md,.mdown,.markdown
+--type-add
+html=.erb,.eco
