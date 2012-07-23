@@ -53,6 +53,8 @@ va() {
   if [[ "$match" != '' ]]; then
     output=("${(s/:/)match}")
     vim $output[1] +$output[2]
+
+    echo $output[1]
   else
     echo 'No matches found.'
   fi
