@@ -233,6 +233,7 @@ map <F2> :NERDTreeToggle<CR>
 " == fugitive (and extradite) ==
 
 nnoremap <leader>gd :Gdiff<cr>
+nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gb :Gblame<cr>
