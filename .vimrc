@@ -353,8 +353,18 @@ vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 " /== tabular ==
 
 " == Powerline ==
+
+" consolas does not support 'fancy' and 'unicode' looks bad
 let g:Powerline_symbols = 'compatible'
+
+" fixes 
 set laststatus=2
+
+" use some custom symbols
+let g:Powerline_symbols_override = {
+      \ 'BRANCH': [0x2213]
+      \ }
+
 " /== Powerline ==
 
 " /==== Addons ====
