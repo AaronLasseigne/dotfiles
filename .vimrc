@@ -151,10 +151,11 @@ call SetupVAM()
 " tagbar                          = ctag support
 " textobj-rubyblock               = use "ar" and "ir" to select ruby blocks
 " zencoding                       = easy html creation using css selector like syntax
+" vim-powerline                   = better vim statusline
 fun ActivateAddons()
   set runtimepath+=~/.vim-addons/vim-addon-manager
   try
-    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'textobj-rubyblock', 'ZenCoding'])
+    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'textobj-rubyblock', 'ZenCoding', 'Powerline'])
   catch /.*/
 
     echoe v:exception
@@ -350,6 +351,11 @@ nmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 
 " /== tabular ==
+
+" == Powerline ==
+let g:Powerline_symbols = 'compatible'
+set laststatus=2
+" /== Powerline ==
 
 " /==== Addons ====
 
