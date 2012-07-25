@@ -213,6 +213,9 @@ let g:ctrlp_open_multi = '1t'
 " increase the max height
 let g:ctrlp_max_height = 20
 
+" enable cache between sessions (reset with F5 in a search)
+let g:ctrlp_clear_cache_on_exit = 0
+
 " /== ctrlp ==
 
 " == The_NERD_tree ==
