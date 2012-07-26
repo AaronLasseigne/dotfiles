@@ -354,10 +354,7 @@ vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 
 " == Powerline ==
 
-" consolas does not support 'fancy' and 'unicode' looks bad
-let g:Powerline_symbols = 'compatible'
-
-" fixes 
+" always show the status line
 set laststatus=2
 
 " use some custom symbols
