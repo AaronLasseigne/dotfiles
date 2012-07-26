@@ -1,9 +1,6 @@
 # skips dupes when using up/down arrows to look through your history
 setopt HIST_FIND_NO_DUPS
 
-# use vim style line bindings
-bindkey -v
-
 # human readable sizes
 alias df="df -H"
 
