@@ -16,3 +16,6 @@ mkdir -p ~/.vim/colors
 ln -sf "$current_dir/my_colors.vim" ~/.vim/colors/my_colors.vim
 
 ln -sfh "$current_dir/snippets" ~/.vim/snippets
+
+mkdir -p ~/bin
+ln -sf "$current_dir/bin/cb" ~/bin/cb
