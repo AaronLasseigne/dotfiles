@@ -283,68 +283,84 @@ function! s:palign()
   endif
 endfunction
 
-" auto align colons using tabular
-inoremap <silent> : <Esc>:call <SID>calign()<CR>a
-function! s:calign()
-  let c = '^\s*[a-zA-Z0-9_-]\+'
-  if exists(':Tabularize') && getline('.') =~# c."$" && (getline(line('.')-1) =~# c.":" || getline(line('.')+1) =~# c.":")
-    let up_match_good = search('{', 'bnW')
-    let up_match_bad  = search('}', 'bnW')
-    let down_match    = search('}', 'nW')
-    if down_match && up_match_good && up_match_good > up_match_bad
-      if down_match - up_match_good != 2
-        let current_line = line('.')
-        normal! a:'
-        :?{?+;/}/-call Tabularize('/'.c.':\zs/l0l1l0')
-        call cursor(current_line, '0')
-        normal! $xx
-      else
-        normal! a:
-      endif
-    else
-      normal! a:'
-      call Tabularize('/'.c.':\zs/l0l1l0')
-      normal! $xx
-    endif
-  else
-    normal! a:
-  endif
-endfunction
+" FIX - does not work with nested blocks
+function! s:colonAlign()
+  let regexp = '^\s*[a-zA-Z0-9_-]\+:'
 
-" auto align hash rocket using tabular
-inoremap <silent> => <Esc>:call <SID>halign()<CR>a
-function! s:halign()
-  let h = '^\s*\S\+\s*'
-  if exists(':Tabularize') && getline('.') =~# h."$" && (getline(line('.')-1) =~# h."\=\>" || getline(line('.')+1) =~# h."\=\>")
-    let up_match_good = search('{', 'bnW')
-    let up_match_bad  = search('}', 'bnW')
-    let down_match    = search('}', 'nW')
-    if down_match && up_match_good && up_match_good > up_match_bad
-      if down_match - up_match_good != 2
-        let current_line = line('.')
-        normal! a=>'
-        :?{?+;/}/-call Tabularize('/'.h.'=>')
-        call cursor(current_line, '0')
-        normal! $xx
-      else
-        normal! a=>
-      endif
-    else
-      normal! a=>'
-      call Tabularize('/'.h.'=>')
-      normal! $xx
+  let prev_line_match     = getline(line('.') - 1) =~ regexp
+  let prev_line_has_curly = getline(line('.') - 1) =~ '{'
+  let next_line_match     = getline(line('.') + 1) =~ regexp
+  let next_line_has_curly = getline(line('.') + 1) =~ '}'
+
+  if !(prev_line_has_curly && next_line_has_curly) && (prev_line_match || next_line_match) && getline('.') =~ regexp
+    let save_cursor = getpos('.')
+
+    let cmd = 'Tabularize /'. regexp .'\zs/l0l1l0'
+
+    " select the area to align
+    exe "norm! vi{\<Esc>\<Esc>"
+
+    " I'm not sure why I need this but it fixes groups without parens. Otherwise
+    " they end in visual mode and '> and '< aren't reset.
+    exe "norm! \<Esc>"
+
+    " start line != stop line
+    if line("'<") != line("'>'")
+      let cmd = "'<,'>" . cmd
     endif
-  else
-    normal! a=>
+
+    exe cmd
+
+    call setpos('.', save_cursor)
   endif
 endfunction
+" auto align colons using tabular
+inoremap  <silent> :  :<Esc>:call <SID>colonAlign()<CR>A
+" manual align
+nmap <Leader>a: :call <SID>colonAlign()<CR>
+" visual align
+vmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
+
+" FIX - does not work with nested blocks
+function! s:hashRocketAlign()
+  let regexp = '^\s*\S\+\s*'
+
+  let prev_line_match     = getline(line('.') - 1) =~ regexp . '=>'
+  let prev_line_has_curly = getline(line('.') - 1) =~ '{'
+  let next_line_match     = getline(line('.') + 1) =~ regexp . '=>'
+  let next_line_has_curly = getline(line('.') + 1) =~ '}'
+
+  if !(prev_line_has_curly && next_line_has_curly) && (prev_line_match || next_line_match) && getline('.') =~ regexp
+    let save_cursor = getpos('.')
+
+    let cmd = 'Tabularize /'. regexp .'\zs=>'
+
+    " select the area to align
+    exe "norm! vi{\<Esc>\<Esc>"
+
+    " I'm not sure why I need this but it fixes groups without parens. Otherwise
+    " they end in visual mode and '> and '< aren't reset.
+    exe "norm! \<Esc>"
+
+    " start line != stop line
+    if line("'<") != line("'>'")
+      let cmd = "'<,'>" . cmd
+    endif
+
+    exe cmd
+
+    call setpos('.', save_cursor)
+  endif
+endfunction
+" auto align
+inoremap <silent> =>  =><Esc>:call <SID>hashRocketAlign()<CR>A
+" manual align
+nmap <Leader>a> :call <SID>hashRocketAlign()<CR>
+" visual align
+vmap <Leader>a> :Tabularize /^\s*\S\+\s*\zs=><CR>
 
 nmap <Leader>a= :Tabularize /^[^=]*\zs=\+<CR>
 vmap <Leader>a= :Tabularize /^[^=]*\zs=\+<CR>
-nmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
-vmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
-nmap <Leader>a> :Tabularize /=><CR>
-vmap <Leader>a> :Tabularize /=><CR>
 nmap <Leader>a, :Tabularize /,/l0l1<CR>
 vmap <Leader>a, :Tabularize /,/l0l1<CR>
 nmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
