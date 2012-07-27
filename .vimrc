@@ -298,7 +298,7 @@ function! s:colonAlign()
     let cmd = 'Tabularize /'. regexp .'\zs/l0l1l0'
 
     " select the area to align
-    exe "norm! vi{\<Esc>\<Esc>"
+    exe "norm! vi{\<Esc>"
 
     " I'm not sure why I need this but it fixes groups without parens. Otherwise
     " they end in visual mode and '> and '< aren't reset.
@@ -336,7 +336,7 @@ function! s:hashRocketAlign()
     let cmd = 'Tabularize /'. regexp .'\zs=>'
 
     " select the area to align
-    exe "norm! vi{\<Esc>\<Esc>"
+    exe "norm! vi{\<Esc>"
 
     " I'm not sure why I need this but it fixes groups without parens. Otherwise
     " they end in visual mode and '> and '< aren't reset.
