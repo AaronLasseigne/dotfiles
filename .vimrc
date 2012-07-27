@@ -238,6 +238,7 @@ nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gb :Gblame<cr>
+vnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
