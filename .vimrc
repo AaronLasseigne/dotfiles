@@ -316,7 +316,7 @@ function! s:colonAlign()
   endif
 endfunction
 " auto align colons using tabular
-inoremap  <silent> :  :<Esc>:call <SID>colonAlign()<CR>A
+inoremap  <silent> :  :<Esc>:call <SID>colonAlign()<CR>a
 " manual align
 nmap <Leader>a: :call <SID>colonAlign()<CR>
 " visual align
@@ -354,7 +354,7 @@ function! s:hashRocketAlign()
   endif
 endfunction
 " auto align
-inoremap <silent> =>  =><Esc>:call <SID>hashRocketAlign()<CR>A
+inoremap <silent> =>  =><Esc>:call <SID>hashRocketAlign()<CR>a
 " manual align
 nmap <Leader>a> :call <SID>hashRocketAlign()<CR>
 " visual align
