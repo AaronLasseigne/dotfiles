@@ -149,13 +149,12 @@ call SetupVAM()
 " surround                        = change surrounding stuff (parens, quotes, tags, etc)
 " repeat                          = adds "." support for surround
 " tagbar                          = ctag support
-" textobj-rubyblock               = use "ar" and "ir" to select ruby blocks
 " zencoding                       = easy html creation using css selector like syntax
 " vim-powerline                   = better vim statusline
 fun ActivateAddons()
   set runtimepath+=~/.vim-addons/vim-addon-manager
   try
-    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'github:vim-ruby/vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'textobj-rubyblock', 'ZenCoding', 'Powerline'])
+    call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'github:vim-ruby/vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'ZenCoding', 'Powerline'])
   catch /.*/
 
     echoe v:exception
