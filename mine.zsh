@@ -21,7 +21,6 @@ alias l.='ll -Ad \.*'
 
 # ignore case when searching
 alias less='less -i'
-alias ack='ack --smart-case'
 
 alias git="hub"
 alias g="git"
