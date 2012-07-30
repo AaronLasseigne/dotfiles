@@ -271,32 +271,33 @@ map go gf
 
 " == tabular ==
 
-" auto align pipes using tabular
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>palign()<CR>a
 function! s:palign()
   let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+
+  if getline('.') =~# '^\s*|' && (getline(line('.') - 1) =~# p || getline(line('.') + 1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')], '[^|]', '', 'g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')], '.*|\s*\zs.*'))
+
     Tabularize/|/l1
+
     normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+
+    call search(repeat('[^|]*|', column) . '\s\{-\}' . repeat('.', position), 'ce', line('.'))
   endif
 endfunction
+" auto align pipes using tabular
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>palign()<CR>a
 
-" FIX - does not work with nested blocks
-function! s:colonAlign()
-  let regexp = '^\s*[a-zA-Z0-9_-]\+:'
-
-  let prev_line_match     = getline(line('.') - 1) =~ regexp
+function! s:generalAlign(regexp, post_zs, spacing)
+  let prev_line_match     = getline(line('.') - 1) =~ a:regexp . a:post_zs
   let prev_line_has_curly = getline(line('.') - 1) =~ '{'
-  let next_line_match     = getline(line('.') + 1) =~ regexp
+  let next_line_match     = getline(line('.') + 1) =~ a:regexp . a:post_zs
   let next_line_has_curly = getline(line('.') + 1) =~ '}'
 
-  if !(prev_line_has_curly && next_line_has_curly) && (prev_line_match || next_line_match) && getline('.') =~ regexp
+  if !(prev_line_has_curly && next_line_has_curly) && (prev_line_match || next_line_match) && getline('.') =~ a:regexp
     let save_cursor = getpos('.')
 
-    let cmd = 'Tabularize /'. regexp .'\zs/l0l1l0'
+    let cmd = 'Tabularize /'. a:regexp .'\zs' . a:post_zs . a:spacing
 
     " select the area to align
     exe "norm! vi{\<Esc>"
@@ -314,6 +315,10 @@ function! s:colonAlign()
 
     call setpos('.', save_cursor)
   endif
+endfunction
+
+function! s:colonAlign()
+  call <SID>generalAlign('^\s*[a-zA-Z0-9_-]\+:', '', '/l0l1l0')
 endfunction
 " auto align colons using tabular
 inoremap  <silent> :  :<Esc>:call <SID>colonAlign()<CR>a
@@ -322,36 +327,8 @@ nmap <Leader>a: :call <SID>colonAlign()<CR>
 " visual align
 vmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
 
-" FIX - does not work with nested blocks
 function! s:hashRocketAlign()
-  let regexp = '^\s*\S\+\s*'
-
-  let prev_line_match     = getline(line('.') - 1) =~ regexp . '=>'
-  let prev_line_has_curly = getline(line('.') - 1) =~ '{'
-  let next_line_match     = getline(line('.') + 1) =~ regexp . '=>'
-  let next_line_has_curly = getline(line('.') + 1) =~ '}'
-
-  if !(prev_line_has_curly && next_line_has_curly) && (prev_line_match || next_line_match) && getline('.') =~ regexp
-    let save_cursor = getpos('.')
-
-    let cmd = 'Tabularize /'. regexp .'\zs=>'
-
-    " select the area to align
-    exe "norm! vi{\<Esc>"
-
-    " I'm not sure why I need this but it fixes groups without parens. Otherwise
-    " they end in visual mode and '> and '< aren't reset.
-    exe "norm! \<Esc>"
-
-    " start line != stop line
-    if line("'<") != line("'>'")
-      let cmd = "'<,'>" . cmd
-    endif
-
-    exe cmd
-
-    call setpos('.', save_cursor)
-  endif
+  call <SID>generalAlign('^\s*\S\+\s*', '=>', '')
 endfunction
 " auto align
 inoremap <silent> =>  =><Esc>:call <SID>hashRocketAlign()<CR>a
