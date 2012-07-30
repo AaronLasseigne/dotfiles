@@ -4,8 +4,8 @@ setopt HIST_FIND_NO_DUPS
 # human readable sizes
 alias df="df -H"
 
-# human readable sizes
-alias du="du -h"
+# human readable sizes and a total
+alias du="du -hc"
 
 # create sub directories all at once
 alias mkdir="mkdir -p"
