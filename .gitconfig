@@ -3,7 +3,7 @@
 	email = aaron.lasseigne@gmail.com
 [core]
 	editor = vim
-	pager = less
+	pager = less -i
 [color]
 	ui = true
 [alias]
