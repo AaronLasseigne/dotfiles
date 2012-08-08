@@ -1,9 +1,9 @@
-hi Normal       ctermfg=254 ctermbg=0
+hi Normal       ctermfg=254 ctermbg=234
 
-hi TabLine      ctermfg=250 ctermbg=233
-hi TabLineFill  ctermfg=233
+hi TabLine      ctermfg=250 ctermbg=0
+hi TabLineFill  ctermfg=234
 
-hi LineNr       ctermfg=238 ctermbg=233
+hi LineNr       ctermfg=238 ctermbg=0
 
 hi Comment      ctermfg=240
 
@@ -32,3 +32,5 @@ hi PmenuSel     ctermfg=137 ctermbg=240
 
 hi DiffChange   ctermbg=88
 hi DiffText     ctermbg=54
+
+hi CursorLine   ctermbg=0 cterm=bold
