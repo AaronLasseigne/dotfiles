@@ -221,6 +221,8 @@ let g:ctrlp_clear_cache_on_exit = 0
 
 " == The_NERD_tree ==
 
+let g:NERDTreeWinPos = "right"
+
 " reduces clutter in the UI
 let NERDTreeMinimalUI = 1
 
