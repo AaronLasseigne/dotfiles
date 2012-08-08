@@ -1,7 +1,7 @@
 hi Normal       ctermfg=254 ctermbg=234
 
 hi TabLine      ctermfg=250 ctermbg=0
-hi TabLineFill  ctermfg=234
+hi TabLineFill  ctermbg=0 cterm=underline
 
 hi LineNr       ctermfg=238 ctermbg=0
 
