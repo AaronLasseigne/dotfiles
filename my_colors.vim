@@ -7,16 +7,16 @@ hi LineNr       ctermfg=238 ctermbg=0
 
 hi Comment      ctermfg=240
 
-hi Constant     ctermfg=243
-hi Special      ctermfg=243
+hi Constant     ctermfg=244
+hi Special      ctermfg=244
 
-hi Character    ctermfg=29
-hi String       ctermfg=29
+hi Character    ctermfg=61
+hi String       ctermfg=61
 hi Number       ctermfg=29
-hi Boolean      ctermfg=29
 hi Float        ctermfg=29
+hi Boolean      ctermfg=166
 
-hi Function     ctermfg=38 cterm=bold
+hi Function     ctermfg=33 cterm=bold
 hi Type         ctermfg=38 cterm=bold
 
 hi Identifier   ctermfg=180 cterm=NONE
@@ -26,7 +26,7 @@ hi PreProc      ctermfg=124
 
 hi Underlined   ctermfg=254
 
-hi Search       ctermfg=0 ctermbg=228
+hi Search       ctermfg=0 ctermbg=136
 hi Pmenu        ctermfg=0 ctermbg=137
 hi PmenuSel     ctermfg=137 ctermbg=240
 
