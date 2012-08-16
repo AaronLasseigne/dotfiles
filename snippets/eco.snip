@@ -1,5 +1,3 @@
-include eruby.snip
-
 snippet if
 abbr    if end
   <% if ${1:condition}: %>
@@ -14,6 +12,30 @@ abbr    if else end
     ${3}
   <% end %>
 
+snippet er=
+abbr    <%= %>
+  <%= ${1} %>
+
+snippet er
+abbr    <% %>
+  <% ${1} %>
+
+snippet end
+abbr    <% end %>
+  <% end %>
+
 snippet log
 abbr    console.log
   <% console.log ${1} %>
+
+snippet for
+abbr    for var in vars
+  <% for ${1} in ${2}: %>
+    ${3}
+  <% end %>
+
+snippet foro
+abbr    for var of vars
+  <% for ${1} of ${2}: %>
+    ${3}
+  <% end %>
