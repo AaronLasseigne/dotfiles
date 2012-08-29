@@ -11,7 +11,7 @@ alias du="du -hc"
 alias mkdir="mkdir -p"
 
 # add tabs
-alias v="vim -p"
+alias vim="vim -p"
 
 # list with human readable sizes
 alias ll='ls -lh'
@@ -47,6 +47,12 @@ bak() {
 mdc() { 
   mkdir $1 
   cd $1
+}
+
+# vim now accepts file:line#
+v() {
+  output=${*/:/ +}
+  vim ${=output}
 }
 
 va() {
