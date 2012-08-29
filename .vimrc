@@ -232,6 +232,12 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*
 " map the search command
 let g:ctrlp_map = '<leader>t'
 
+" map MRU search command
+map <leader>r :CtrlPMRU<CR>
+
+" max MRU files to remember
+let g:ctrlp_mruf_max = 15
+
 " allow more than one file to be opened at a time
 let g:ctrlp_open_multi = '1t'
 
