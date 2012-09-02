@@ -30,4 +30,4 @@ plugins=(brew bundler git rails3 rbenv cap gem)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin
+export PATH=$PATH:$HOME/bin
