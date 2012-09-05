@@ -433,7 +433,7 @@ map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " shortcuts via misspell
 iabbrev al@ aaron.lasseigne@gmail.com
 
-function BetterComments ()
+function! BetterComments ()
   setlocal comments-=:# " remove standard comments
   setlocal comments+=f:# " replace with comments that don't get automatically created on a return
 endfunction
