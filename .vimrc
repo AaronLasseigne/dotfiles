@@ -14,6 +14,14 @@ set t_Co=256
 syntax enable
 colorscheme my_colors
 
+function! HighlightAnnotations()
+  syn keyword vimTodo contained HACK OPTIMIZE REVIEW
+  syn keyword rubyTodo contained HACK REVIEW
+  syn keyword coffeeTodo contained HACK OPTIMIZE REVIEW
+  syn keyword javaScriptCommentTodo contained HACK OPTIMIZE REVIEW
+endfunction
+autocmd Syntax * call HighlightAnnotations()
+
 " show the tab line
 set showtabline=2
 
