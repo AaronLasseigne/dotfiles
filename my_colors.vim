@@ -6,6 +6,7 @@ hi TabLineFill  ctermbg=0 cterm=underline
 hi LineNr       ctermfg=238 ctermbg=0
 
 hi Comment      ctermfg=240
+hi Todo         ctermfg=136 ctermbg=234
 
 hi Constant     ctermfg=244
 hi Special      ctermfg=244
