@@ -25,7 +25,6 @@ alias less='less -i'
 # man is supposed to default to this but case insensitive search isn't working
 alias man='man -P "less -is"'
 
-alias git="hub"
 alias g="git"
 alias rspec="bundle exec rspec -c -f doc"
 
