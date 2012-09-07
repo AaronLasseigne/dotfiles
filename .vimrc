@@ -244,6 +244,9 @@ let g:ctrlp_map = '<leader>t'
 " map MRU search command
 map <leader>r :CtrlPMRU<CR>
 
+" map buffers search command
+map <leader>b :CtrlPBuffer<CR>
+
 " max MRU files to remember
 let g:ctrlp_mruf_max = 15
 
