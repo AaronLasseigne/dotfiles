@@ -37,8 +37,9 @@ set scrolloff=5
 " highlight the opening/closing parens, braces, etc
 set showmatch
 
-" highlight the current line
+" highlight the current line and column
 set cursorline
+set cursorcolumn
 
 " /==== DISPLAY ====
 

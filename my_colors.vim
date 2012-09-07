@@ -12,9 +12,11 @@ hi Constant     ctermfg=244
 hi Special      ctermfg=244
 
 hi Character    ctermfg=61
-hi String       ctermfg=61
+hi link String Character
+
 hi Number       ctermfg=29
-hi Float        ctermfg=29
+hi link Float Number
+
 hi Boolean      ctermfg=166
 
 hi Function     ctermfg=33 cterm=bold
@@ -35,3 +37,4 @@ hi DiffChange   ctermbg=88
 hi DiffText     ctermbg=54
 
 hi CursorLine   ctermbg=0 cterm=bold
+hi CursorColumn ctermbg=0 cterm=bold
