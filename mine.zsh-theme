@@ -2,16 +2,16 @@ collapse_hostname() {
   echo $(hostname | sed -e "s,^.*\.local,local,")
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}●%{$fg[white]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$BG[117]%}%{$FG[024]%} ∓ "
+ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}+ %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_current_branch() {
   local cb=$(current_branch)
   if [ -n "$cb" ]; then
-    echo " $ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
 }
 
@@ -44,10 +44,8 @@ function rbenv_prompt_info() {
   fi
 }
 
-GREEN=$'\e[0;32m'
-BLUE=$'\e[1;34m'
-RED=$'\e[1;31m'
+RPROMPT='%{$reset_color%}%{$bg[white]%}%{$FG[240]%} %D{%X}%  %{$BG[240]%}%{$fg[white]%} %D{%Y-%m-%d}%f %{$reset_color%}'
 
 PROMPT='
-%D{%L:%M} %{$RED%}$(rbenv_prompt_info) %{$GREEN%}$(collapse_hostname)%{$fg[white]%}:%{$BLUE%}%~%{$reset_color%}$(git_current_branch)
-) '
+%{$BG[088]%}%{$FG[250]%} $(rbenv_prompt_info) %{$BG[148]%}%{$FG[022]%} $(collapse_hostname) %{$fg[white]%}%{$BG[024]%} %~ %{$reset_color%}$(git_current_branch)
+> '
