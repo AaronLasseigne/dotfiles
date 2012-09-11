@@ -19,3 +19,4 @@ ln -sfh "$current_dir/snippets" ~/.vim/snippets
 
 mkdir -p ~/bin
 ln -sf "$current_dir/bin/cb" ~/bin/cb
+ln -sf "$current_dir/bin/tmux_battery_charge_indicator.rb" ~/bin/tmux_battery_charge_indicator.rb
