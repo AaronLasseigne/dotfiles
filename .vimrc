@@ -390,6 +390,13 @@ vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 
 " /== tabular ==
 
+" == vim-coffee-script ==
+
+nmap <Leader>cc :CoffeeCompile 20<CR>
+vmap <Leader>cc :CoffeeCompile 20<CR>
+
+" == /vim-coffee-script ==
+
 " == Powerline ==
 
 " always show the status line
@@ -438,6 +445,9 @@ imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 " easier number increment/decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
+
+" never enter Ex mode
+nnoremap Q <nop>
 
 " clean whitespace
 map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
