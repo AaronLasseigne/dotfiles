@@ -107,29 +107,29 @@ set cinkeys-=0#
 
 " vim addon manager
 "
-" ack                             = adds support for the ack command
-" matchit.zip                     = more complete '%' matching
-" rails                           = RoR support
-" The_NERD_tree                   = file browsing
-" delimitMate                     = automatically adds closing paren, quote, etc
-" fugitive                        = built in support for git
-" extradite                       = plugin for fugitive that provides tig like interface
-" Tabular                         = alignment helper
-" vim-coffee-script               = cs support
-" ctrlp                           = file searching
-" tComment                        = easily add/remove commenting
-" vim-ruby                        = ruby support
-" YankRing                        = cycle through previous pastes after pasting
-" IndexedSearch                   = shows 'Nth match out of M' when searching
-" endwise                         = adds 'end' to Ruby blocks
-" neocomplcache                   = completion as you type
-" neocomplcache-snippets-complete = expandable snippets
-" surround                        = change surrounding stuff (parens, quotes, tags, etc)
-" repeat                          = adds "." support for surround
-" tagbar                          = ctag support
-" zencoding                       = easy html creation using css selector like syntax
-" vim-powerline                   = better vim statusline
-" markdown@tpope                  = markdown support
+" ack               = adds support for the ack command
+" matchit.zip       = more complete '%' matching
+" rails             = RoR support
+" The_NERD_tree     = file browsing
+" delimitMate       = automatically adds closing paren, quote, etc
+" fugitive          = built in support for git
+" extradite         = plugin for fugitive that provides tig like interface
+" Tabular           = alignment helper
+" vim-coffee-script = cs support
+" ctrlp             = file searching
+" tComment          = easily add/remove commenting
+" vim-ruby          = ruby support
+" YankRing          = cycle through previous pastes after pasting
+" IndexedSearch     = shows 'Nth match out of M' when searching
+" endwise           = adds 'end' to Ruby blocks
+" neocomplcache     = completion as you type
+" neosnippet        = expandable snippets
+" surround          = change surrounding stuff (parens, quotes, tags, etc)
+" repeat            = adds "." support for surround
+" tagbar            = ctag support
+" zencoding         = easy html creation using css selector like syntax
+" vim-powerline     = better vim statusline
+" markdown@tpope    = markdown support
 
 fun! EnsureVamIsOnDisk(vam_install_path)
   " windows users may want to use http://mawercer.de/~marc/vam/index.php
@@ -178,7 +178,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neocomplcache-snippets-complete', 'surround', 'repeat', 'Tagbar', 'ZenCoding', 'Powerline', 'markdown@tpope'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Tagbar', 'ZenCoding', 'Powerline', 'markdown@tpope'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
@@ -206,9 +206,9 @@ let g:yankring_history_file = '.yankring_history'
 
 " /== YankRing ==
 
-" == neocomplcache-snippets-complete ==
+" == neosnippet ==
 
-let g:neocomplcache_snippets_dir = '~/.vim/snippets'
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
 
 " /== neocomplcache-snippets-complete ==
 
