@@ -127,7 +127,6 @@ set cinkeys-=0#
 " surround          = change surrounding stuff (parens, quotes, tags, etc)
 " repeat            = adds "." support for surround
 " tagbar            = ctag support
-" zencoding         = easy html creation using css selector like syntax
 " vim-powerline     = better vim statusline
 " markdown@tpope    = markdown support
 
@@ -178,7 +177,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Tagbar', 'ZenCoding', 'Powerline', 'markdown@tpope'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Tagbar', 'Powerline', 'markdown@tpope'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
