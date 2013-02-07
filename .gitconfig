@@ -26,6 +26,7 @@
 	lpa = "!sh -c 'git lp --author=\"$1\"' -"
 	lpw = "!git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" && echo ''"
 	lpwa = "!sh -c 'git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" --author=\"$1\" && echo \"\"' -"
+  bl = blame -w -M -C -C -C
 [diff]
 	noprefix = true
 	renames = copies
