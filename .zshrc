@@ -33,3 +33,4 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/bin
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+[[ -s /Users/aaron/.nvm/nvm.sh ]] && . /Users/aaron/.nvm/nvm.sh
