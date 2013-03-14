@@ -18,9 +18,9 @@
   l = pull
   lo = pull origin
 	lr = pull --rebase
-	d = diff --word-diff
-	dc = diff --cached --word-diff
-	dp = "!sh -c 'git d --word-diff $1^..$1' -"
+	d = diff
+	dc = diff --cached
+	dp = "!sh -c 'git d $1^..$1' -"
 	lp = log --pretty=format:\"%Cred%h%Creset %ci - %cn %Cgreen%s%Creset\"
 	la = "!sh -c 'git log --author=\"$1\"' -"
 	lpa = "!sh -c 'git lp --author=\"$1\"' -"
