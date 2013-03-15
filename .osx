@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Clears preview on quit so it doesn't have old stuff in it when you open it.
+defaults write com.apple.Preview NSQuitAlwaysKeepsWindows -bool false
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
