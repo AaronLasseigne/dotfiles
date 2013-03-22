@@ -208,8 +208,9 @@ let g:yankring_history_file = '.yankring_history'
 " == neosnippet ==
 
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
+set completeopt-=preview
 
-" /== neocomplcache-snippets-complete ==
+" /== neosnippet ==
 
 " == neocomplcache ==
 
