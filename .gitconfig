@@ -1,34 +1,34 @@
 [user]
-	name = Aaron Lasseigne
-	email = aaron.lasseigne@gmail.com
+  name = Aaron Lasseigne
+  email = aaron.lasseigne@gmail.com
 [core]
-	editor = vim
-	pager = less -i
+  editor = vim
+  pager = less -inSFX
 [color]
-	ui = true
+  ui = true
 [alias]
-	br = branch
-	ci = commit
-	cim = commit -m
-	co = checkout
-	st = status
-	cp = cherry-pick
+  br = branch
+  ci = commit
+  cim = commit -m
+  co = checkout
+  st = status
+  cp = cherry-pick
   p = push
   po = push origin
   l = pull
   lo = pull origin
-	lr = pull --rebase
-	d = diff
-	dc = diff --cached
-	dp = "!sh -c 'git d $1^..$1' -"
-	lp = log --pretty=format:\"%Cred%h%Creset %ci - %cn %Cgreen%s%Creset\"
-	la = "!sh -c 'git log --author=\"$1\"' -"
-	lpa = "!sh -c 'git lp --author=\"$1\"' -"
-	lpw = "!git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" && echo ''"
-	lpwa = "!sh -c 'git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" --author=\"$1\" && echo \"\"' -"
+  lr = pull --rebase
+  d = diff
+  dc = diff --cached
+  dp = "!sh -c 'git d $1^..$1' -"
+  lp = log --pretty=format:\"%Cred%h%Creset %ci - %cn %Cgreen%s%Creset\"
+  la = "!sh -c 'git log --author=\"$1\"' -"
+  lpa = "!sh -c 'git lp --author=\"$1\"' -"
+  lpw = "!git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" && echo ''"
+  lpwa = "!sh -c 'git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" --author=\"$1\" && echo \"\"' -"
   bl = blame -w -M -C -C -C
 [diff]
-	noprefix = true
-	renames = copies
+  noprefix = true
+  renames = copies
 [push]
-	default = upstream
+  default = upstream
