@@ -31,13 +31,6 @@ alias tmux='tmux -2'
 alias g="git"
 alias rspec="bundle exec rspec -c -f doc"
 
-rails() {
-  if [[ "$1" == 'pry' ]]; then
-    pry -r ./config/environment
-  else
-    bundle exec rails $*
-  fi
-}
 
 # create a quick backup
 bak() {
