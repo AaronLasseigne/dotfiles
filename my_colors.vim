@@ -36,5 +36,5 @@ hi PmenuSel     ctermfg=137 ctermbg=240
 hi DiffChange   ctermbg=88
 hi DiffText     ctermbg=54
 
-hi CursorLine   ctermbg=0 cterm=bold
-hi CursorColumn ctermbg=0 cterm=bold
+hi CursorLine   ctermbg=0 cterm=NONE
+hi CursorColumn ctermbg=0
