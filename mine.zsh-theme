@@ -1,17 +1,37 @@
+RED_FG="%{$FG[250]%}"
+RED_BG="%{$BG[088]%}"
+RED_FG_ARROW="%{$FG[088]%}"
+GREEN_FG="%{$FG[022]%}"
+GREEN_BG="%{$BG[148]%}"
+GREEN_FG_ARROW="%{$FG[148]%}"
+BLUE_FG="%{$fg[white]%}"
+BLUE_BG="%{$BG[024]%}"
+BLUE_FG_ARROW="%{$FG[024]%}"
+LIGHT_BLUE_FG="%{$FG[024]%}"
+LIGHT_BLUE_BG="%{$BG[117]%}"
+LIGHT_BLUE_FG_ARROW="%{$FG[117]%}"
+WHITE_FG="%{$fg[white]%}"
+WHITE_BG="%{$bg[white]%}"
+WHITE_FG_ARROW="%{$fg[white]%}"
+GREY_FG="%{$FG[240]%}"
+GREY_BG="%{$BG[240]%}"
+
 collapse_hostname() {
   echo $(hostname | sed -e "s,^.*\.local,local,")
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$BG[117]%}%{$FG[024]%} ∓ "
+ZSH_THEME_GIT_PROMPT_PREFIX="$LIGHT_BLUE_BG$LIGHT_BLUE_FG ∓ "
 ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}+ %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" $RED_FG_ARROW+ %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_current_branch() {
   local cb=$(current_branch)
   if [ -n "$cb" ]; then
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    echo "$LIGHT_BLUE_BG$BLUE_FG_ARROW%{$reset_color%}$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$(parse_git_dirty)$LIGHT_BLUE_FG_ARROW$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  else
+    echo "%{$reset_color%}$BLUE_FG_ARROW%{$reset_color%}"
   fi
 }
 
@@ -44,8 +64,8 @@ function rbenv_prompt_info() {
   fi
 }
 
-RPROMPT='%{$reset_color%}%{$bg[white]%}%{$FG[240]%} %D{%X}%  %{$BG[240]%}%{$fg[white]%} %D{%Y-%m-%d}%f %{$reset_color%}'
+RPROMPT='%{$reset_color%}$WHITE_FG$WHITE_BG$GREY_FG %D{%X}%  $GREY_BG$WHITE_FG %D{%Y-%m-%d}%f %{$reset_color%}'
 
 PROMPT='
-%{$BG[088]%}%{$FG[250]%} $(rbenv_prompt_info) %{$BG[148]%}%{$FG[022]%} $(collapse_hostname) %{$fg[white]%}%{$BG[024]%} %~ %{$reset_color%}$(git_current_branch)
+$RED_BG$RED_FG $(rbenv_prompt_info) $GREEN_BG$RED_FG_ARROW$GREEN_FG $(collapse_hostname) $BLUE_BG$GREEN_FG_ARROW$BLUE_FG %~ $(git_current_branch)
 > '
