@@ -110,7 +110,6 @@ set cinkeys-=0#
 " ack                = adds support for the ack command
 " matchit.zip        = more complete '%' matching
 " rails              = RoR support
-" The_NERD_tree      = file browsing
 " delimitMate        = automatically adds closing paren, quote, etc
 " fugitive           = built in support for git
 " extradite          = plugin for fugitive that provides tig like interface
@@ -178,7 +177,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'The_NERD_tree', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Tagbar', 'Powerline', 'markdown@tpope', 'vim-clojure-static'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Tagbar', 'Powerline', 'markdown@tpope', 'vim-clojure-static'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
@@ -266,20 +265,6 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
 
 " /== ctrlp ==
-
-" == The_NERD_tree ==
-
-let g:NERDTreeWinPos = "right"
-
-" reduces clutter in the UI
-let NERDTreeMinimalUI = 1
-
-" use prettier arrows
-let NERDTreeDirArrows = 1
-
-map <F2> :NERDTreeToggle<CR>
-
-" /== The_NERD_tree ==
 
 " == fugitive (and extradite) ==
 
