@@ -111,7 +111,7 @@ set cinkeys-=0#
 " matchit.zip        = more complete '%' matching
 " rails              = RoR support
 " delimitMate        = automatically adds closing paren, quote, etc
-" fugitive           = built in support for git
+" fugitive           = built-in support for git
 " extradite          = plugin for fugitive that provides tig like interface
 " Tabular            = alignment helper
 " vim-coffee-script  = cs support
@@ -125,7 +125,6 @@ set cinkeys-=0#
 " neosnippet         = expandable snippets
 " surround           = change surrounding stuff (parens, quotes, tags, etc)
 " repeat             = adds "." support for surround
-" tagbar             = ctag support
 " vim-powerline      = better vim statusline
 " markdown@tpope     = markdown support
 " vim-clojure-static = clojure support
@@ -177,7 +176,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Tagbar', 'Powerline', 'markdown@tpope', 'vim-clojure-static'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Powerline', 'markdown@tpope', 'vim-clojure-static'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
