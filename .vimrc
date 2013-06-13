@@ -128,6 +128,7 @@ set cinkeys-=0#
 " powerline          = better vim statusline
 " markdown@tpope     = markdown support
 " vim-clojure-static = clojure support
+" switch.vim         = switch between items in a predefined list (e.g. true, false)
 
 fun! EnsureVamIsOnDisk(vam_install_path)
   " windows users may want to use http://mawercer.de/~marc/vam/index.php
@@ -176,7 +177,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
@@ -398,6 +399,18 @@ set laststatus=2
 set noshowmode
 
 " /== powerline ==
+
+" == switch ==
+
+nnoremap <leader>s :Switch<cr>
+
+" additional definitions
+let g:switch_custom_definitions =
+    \ [
+    \   ['to ', 'to_not ']
+    \ ]
+
+" /== switch ==
 
 " /==== Addons ====
 
