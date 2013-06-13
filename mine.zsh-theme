@@ -21,15 +21,15 @@ collapse_hostname() {
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="$LIGHT_BLUE_BG$LIGHT_BLUE_FG ∓ "
-ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" $RED_FG_ARROW+ %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}$LIGHT_BLUE_FG_ARROW%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" $RED_FG_ARROW+"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_current_branch() {
   local cb=$(current_branch)
   if [ -n "$cb" ]; then
-    echo "$LIGHT_BLUE_BG$BLUE_FG_ARROW%{$reset_color%}$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$(parse_git_dirty)$LIGHT_BLUE_FG_ARROW$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    echo "$LIGHT_BLUE_BG$BLUE_FG_ARROW%{$reset_color%}$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
   else
     echo "%{$reset_color%}$BLUE_FG_ARROW%{$reset_color%}"
   fi
