@@ -125,7 +125,7 @@ set cinkeys-=0#
 " neosnippet         = expandable snippets
 " surround           = change surrounding stuff (parens, quotes, tags, etc)
 " repeat             = adds "." support for surround
-" vim-powerline      = better vim statusline
+" powerline          = better vim statusline
 " markdown@tpope     = markdown support
 " vim-clojure-static = clojure support
 
@@ -176,7 +176,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'Powerline', 'markdown@tpope', 'vim-clojure-static'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
@@ -389,17 +389,15 @@ vmap <Leader>cc :CoffeeCompile 20<CR>
 
 " == /vim-coffee-script ==
 
-" == Powerline ==
+" == powerline ==
 
 " always show the status line
 set laststatus=2
 
-" use some custom symbols
-let g:Powerline_symbols_override = {
-      \ 'BRANCH': [0x2213]
-      \ }
+" hide the text mode in the status line
+set noshowmode
 
-" /== Powerline ==
+" /== powerline ==
 
 " /==== Addons ====
 
