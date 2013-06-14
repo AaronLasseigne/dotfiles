@@ -278,7 +278,7 @@ nnoremap <leader>gB :Gblame -w -M -C -C -C<cr>
 vnoremap <leader>gB :Gblame -w -M -C -C -C<cr>
 nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
-nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gm :Gmove 
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Extradite<cr>
 
