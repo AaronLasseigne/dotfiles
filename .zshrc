@@ -30,7 +30,8 @@ plugins=(brew bundler git github rails3 rbenv cap gem)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:$HOME/bin
+# export PATH=$PATH:$HOME/bin
+export PATH=/Users/aaron/.nvm/v0.8.20/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/bin:/Users/aaron/bin
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 [[ -s /Users/aaron/.nvm/nvm.sh ]] && . /Users/aaron/.nvm/nvm.sh
