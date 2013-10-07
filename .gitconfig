@@ -29,7 +29,7 @@
   bl = blame -w -M -C -C -C
   sl = stash list
   ss = stash save
-  sp = stash pop
+  sp = stash pop --index
   sa = stash apply
   sd = stash drop
   search = log -m -S
