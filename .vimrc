@@ -31,9 +31,6 @@ set ruler
 " show line numbers
 set number
 
-" add lines above and below the current scroll point
-set scrolloff=4
-
 " highlight the opening/closing parens, braces, etc
 set showmatch
 
