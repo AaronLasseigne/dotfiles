@@ -4,6 +4,7 @@
 [core]
   editor = vim
   pager = less -inSFX
+	excludesfile = ~/.gitignore_global
 [color]
   ui = true
 [alias]
