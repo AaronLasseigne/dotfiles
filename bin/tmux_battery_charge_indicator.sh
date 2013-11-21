@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HEART='♥'
+HEART='♥ '
 
 if [[ `uname` == 'Linux' ]]; then
   current_charge=$(cat /proc/acpi/battery/BAT1/state | grep 'remaining capacity' | awk '{print $3}')
