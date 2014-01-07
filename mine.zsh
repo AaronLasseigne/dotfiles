@@ -1,6 +1,7 @@
 # skips dupes when using up/down arrows to look through your history
 setopt HIST_FIND_NO_DUPS
 
+export EDITOR=vim
 # human readable sizes
 alias df="df -H"
 
@@ -34,6 +35,8 @@ alias rspec="bundle exec rspec -c -f doc"
 # fixes issues when using ssh inside tmux
 alias ssh='TERM=xterm-256color ssh'
 
+alias brewit='brew update && brew outdated'
+
 # create a quick backup
 bak() {
   timestamp=`date +%Y%m%d%H%M%S`
@@ -51,5 +54,3 @@ v() {
   output=${*/:/ +}
   vim ${=output}
 }
-
-export EDITOR=vim
