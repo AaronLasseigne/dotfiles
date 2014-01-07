@@ -447,6 +447,9 @@ set pastetoggle=<F8>
 nmap <F10> :setlocal spell! spelllang=en_us<CR>
 imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 
+" add spell checking to git commit messages
+autocmd Filetype gitcommit setlocal spell
+
 " easier number increment/decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
