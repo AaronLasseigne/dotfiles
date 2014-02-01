@@ -243,7 +243,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " == ctrlp ==
 
 " ignore stuff when searching
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*,*/_site/*
 
 " map the search command
 let g:ctrlp_map = '<leader>t'
