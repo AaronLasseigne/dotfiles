@@ -109,28 +109,34 @@ set cinkeys-=0#
 
 " vim addon manager
 "
-" ack                = adds support for the ack command
-" matchit.zip        = more complete '%' matching
+" Language/Framework
+"
 " rails              = RoR support
-" delimitMate        = automatically adds closing paren, quote, etc
-" fugitive           = built-in support for git
-" extradite          = plugin for fugitive that provides tig like interface
-" Tabular            = alignment helper
-" vim-coffee-script  = cs support
-" ctrlp              = file searching
-" tComment           = easily add/remove commenting
-" vim-ruby           = ruby support
-" YankRing           = cycle through previous pastes after pasting
-" IndexedSearch      = shows 'Nth match out of M' when searching
-" endwise            = adds 'end' to Ruby blocks
-" neocomplcache      = completion as you type
-" neosnippet         = expandable snippets
-" surround           = change surrounding stuff (parens, quotes, tags, etc)
-" repeat             = adds "." support for surround
-" powerline          = better vim statusline
-" markdown@tpope     = markdown support
 " vim-clojure-static = clojure support
-" switch.vim         = switch between items in a predefined list (e.g. true, false)
+" vim-coffee-script  = cs support
+" markdown@tpope     = markdown support
+" vim-ruby           = ruby support
+" vim-elixir         = elixir support
+"
+" Plugins
+"
+" ack           = adds support for the ack command
+" matchit.zip   = more complete '%' matching
+" delimitMate   = automatically adds closing paren, quote, etc
+" fugitive      = built-in support for git
+" extradite     = plugin for fugitive that provides tig like interface
+" Tabular       = alignment helper
+" ctrlp         = file searching
+" tComment      = easily add/remove commenting
+" YankRing      = cycle through previous pastes after pasting
+" IndexedSearch = shows 'Nth match out of M' when searching
+" endwise       = adds 'end' to Ruby blocks
+" neocomplcache = completion as you type
+" neosnippet    = expandable snippets
+" surround      = change surrounding stuff (parens, quotes, tags, etc)
+" repeat        = adds "." support for surround
+" powerline     = better vim statusline
+" switch.vim    = switch between items in a predefined list (e.g. true, false)
 
 fun! EnsureVamIsOnDisk(vam_install_path)
   " windows users may want to use http://mawercer.de/~marc/vam/index.php
@@ -150,7 +156,7 @@ fun! EnsureVamIsOnDisk(vam_install_path)
                   \"time ask maintainers to improve documentation")
       call mkdir(a:vam_install_path, 'p')
       execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '.shellescape(a:vam_install_path, 1).'/vim-addon-manager'
-      " VAM runs helptags automatically when you install or update 
+      " VAM runs helptags automatically when you install or update
       " plugins
       exec 'helptags '.fnameescape(a:vam_install_path.'/vim-addon-manager/doc')
     endif
@@ -280,7 +286,7 @@ nnoremap <leader>gB :Gblame -w -M -C<cr>
 vnoremap <leader>gB :Gblame -w -M -C<cr>
 nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
-nnoremap <leader>gm :Gmove 
+nnoremap <leader>gm :Gmove
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Extradite<cr>
 
@@ -432,7 +438,7 @@ map <F1> <ESC>
 map <F4> :tabe<CR>
 
 " open
-map <F5> :tabe 
+map <F5> :tabe
 
 " close
 map <F6> :qa<CR>
