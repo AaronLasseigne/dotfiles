@@ -134,8 +134,9 @@ set cinkeys-=0#
 " neocomplcache = completion as you type
 " neosnippet    = expandable snippets
 " surround      = change surrounding stuff (parens, quotes, tags, etc)
-" repeat        = adds "." support for surround
+" repeat        = adds "." support for surround and speeddating
 " powerline     = better vim statusline
+" speeddating   = improved inc/dec support
 " switch.vim    = switch between items in a predefined list (e.g. true, false)
 
 fun! EnsureVamIsOnDisk(vam_install_path)
@@ -185,7 +186,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
