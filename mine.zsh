@@ -30,7 +30,6 @@ alias man='man -P "less -is"'
 alias tmux='tmux -2'
 
 alias g="git"
-alias rspec="bundle exec rspec -c -f doc"
 
 # fixes issues when using ssh inside tmux
 alias ssh='TERM=xterm-256color ssh'
