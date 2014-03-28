@@ -15,7 +15,7 @@ alias mkdir="mkdir -p"
 alias vim="vim -p"
 
 # list with human readable sizes
-alias ll='ls -lh'
+alias ll='ls -oh'
 
 # list only dot files/directories
 alias l.='ll -Ad \.*'
