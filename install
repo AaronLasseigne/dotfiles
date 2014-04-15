@@ -15,13 +15,6 @@ ln -sf "$current_dir/mine.zsh-theme" ~/.oh-my-zsh/themes/mine.zsh-theme
 mkdir -p ~/.vim/colors
 ln -sf "$current_dir/my_colors.vim" ~/.vim/colors/my_colors.vim
 
-uname=`uname`
-if [[ "$uname" = 'Darwin' ]]; then
-  ln -sfh "$current_dir/snippets" ~/.vim/snippets
-else
-  ln -sfn "$current_dir/snippets" ~/.vim/snippets
-fi
-
 mkdir -p ~/bin
 ln -sf "$current_dir/bin/cb" ~/bin/cb
 ln -sf "$current_dir/bin/tmux_battery_charge_indicator.sh" ~/bin/tmux_battery_charge_indicator.sh
