@@ -2,6 +2,7 @@
 setopt HIST_FIND_NO_DUPS
 
 export EDITOR=vim
+
 # human readable sizes
 alias df="df -H"
 
