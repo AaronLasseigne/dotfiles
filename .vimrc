@@ -451,4 +451,3 @@ autocmd FileType ruby,eruby,perl call BetterComments()
 " link file types
 autocmd FileType eruby set filetype=eruby.html.javascript
 autocmd FileType scss set filetype=css
-autocmd FileType cfm set filetype=cfm
