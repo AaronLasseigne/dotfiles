@@ -137,6 +137,7 @@ set cinkeys-=0#
 " powerline     = better vim statusline
 " speeddating   = improved inc/dec support
 " switch.vim    = switch between items in a predefined list (e.g. true, false)
+" Syntastic     = syntax checking
 
 fun! EnsureVamIsOnDisk(vam_install_path)
   " windows users may want to use http://mawercer.de/~marc/vam/index.php
@@ -185,7 +186,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
@@ -386,6 +387,13 @@ let g:switch_custom_definitions =
     \ ]
 
 " /== switch ==
+
+" == Syntastic ==
+
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
+
+" /== Syntastic ==
 
 " /==== Addons ====
 
