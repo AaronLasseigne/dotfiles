@@ -1,0 +1,29 @@
+snippet #pub
+abbr    # Public
+  # Public: ${1:description}
+  #
+  # ${2:argument} - ${3:description}
+  #
+  # Examples
+  #
+  #   ${4:example}
+  #
+  # Returns ${5:return-value}
+
+snippet #priv
+abbr    # Private
+  # Private: ${1:description}
+  #
+  # ${2:argument} - ${3:description}
+  #
+  # Examples
+  #
+  #   ${4:example}
+  #   # => ${5:output}
+  #
+  # Returns ${6:return-value}
+
+snippet   arg
+abbr      arg - desc
+prev_word '^[[:space:]]\+# '
+  ${1:arg} - ${2:desc}

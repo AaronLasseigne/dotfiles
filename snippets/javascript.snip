@@ -1,0 +1,23 @@
+include tomdoc.snip
+
+snippet it
+abbr    it('should', function{})
+  it('${1}', function() {
+    ${2}
+  });
+
+snippet context
+abbr    context('should', function{})
+  context('${1}', function() {
+    ${2}
+  });
+
+snippet describe
+abbr    describe('should', function{})
+  describe('${1}', function() {
+    ${2}
+  });
+
+snippet expect
+abbr    expect(value).should
+  expect(${1}).${2};

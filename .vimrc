@@ -132,6 +132,8 @@ set cinkeys-=0#
 " YankRing      = cycle through previous pastes after pasting
 " IndexedSearch = shows 'Nth match out of M' when searching
 " endwise       = adds 'end' to Ruby blocks
+" neocomplcache = completion as you type
+" neosnippet    = expandable snippets
 " surround      = change surrounding stuff (parens, quotes, tags, etc)
 " repeat        = adds "." support for surround and speeddating
 " powerline     = better vim statusline
@@ -186,7 +188,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic'])
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic'])
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
 
   " Addons are put into vam_install_path/plugin-name directory
@@ -213,6 +215,39 @@ let g:yankring_manual_clipboard_check = 0
 let g:yankring_history_file = '.yankring_history'
 
 " /== YankRing ==
+
+" == neosnippet ==
+
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
+set completeopt-=preview
+
+" /== neosnippet ==
+
+" == neocomplcache ==
+
+" turn it on
+let g:neocomplcache_enable_at_startup = 1
+
+" only search case when an uppercase letter appears
+let g:neocomplcache_enable_smart_case = 1
+
+" add completion for various file types
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" /== neocomplcache ==
 
 " == ctrlp ==
 
