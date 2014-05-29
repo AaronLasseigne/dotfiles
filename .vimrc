@@ -245,7 +245,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 " == fugitive (and extradite) ==
 
 nnoremap <leader>gd :Gdiff<cr>
-nnoremap <Leader>gD :diffoff!<cr><c-w>h:bd<cr>
+nnoremap <leader>gD :diffoff!<cr><c-w>h:bd<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gb :Gblame<cr>
