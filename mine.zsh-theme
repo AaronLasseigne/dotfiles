@@ -60,8 +60,6 @@ function rbenv_prompt_info() {
   fi
 }
 
-RPROMPT='%{$reset_color%}$WHITE_FG$WHITE_BG$GREY_FG %D{%X}%  $GREY_BG$WHITE_FG %D{%Y-%m-%d}%f %{$reset_color%}'
-
 PROMPT='
 $RED_BG$RED_FG $(rbenv_prompt_info) $BLUE_BG$RED_FG_ARROW$BLUE_FG %~ $(git_current_branch)
 > '
