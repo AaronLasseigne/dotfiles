@@ -16,10 +16,6 @@ WHITE_FG_ARROW="%{$fg[white]%}"
 GREY_FG="%{$FG[240]%}"
 GREY_BG="%{$BG[240]%}"
 
-collapse_hostname() {
-  echo $(hostname | sed -e "s,^.*\.local,local,")
-}
-
 ZSH_THEME_GIT_PROMPT_PREFIX="$LIGHT_BLUE_BG$LIGHT_BLUE_FG ∓ "
 ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}$LIGHT_BLUE_FG_ARROW%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=" $RED_FG_ARROW+"
@@ -67,5 +63,5 @@ function rbenv_prompt_info() {
 RPROMPT='%{$reset_color%}$WHITE_FG$WHITE_BG$GREY_FG %D{%X}%  $GREY_BG$WHITE_FG %D{%Y-%m-%d}%f %{$reset_color%}'
 
 PROMPT='
-$RED_BG$RED_FG $(rbenv_prompt_info) $GREEN_BG$RED_FG_ARROW$GREEN_FG $(collapse_hostname) $BLUE_BG$GREEN_FG_ARROW$BLUE_FG %~ $(git_current_branch)
+$RED_BG$RED_FG $(rbenv_prompt_info) $BLUE_BG$RED_FG_ARROW$BLUE_FG %~ $(git_current_branch)
 > '
