@@ -122,6 +122,7 @@ set cinkeys-=0#
 " Plugins
 "
 " ack           = adds support for the ack command
+" airline       = better vim statusline
 " matchit.zip   = more complete '%' matching
 " delimitMate   = automatically adds closing paren, quote, etc
 " fugitive      = built-in support for git
@@ -136,7 +137,6 @@ set cinkeys-=0#
 " neosnippet    = expandable snippets
 " surround      = change surrounding stuff (parens, quotes, tags, etc)
 " repeat        = adds "." support for surround and speeddating
-" powerline     = better vim statusline
 " speeddating   = improved inc/dec support
 " switch.vim    = switch between items in a predefined list (e.g. true, false)
 " Syntastic     = syntax checking
@@ -176,7 +176,7 @@ fun! SetupVAM()
   let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'powerline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic'], {'auto_install': 0})
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
@@ -281,6 +281,26 @@ map :ack :Ack
 
 " /== ack ==
 
+" == airline ==
+
+" always show the status line
+set laststatus=2
+
+" make it look powerline esque
+let g:airline_powerline_fonts=1
+let g:airline_theme='powerlineish'
+
+" pretty tabs
+let g:airline#extensions#tabline#enabled=1
+
+" do not how buffer counts
+let g:airline#extensions#tabline#show_tab_nr=0
+
+" do not show the buffer when only one tab exists
+let g:airline#extensions#tabline#show_buffers=0
+
+" /== airline ==
+
 " == rails ==
 
 " open in a new tab
@@ -374,16 +394,6 @@ nmap <Leader>cc :CoffeeCompile 20<CR>
 vmap <Leader>cc :CoffeeCompile 20<CR>
 
 " == /vim-coffee-script ==
-
-" == powerline ==
-
-" always show the status line
-set laststatus=2
-
-" hide the text mode in the status line
-set noshowmode
-
-" /== powerline ==
 
 " == switch ==
 
