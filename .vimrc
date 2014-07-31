@@ -420,6 +420,10 @@ nnoremap <leader>et :SyntasticToggleMode<cr>
 
 " /==== Addons ====
 
+" easier ESC
+imap kj <Esc>
+imap jk <Esc>
+
 " intuitive backspacing in insert mode
 set backspace=indent,eol,start
 
