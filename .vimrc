@@ -412,6 +412,8 @@ let g:switch_custom_definitions =
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
 
+
+let g:syntastic_javascript_checkers = ['jshint']
 nnoremap <leader>el :Errors<cr>
 nnoremap <leader>er :SyntasticReset<cr>
 nnoremap <leader>et :SyntasticToggleMode<cr>
