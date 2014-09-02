@@ -421,8 +421,13 @@ let g:switch_custom_definitions =
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
 
+let g:syntastic_elixir_checkers = ['elixir']
 
 let g:syntastic_javascript_checkers = ['jshint']
+
+" Some checkers have security issues and have to be manually enabled.
+let g:syntastic_enable_elixir_checker = 1
+
 nnoremap <leader>el :Errors<cr>
 nnoremap <leader>er :SyntasticReset<cr>
 nnoremap <leader>et :SyntasticToggleMode<cr>
