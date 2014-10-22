@@ -1,0 +1,44 @@
+alias thunderbolt 2560x1440
+alias laptop 1280x800
+
+alias modal_key a,ctrl,cmd
+
+config defaultToCurrentScreen true
+
+# Set Window Positions
+bind l:ctrl;cmd chain push right bar-resize:screenSizeX/2 | push right bar-resize:screenSizeX/3 | push right bar-resize:screenSizeX*2/3
+bind j:ctrl;cmd chain push left  bar-resize:screenSizeX/2 | push left  bar-resize:screenSizeX/3 | push left  bar-resize:screenSizeX*2/3
+bind i:ctrl;cmd chain push up    bar-resize:screenSizeY/2 | push up    bar-resize:screenSizeY/3 | push up    bar-resize:screenSizeY*2/3
+bind ,:ctrl;cmd chain push down  bar-resize:screenSizeY/2 | push down  bar-resize:screenSizeY/3 | push down  bar-resize:screenSizeY*2/3
+
+bind u:ctrl;cmd chain corner top-left resize:screenSizeX/2;screenSizeY/2 | corner top-left resize:screenSizeX/3;screenSizeY/2 | corner top-left resize:screenSizeX*2/3;screenSizeY/2
+bind m:ctrl;cmd chain corner bottom-left resize:screenSizeX/2;screenSizeY/2 | corner bottom-left resize:screenSizeX/3;screenSizeY/2 | corner bottom-left resize:screenSizeX*2/3;screenSizeY/2
+bind o:ctrl;cmd chain corner top-right resize:screenSizeX/2;screenSizeY/2 | corner top-right resize:screenSizeX/3;screenSizeY/2 | corner top-right resize:screenSizeX*2/3;screenSizeY/2
+bind .:ctrl;cmd chain corner bottom-right resize:screenSizeX/2;screenSizeY/2 | corner bottom-right resize:screenSizeX/3;screenSizeY/2 | corner bottom-right resize:screenSizeX*2/3;screenSizeY/2
+
+bind k:ctrl;cmd chain move screenSizeX/6;screenSizeY/6 screenSizeX*2/3;screenSizeY*2/3 | move 0;0 screenSizeX,screenSizeY
+
+# Window Hints
+config windowHintsIgnoreHiddenWindows false
+config windowHintsShowIcons true
+config windowHintsSpread true
+bind q:${modal_key} hint 123456789
+
+# Grid
+bind g:${modal_key} grid padding:5 ${thunderbolt}:6,6 ${laptop}:6,6
+
+# Reload
+bind r:${modal_key} relaunch
+
+# Layouts
+layout small 'Firefox' move 0;0 screenSizeX;screenSizeY
+layout small 'HipChat' move 0;0 screenSizeX;screenSizeY
+layout small 'Twitter' push right bar-resize:screenSizeX/3
+bind 1:${modal_key} layout small
+default small resolutions:${laptop}
+
+layout large 'Firefox' push left bar-resize:screenSizeX/2
+layout large 'HipChat' move screenSizeX/2;0 screenSizeX/3;screenSizeY/2
+layout large 'Twitter' corner top-right resize:screenSizeX/6;screenSizeY/2
+bind 2:${modal_key} layout large
+default large resolutions:${thunderbolt}
