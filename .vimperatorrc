@@ -1,1 +1,2 @@
-:autocmd LocationChange .* js modes.passAllKeys = /feedly\.com/.test(buffer.URL)
+:autocmd LocationChange .*           js modes.passAllKeys = false
+:autocmd LocationChange feedly\\.com js modes.passAllKeys = true
