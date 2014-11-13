@@ -86,6 +86,12 @@ noremap <silent><leader>cs :nohls<CR>
 
 " /==== SEARCH ====
 
+" ==== QUICKFIX ====
+
+nmap <C-J> :cnext<CR>
+nmap <C-K> :cprevious<CR>
+
+" /==== QUICKFIX ====
 
 " ==== SPACING ====
 
