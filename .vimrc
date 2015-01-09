@@ -72,14 +72,14 @@ nmap g# g#z
 
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-" Ack for the last search.
-nnoremap <silent> <leader>? :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ack over Ruby files for the last search.
-nnoremap <silent> <leader>?r :execute "Ack! --ruby '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ack over HTML files for the last search.
-nnoremap <silent> <leader>?h :execute "Ack! --html '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ack over JavaScript files for the last search.
-nnoremap <silent> <leader>?j :execute "Ack! --js '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag for the last search.
+nnoremap <silent> <leader>? :execute "Ag! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag over Ruby files for the last search.
+nnoremap <silent> <leader>?r :execute "Ag! --ruby '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag over HTML files for the last search.
+nnoremap <silent> <leader>?h :execute "Ag! --html '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag over JavaScript files for the last search.
+nnoremap <silent> <leader>?j :execute "Ag! --js '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
 " clear search highlighting
 noremap <silent><leader>cs :nohls<CR>
@@ -137,6 +137,7 @@ set cinkeys-=0#
 " Plugins
 "
 " ack           = adds support for the ack command
+" ag            = adds support for the ag command
 " airline       = better vim statusline
 " matchit.zip   = more complete '%' matching
 " delimitMate   = automatically adds closing paren, quote, etc
@@ -191,7 +192,7 @@ fun! SetupVAM()
   let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'neocomplcache', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic'], {'auto_install': 0})
+  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic', 'ag'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
@@ -283,16 +284,16 @@ nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Extradite<cr>
 
 " /== fugitive ==
+"
+" == ag ==
+
+let g:agprg="ag --noheading --nocolor --nogroup --column --nobreak"
+
+" /== ag ==
 
 " == ack ==
 
-" -H = print filename
-" --nogroup = do not group results by file
-" --column = show the column number of the first match
-let g:ackprg="ack -H --nocolor --nogroup --column"
-
-" no shift needed
-map :ack :Ack
+let g:ackprg="ack --with-filename --nocolor --nogroup --column"
 
 " /== ack ==
 
