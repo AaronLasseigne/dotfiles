@@ -37,6 +37,8 @@ alias ssh='TERM=xterm-256color ssh'
 
 alias brewit='brew update && brew outdated'
 
+alias dc='docker-compose'
+
 # create a quick backup
 bak() {
   timestamp=`date +%Y%m%d%H%M%S`
