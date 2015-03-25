@@ -136,7 +136,6 @@ set cinkeys-=0#
 "
 " Plugins
 "
-" ack           = adds support for the ack command
 " ag            = adds support for the ag command
 " airline       = better vim statusline
 " matchit.zip   = more complete '%' matching
@@ -192,7 +191,7 @@ fun! SetupVAM()
   let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['ack', 'matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic', 'ag'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'vim-scala', 'Syntastic', 'ag'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
@@ -290,12 +289,6 @@ nnoremap <leader>gl :Extradite<cr>
 let g:agprg="ag --noheading --nocolor --nogroup --column --nobreak"
 
 " /== ag ==
-
-" == ack ==
-
-let g:ackprg="ack --with-filename --nocolor --nogroup --column"
-
-" /== ack ==
 
 " == airline ==
 
