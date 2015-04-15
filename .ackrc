@@ -1,9 +1,0 @@
---smart-case
---type-add
-css=.sass,.scss
---type-add
-js=.coffee,.jsx,.es6
---type-set
-markdown=.md,.mdown,.markdown
---type-add
-html=.erb,.eco
