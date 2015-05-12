@@ -39,3 +39,5 @@
   renames = copies
 [push]
   default = simple
+[help]
+  autocorrect = 1
