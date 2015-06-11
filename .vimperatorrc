@@ -1,2 +1,3 @@
-:autocmd LocationChange .*           js modes.passAllKeys = false
-:autocmd LocationChange feedly\\.com js modes.passAllKeys = true
+:autocmd LocationChange .*                                js modes.passAllKeys = false
+:autocmd LocationChange feedly\\.com                      js modes.passAllKeys = true
+:autocmd LocationChange tagpro-sphere\\.koalabeast\\.com  js modes.passAllKeys = true
