@@ -4,6 +4,11 @@ set nocompatible | filetype indent plugin on | syn on
 " leader
 let mapleader=','
 
+" turn the mouse on for all modes
+set mouse=a
+" copy text to the OS clipboard
+set clipboard=unnamed
+
 " ==== DISPLAY ====
 
 " encoding
