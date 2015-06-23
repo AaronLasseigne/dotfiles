@@ -4,9 +4,6 @@ set nocompatible | filetype indent plugin on | syn on
 " leader
 let mapleader=','
 
-" turn on filetype detection
-filetype plugin indent on
-
 " ==== DISPLAY ====
 
 " encoding
