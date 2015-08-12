@@ -416,7 +416,7 @@ let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
 
 let g:syntastic_elixir_checkers = ['elixir']
 
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Some checkers have security issues and have to be manually enabled.
 let g:syntastic_enable_elixir_checker = 1
