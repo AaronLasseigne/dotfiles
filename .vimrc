@@ -1,6 +1,10 @@
 " for VAM
 set nocompatible | filetype indent plugin on | syn on
 
+" link file types
+autocmd FileType eruby set filetype=eruby.html.javascript
+autocmd FileType scss set filetype=css
+au BufRead,BufNewFile *.es6 set filetype=javascript
 " leader
 let mapleader=','
 
@@ -485,8 +489,3 @@ function! BetterComments ()
   setlocal comments+=f:# " replace with comments that don't get automatically created on a return
 endfunction
 autocmd FileType ruby,eruby,perl call BetterComments()
-
-" link file types
-autocmd FileType eruby set filetype=eruby.html.javascript
-autocmd FileType scss set filetype=css
-au BufRead,BufNewFile *.es6 set filetype=javascript
