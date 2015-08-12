@@ -178,7 +178,7 @@ fun! SetupVAM()
   endif
 
   " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'ctrlp', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
