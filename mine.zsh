@@ -38,6 +38,7 @@ alias ssh='TERM=xterm-256color ssh'
 alias brewit='brew update && brew outdated'
 
 alias dc='docker-compose'
+alias dm='docker-machine'
 
 # create a quick backup
 bak() {
