@@ -279,7 +279,7 @@ nnoremap <leader>gl :Extradite<cr>
 "
 " == ag ==
 
-let g:agprg="ag --noheading --nocolor --nogroup --column --nobreak"
+let g:ag_prg="ag --noheading --nocolor --nogroup --column --nobreak"
 
 " /== ag ==
 
