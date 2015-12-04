@@ -55,5 +55,5 @@ mdc() {
 # vim now accepts file:line#
 v() {
   output=${*/:/ +}
-  vim ${=output}
+  $EDITOR ${=output}
 }
