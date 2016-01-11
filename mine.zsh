@@ -47,13 +47,13 @@ bak() {
 }
 
 # make directory and change
-mdc() { 
-  mkdir $1 
+mdc() {
+  mkdir $1
   cd $1
 }
 
 # vim now accepts file:line#
 v() {
   output=${*/:/ +}
-  $EDITOR ${=output}
+  $EDITOR -p ${=output}
 }
