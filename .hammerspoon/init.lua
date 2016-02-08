@@ -34,12 +34,15 @@ positions = {
 
   upper50 = {x=0, y=0, w=1, h=0.5},
   upper50Left50 = {x=0, y=0, w=0.5, h=0.5},
+  upper50Right15 = {x=0.85, y=0, w=0.15, h=0.5},
   upper50Right30 = {x=0.7, y=0, w=0.3, h=0.5},
   upper50Right50 = {x=0.5, y=0, w=0.5, h=0.5},
 
   lower50 = {x=0, y=0.5, w=1, h=0.5},
   lower50Left50 = {x=0, y=0.5, w=0.5, h=0.5},
   lower50Right50 = {x=0.5, y=0.5, w=0.5, h=0.5},
+
+  chat = {x=0.5, y=0, w=0.35, h=0.5}
 }
 
 --
@@ -103,7 +106,22 @@ layouts = {
       {"Firefox", nil, screen, positions.left50, nil, nil},
       {"iTerm",   nil, screen, positions.right50, nil, nil},
     }
-  }
+  },
+  {
+    name="Work",
+    description="Pedal to the metal",
+    small={
+      {"Firefox", nil, screen, positions.maximized, nil, nil},
+      {"Slack",   nil, screen, positions.maximized, nil, nil},
+      {"Twitter", nil, screen, positions.right30, nil, nil},
+    },
+    large={
+      {"Firefox", nil, screen, positions.left50, nil, nil},
+      {"Firefox", "Console - ", screen, positions.lower50Right50, nil, nil},
+      {"Slack",   nil, screen, positions.chat, nil, nil},
+      {"Twitter", nil, screen, positions.upper50Right15, nil, nil},
+    }
+  },
 }
 
 layoutChooser = hs.chooser.new(function(selection)
@@ -117,7 +135,9 @@ layoutChooser = hs.chooser.new(function(selection)
     layoutSize = layout.large
   end
 
-  hs.layout.apply(layoutSize)
+  hs.layout.apply(layoutSize, function(windowTitle, layoutWindowTitle)
+    return string.sub(windowTitle, 1, string.len(layoutWindowTitle)) == layoutWindowTitle
+  end)
 end)
 local i = 0
 layoutChooser:choices(hs.fnutils.imap(layouts, function(layout)
