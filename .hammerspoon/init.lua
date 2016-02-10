@@ -1,7 +1,7 @@
 hs.window.animationDuration = 0
 
 function reloadConfig(files)
-  doReload = false
+  local doReload = false
   for _,file in pairs(files) do
     if file:sub(-4) == ".lua" then
       doReload = true
@@ -46,43 +46,6 @@ positions = {
 }
 
 --
--- Grid
---
-
-grid = {
-  {key="u", units={positions.upper50Left50}},
-  {key="i", units={positions.upper50}},
-  {key="o", units={positions.upper50Right50}},
-
-  {key="j", units={positions.left50, positions.left66, positions.left34}},
-  {key="k", units={positions.centered, positions.maximized}},
-  {key="l", units={positions.right50, positions.right66, positions.right34}},
-
-  {key="m", units={positions.lower50Left50}},
-  {key=",", units={positions.lower50}},
-  {key=".", units={positions.lower50Right50}}
-}
-hs.fnutils.each(grid, function(entry)
-  bindKey(entry.key, function()
-    local units = entry.units
-    local screen = hs.screen.mainScreen()
-    local window = hs.window.focusedWindow()
-    local windowGeo = window:frame()
-
-    local index = 0
-    hs.fnutils.find(units, function(unit)
-      index = index + 1
-
-      local geo = hs.geometry.new(unit):fromUnitRect(screen:frame()):floor()
-      return windowGeo:equals(geo)
-    end)
-    if index == #units then index = 0 end
-
-    window:moveToUnit(units[index + 1])
-  end)
-end)
-
---
 -- Layouts
 --
 
@@ -123,11 +86,9 @@ layouts = {
     }
   },
 }
+currentLayout = null
 
-layoutChooser = hs.chooser.new(function(selection)
-  if not selection then return end
-
-  local layout = layouts[selection.index]
+function applyLayout(layout)
   local screen = hs.screen.mainScreen()
 
   local layoutSize = layout.small
@@ -135,11 +96,18 @@ layoutChooser = hs.chooser.new(function(selection)
     layoutSize = layout.large
   end
 
+  currentLayout = layout
   hs.layout.apply(layoutSize, function(windowTitle, layoutWindowTitle)
     return string.sub(windowTitle, 1, string.len(layoutWindowTitle)) == layoutWindowTitle
   end)
+end
+
+layoutChooser = hs.chooser.new(function(selection)
+  if not selection then return end
+
+  applyLayout(layouts[selection.index])
 end)
-local i = 0
+i = 0
 layoutChooser:choices(hs.fnutils.imap(layouts, function(layout)
   i = i + 1
 
@@ -155,4 +123,48 @@ layoutChooser:subTextColor({red=0, green=0, blue=0, alpha=0.4})
 
 bindKey(';', function()
   layoutChooser:show()
+end)
+
+hs.screen.watcher.new(function()
+  if not currentLayout then return end
+
+  applyLayout(currentLayout)
+end):start()
+
+--
+-- Grid
+--
+
+grid = {
+  {key="u", units={positions.upper50Left50}},
+  {key="i", units={positions.upper50}},
+  {key="o", units={positions.upper50Right50}},
+
+  {key="j", units={positions.left50, positions.left66, positions.left34}},
+  {key="k", units={positions.centered, positions.maximized}},
+  {key="l", units={positions.right50, positions.right66, positions.right34}},
+
+  {key="m", units={positions.lower50Left50}},
+  {key=",", units={positions.lower50}},
+  {key=".", units={positions.lower50Right50}}
+}
+hs.fnutils.each(grid, function(entry)
+  bindKey(entry.key, function()
+    local units = entry.units
+    local screen = hs.screen.mainScreen()
+    local window = hs.window.focusedWindow()
+    local windowGeo = window:frame()
+
+    local index = 0
+    hs.fnutils.find(units, function(unit)
+      index = index + 1
+
+      local geo = hs.geometry.new(unit):fromUnitRect(screen:frame()):floor()
+      return windowGeo:equals(geo)
+    end)
+    if index == #units then index = 0 end
+
+    currentLayout = null
+    window:moveToUnit(units[index + 1])
+  end)
 end)
