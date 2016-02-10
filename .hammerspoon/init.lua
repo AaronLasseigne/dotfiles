@@ -1,4 +1,4 @@
-hs.window.animationDuration = 0.05
+hs.window.animationDuration = 0
 
 function reloadConfig(files)
   doReload = false
