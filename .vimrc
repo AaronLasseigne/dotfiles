@@ -4,8 +4,9 @@ set nocompatible | filetype indent plugin on | syn on
 " link file types
 autocmd FileType eruby set filetype=eruby.html.javascript
 autocmd FileType scss set filetype=css
-au BufNewFile,BufRead *.es6 set filetype=javascript
-au BufNewFile,BufRead *.jsx set filetype=javascript
+autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript
+autocmd BufNewFile,BufRead *.fsx\= set filetype=fsharp
 
 " leader
 let mapleader=','
