@@ -166,6 +166,7 @@ set cinkeys-=0#
 " switch.vim    = switch between items in a predefined list (e.g. true, false)
 " Syntastic     = syntax checking
 " editorconfig  = generic per project editor configs
+" vim-slime     = send text from vim to a tmux window (usually a repl)
 
 fun! SetupVAM()
   let c = get(g:, 'vim_addon_manager', {})
@@ -185,7 +186,7 @@ fun! SetupVAM()
   endif
 
   " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
@@ -434,6 +435,12 @@ nnoremap <leader>et :SyntasticToggleMode<cr>
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " /== editorconfig ==
+
+" == vim-slime ==
+
+let g:slime_target = "tmux"
+
+" /== vim-slime ==
 
 " /==== Addons ====
 
