@@ -29,7 +29,6 @@ colorscheme my_colors
 function! HighlightAnnotations()
   syn keyword vimTodo contained HACK OPTIMIZE REVIEW
   syn keyword rubyTodo contained HACK REVIEW
-  syn keyword coffeeTodo contained HACK OPTIMIZE REVIEW
   syn keyword javaScriptCommentTodo contained HACK OPTIMIZE REVIEW
 endfunction
 autocmd Syntax * call HighlightAnnotations()
@@ -140,7 +139,6 @@ set cinkeys-=0#
 "
 " rails              = RoR support
 " vim-clojure-static = clojure support
-" vim-coffee-script  = cs support
 " markdown@tpope     = markdown support
 " vim-ruby           = ruby support
 " vim-elixir         = elixir support
@@ -187,7 +185,7 @@ fun! SetupVAM()
   endif
 
   " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'vim-coffee-script', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
@@ -392,13 +390,6 @@ nmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 
 " /== tabular ==
-
-" == vim-coffee-script ==
-
-nmap <Leader>cc :CoffeeCompile 20<CR>
-vmap <Leader>cc :CoffeeCompile 20<CR>
-
-" == /vim-coffee-script ==
 
 " == switch ==
 
