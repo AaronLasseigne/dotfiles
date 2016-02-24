@@ -191,7 +191,7 @@ call SetupVAM()
 
 " == markdown ==
 
-let g:markdown_fenced_languages = ['ruby']
+let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
 
 " /== markdown ==
 
