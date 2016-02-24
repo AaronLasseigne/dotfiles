@@ -7,6 +7,7 @@ autocmd FileType scss set filetype=css
 autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
 autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
 autocmd BufNewFile,BufReadPost *.fsx\= set filetype=fsharp
+autocmd FileType fsharp setlocal commentstring=//\ %s
 
 " leader
 let mapleader=','
