@@ -1,7 +1,7 @@
 # skips dupes when using up/down arrows to look through your history
 setopt HIST_FIND_NO_DUPS
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # human readable sizes
 alias df="df -H"
@@ -14,6 +14,7 @@ alias mkdir="mkdir -p"
 
 # add tabs
 alias vim="vim -p"
+alias nvim="nvim -p"
 
 # list with human readable sizes
 alias ll='ls -oh'
