@@ -503,4 +503,4 @@ function! BetterComments ()
   setlocal comments-=:# " remove standard comments
   setlocal comments+=f:# " replace with comments that don't get automatically created on a return
 endfunction
-autocmd FileType ruby,eruby,perl call BetterComments()
+autocmd FileType ruby,eruby call BetterComments()
