@@ -189,6 +189,12 @@ fun! SetupVAM()
 endfun
 call SetupVAM()
 
+" == markdown ==
+
+let g:markdown_fenced_languages = ['ruby']
+
+" /== markdown ==
+
 " == YankRing ==
 
 " I had to set this as a fix for version 13
