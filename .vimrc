@@ -442,10 +442,6 @@ let g:slime_target = "tmux"
 
 " /==== Addons ====
 
-" easier ESC
-imap kj <Esc>
-imap jk <Esc>
-
 " intuitive backspacing in insert mode
 set backspace=indent,eol,start
 
