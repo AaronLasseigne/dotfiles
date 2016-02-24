@@ -145,27 +145,27 @@ set cinkeys-=0#
 "
 " Plugins
 "
-" ag            = adds support for the ag command
-" airline       = better vim statusline
-" matchit.zip   = more complete '%' matching
-" Auto_Pairs    = automatically adds closing paren, quote, etc
-" fugitive      = built-in support for git
-" extradite     = plugin for fugitive that provides tig like interface
-" Tabular       = alignment helper
-" ctrlp         = file searching
-" commentary    = easily add/remove commenting
-" Yankstack     = cycle through previous pastes after pasting
-" IndexedSearch = shows 'Nth match out of M' when searching
-" endwise       = adds 'end' to Ruby blocks
-" neocomplcache = completion as you type
-" neosnippet    = expandable snippets
-" surround      = change surrounding stuff (parens, quotes, tags, etc)
-" repeat        = adds "." support for surround and speeddating
-" speeddating   = improved inc/dec support
-" switch.vim    = switch between items in a predefined list (e.g. true, false)
-" Syntastic     = syntax checking
-" editorconfig  = generic per project editor configs
-" vim-slime     = send text from vim to a tmux window (usually a repl)
+" ag             = adds support for the ag command
+" airline        = better vim statusline
+" matchit.zip    = more complete '%' matching
+" Auto_Pairs     = automatically adds closing paren, quote, etc
+" fugitive       = built-in support for git
+" extradite      = plugin for fugitive that provides tig like interface
+" vim-easy-align = alignment helper
+" ctrlp          = file searching
+" commentary     = easily add/remove commenting
+" Yankstack      = cycle through previous pastes after pasting
+" IndexedSearch  = shows 'Nth match out of M' when searching
+" endwise        = adds 'end' to Ruby blocks
+" neocomplcache  = completion as you type
+" neosnippet     = expandable snippets
+" surround       = change surrounding stuff (parens, quotes, tags, etc)
+" repeat         = adds "." support for surround and speeddating
+" speeddating    = improved inc/dec support
+" switch.vim     = switch between items in a predefined list (e.g. true, false)
+" Syntastic      = syntax checking
+" editorconfig   = generic per project editor configs
+" vim-slime      = send text from vim to a tmux window (usually a repl)
 
 fun! SetupVAM()
   let c = get(g:, 'vim_addon_manager', {})
@@ -185,7 +185,7 @@ fun! SetupVAM()
   endif
 
   " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'commentary', 'vim-ruby', 'yankstack', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'vim-easy-align', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'commentary', 'vim-ruby', 'yankstack', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
@@ -318,82 +318,18 @@ map go gf
 
 " /== rails ==
 
-" == tabular ==
+" == vim-easy-align ==
 
-function! s:palign()
-  let p = '^\s*|\s.*\s|\s*$'
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
 
-  if getline('.') =~# '^\s*|' && (getline(line('.') - 1) =~# p || getline(line('.') + 1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')], '[^|]', '', 'g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')], '.*|\s*\zs.*'))
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
-    Tabularize/|/l1
+map <leader>a= gaip=
+map <leader>a: gaip:
 
-    normal! 0
-
-    call search(repeat('[^|]*|', column) . '\s\{-\}' . repeat('.', position), 'ce', line('.'))
-  endif
-endfunction
-" auto align pipes using tabular
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>palign()<CR>a
-
-function! s:generalAlign(regexp, post_zs, spacing)
-  let prev_line_match     = getline(line('.') - 1) =~ a:regexp . a:post_zs
-  let prev_line_has_curly = getline(line('.') - 1) =~ '{'
-  let next_line_match     = getline(line('.') + 1) =~ a:regexp . a:post_zs
-  let next_line_has_curly = getline(line('.') + 1) =~ '}'
-
-  if !(prev_line_has_curly && next_line_has_curly) && (prev_line_match || next_line_match) && getline('.') =~ a:regexp
-    let save_cursor = getpos('.')
-
-    let cmd = 'Tabularize /'. a:regexp .'\zs' . a:post_zs . a:spacing
-
-    " select the area to align
-    exe "norm! vi{\<Esc>"
-
-    " I'm not sure why I need this but it fixes groups without parens. Otherwise
-    " they end in visual mode and '> and '< aren't reset.
-    exe "norm! \<Esc>"
-
-    " start line != stop line
-    if line("'<") != line("'>'")
-      let cmd = "'<,'>" . cmd
-    endif
-
-    exe cmd
-
-    call setpos('.', save_cursor)
-  endif
-endfunction
-
-function! s:colonAlign()
-  call <SID>generalAlign('^\s*[a-zA-Z0-9_-]\+:', '', '/l0l1l0')
-endfunction
-" auto align colons using tabular
-inoremap  <silent> :  :<Esc>:call <SID>colonAlign()<CR>a
-" manual align
-nmap <Leader>a: :call <SID>colonAlign()<CR>
-" visual align
-vmap <Leader>a: :Tabularize /^\s*[a-zA-Z0-9_-]\+:\zs/l0l1l0<CR>
-
-function! s:hashRocketAlign()
-  call <SID>generalAlign('^\s*\S\+\s*', '=>', '')
-endfunction
-" auto align
-inoremap <silent> =>  =><Esc>:call <SID>hashRocketAlign()<CR>a
-" manual align
-nmap <Leader>a> :call <SID>hashRocketAlign()<CR>
-" visual align
-vmap <Leader>a> :Tabularize /^\s*\S\+\s*\zs=><CR>
-
-nmap <Leader>a= :Tabularize /^[^=]*\zs=\+<CR>
-vmap <Leader>a= :Tabularize /^[^=]*\zs=\+<CR>
-nmap <Leader>a, :Tabularize /,/l0l1<CR>
-vmap <Leader>a, :Tabularize /,/l0l1<CR>
-nmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
-vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
-
-" /== tabular ==
+" /== vim-easy-align ==
 
 " == switch ==
 
