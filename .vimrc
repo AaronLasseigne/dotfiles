@@ -153,7 +153,7 @@ set cinkeys-=0#
 " extradite     = plugin for fugitive that provides tig like interface
 " Tabular       = alignment helper
 " ctrlp         = file searching
-" tComment      = easily add/remove commenting
+" commentary    = easily add/remove commenting
 " YankRing      = cycle through previous pastes after pasting
 " IndexedSearch = shows 'Nth match out of M' when searching
 " endwise       = adds 'end' to Ruby blocks
@@ -185,7 +185,7 @@ fun! SetupVAM()
   endif
 
   " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'commentary', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
