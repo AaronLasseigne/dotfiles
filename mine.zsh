@@ -53,8 +53,8 @@ mdc() {
   cd $1
 }
 
-# vim now accepts file:line#
-v() {
+# (n)vim now accepts file:line#
+e() {
   output=${*/:/ +}
   $EDITOR -p ${=output}
 }
