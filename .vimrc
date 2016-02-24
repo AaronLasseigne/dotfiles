@@ -399,7 +399,7 @@ vmap <Leader>a\| :Tabularize /[^{]\|\+/l0l1<CR>
 
 " == switch ==
 
-nnoremap <leader>s :Switch<cr>
+let g:switch_mapping = "<leader>s"
 
 " additional definitions
 let g:switch_custom_definitions =
