@@ -148,7 +148,7 @@ set cinkeys-=0#
 " ag            = adds support for the ag command
 " airline       = better vim statusline
 " matchit.zip   = more complete '%' matching
-" delimitMate   = automatically adds closing paren, quote, etc
+" Auto_Pairs    = automatically adds closing paren, quote, etc
 " fugitive      = built-in support for git
 " extradite     = plugin for fugitive that provides tig like interface
 " Tabular       = alignment helper
@@ -185,7 +185,7 @@ fun! SetupVAM()
   endif
 
   " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'delimitMate', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'tComment', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
