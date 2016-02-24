@@ -154,7 +154,7 @@ set cinkeys-=0#
 " Tabular       = alignment helper
 " ctrlp         = file searching
 " commentary    = easily add/remove commenting
-" YankRing      = cycle through previous pastes after pasting
+" Yankstack     = cycle through previous pastes after pasting
 " IndexedSearch = shows 'Nth match out of M' when searching
 " endwise       = adds 'end' to Ruby blocks
 " neocomplcache = completion as you type
@@ -185,7 +185,7 @@ fun! SetupVAM()
   endif
 
   " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'commentary', 'vim-ruby', 'YankRing', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
+  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'Tabular', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'commentary', 'vim-ruby', 'yankstack', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
 endfun
 call SetupVAM()
 
@@ -195,15 +195,13 @@ let g:markdown_fenced_languages = ['ruby']
 
 " /== markdown ==
 
-" == YankRing ==
+" == Yankstack ==
 
-" I had to set this as a fix for version 13
-let g:yankring_manual_clipboard_check = 0
+let g:yankstack_map_keys = 0
+nmap <C-p> <Plug>yankstack_substitute_older_paste
+nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
-" make the history file a dotfile so it disappears
-let g:yankring_history_file = '.yankring_history'
-
-" /== YankRing ==
+" /== Yankstack ==
 
 " == neosnippet ==
 
