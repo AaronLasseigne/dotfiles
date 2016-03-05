@@ -36,9 +36,6 @@ map <F1> <ESC>
 " new
 map <F4> :tabe<CR>
 
-" open
-map <F5> :tabe
-
 " close
 map <F6> :qa<CR>
 
