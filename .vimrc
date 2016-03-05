@@ -164,7 +164,7 @@ nmap g* g*zz
 nmap g# g#z
 
 " Open a Quickfix window for the last search.
-nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 
 Plugin 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
 
