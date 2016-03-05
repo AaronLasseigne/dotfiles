@@ -17,7 +17,7 @@ set mouse=a
 " copy text to the OS clipboard
 set clipboard=unnamed
 
-" ==== DISPLAY ====
+" ## DISPLAY
 
 " encoding
 set encoding=utf-8
@@ -59,10 +59,8 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-" /==== DISPLAY ====
 
-
-" ==== SEARCH ====
+" ## SEARCH
 
 " find as you type
 set incsearch
@@ -96,16 +94,12 @@ nnoremap <silent> <leader>?j :execute "Ag! --js '" . substitute(substitute(subst
 " clear search highlighting
 noremap <silent><leader>cs :nohls<CR>
 
-" /==== SEARCH ====
-
-" ==== QUICKFIX ====
+" ## QUICKFIX
 
 nmap <C-J> :cnext<CR>
 nmap <C-K> :cprevious<CR>
 
-" /==== QUICKFIX ====
-
-" ==== SPACING ====
+" ## SPACING
 
 " tabs are 2 spaces
 set softtabstop=2
@@ -129,9 +123,7 @@ set cindent
 " stop comment indenting
 set cinkeys-=0#
 
-" /==== SPACING ====
-
-" ==== MISC ====
+" ## MISC
 
 " intuitive backspacing in insert mode
 set backspace=indent,eol,start
@@ -186,12 +178,8 @@ function! BetterComments ()
 endfunction
 autocmd FileType ruby,eruby call BetterComments()
 
-" /==== MISC ====
+" ## ADDONS
 
-" ==== Addons ====
-
-" vim addon manager
-"
 " Language/Framework
 "
 " rails              = RoR support
@@ -246,7 +234,7 @@ fun! SetupVAM()
 endfun
 call SetupVAM()
 
-" == elixir ==
+" ### vim-elixir
 
 " run code
 nmap <Leader>ec :!elixir %<CR>
@@ -254,30 +242,22 @@ nmap <Leader>ec :!elixir %<CR>
 " run mix tasks
 nmap <Leader>mt :!mix test<CR>
 
-" /== elixir ==
-
-" == markdown ==
+" ### markdown@tpope
 
 let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
 
-" /== markdown ==
-
-" == Yankstack ==
+" ### yankstack
 
 let g:yankstack_map_keys = 0
 nmap <C-p> <Plug>yankstack_substitute_older_paste
 nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
-" /== Yankstack ==
-
-" == neosnippet ==
+" ### neosnippet
 
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
 set completeopt-=preview
 
-" /== neosnippet ==
-
-" == neocomplcache ==
+" ### neocomplcache
 
 " turn it on
 let g:neocomplcache_enable_at_startup = 1
@@ -301,9 +281,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
-" /== neocomplcache ==
-
-" == ctrlp ==
+" ### ctrlp.vim
 
 " ignore stuff when searching
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*,*/_site/*,*/node_modules/*,*/target/*
@@ -329,9 +307,7 @@ let g:ctrlp_max_height = 20
 " enable cache between sessions (reset with F5 in a search)
 let g:ctrlp_clear_cache_on_exit = 0
 
-" /== ctrlp ==
-
-" == fugitive (and extradite) ==
+" ### fugitive (and extradite)
 
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gD :diffoff!<cr><c-w>h:bd<cr>
@@ -347,15 +323,11 @@ nnoremap <leader>gm :Gmove
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Extradite<cr>
 
-" /== fugitive ==
-"
-" == ag ==
+" ### ag
 
 let g:ag_prg="ag --noheading --nocolor --nogroup --column --nobreak"
 
-" /== ag ==
-
-" == airline ==
+" ### vim-airline
 
 " always show the status line
 set laststatus=2
@@ -373,9 +345,7 @@ let g:airline#extensions#tabline#show_tab_nr=0
 " do not show the buffer when only one tab exists
 let g:airline#extensions#tabline#show_buffers=0
 
-" /== airline ==
-
-" == rails ==
+" ### rails
 
 " open in a new tab
 map gn <C-W>gf
@@ -383,9 +353,7 @@ map gn <C-W>gf
 " open in the current tab
 map go gf
 
-" /== rails ==
-
-" == vim-easy-align ==
+" ### vim-easy-align
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -396,9 +364,7 @@ nmap ga <Plug>(EasyAlign)
 map <leader>a= gaip=
 map <leader>a: gaip:
 
-" /== vim-easy-align ==
-
-" == switch ==
+" ### switch
 
 let g:switch_mapping = "<leader>s"
 
@@ -408,9 +374,7 @@ let g:switch_custom_definitions =
     \   ['to ', 'to_not ']
     \ ]
 
-" /== switch ==
-
-" == Syntastic ==
+" ### Syntastic
 
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
@@ -426,19 +390,11 @@ nnoremap <leader>el :Errors<cr>
 nnoremap <leader>er :SyntasticReset<cr>
 nnoremap <leader>et :SyntasticToggleMode<cr>
 
-" /== Syntastic ==
-
-" == editorconfig ==
+" ### editorconfig-vim
 
 " don't mess with Fugitive or remote files
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" /== editorconfig ==
-
-" == vim-slime ==
+" ### vim-slime
 
 let g:slime_target = "tmux"
-
-" /== vim-slime ==
-
-" /==== Addons ====
