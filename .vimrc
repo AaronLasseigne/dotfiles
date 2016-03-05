@@ -1,32 +1,28 @@
-" for Vundle
+"" Vundle
 set nocompatible
 filetype off
 
-" link file types
-autocmd FileType eruby set filetype=eruby.html.javascript
-autocmd FileType scss set filetype=css
-autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
-autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
-autocmd BufNewFile,BufReadPost *.fsx\= set filetype=fsharp
-autocmd FileType fsharp setlocal commentstring=//\ %s
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+"" MISC
 
 " leader
 let mapleader=','
 
+" no more shift
+map ; :
+
+" never enter Ex mode
+nnoremap Q <nop>
+
 " turn the mouse on for all modes
 set mouse=a
-" copy text to the OS clipboard
-set clipboard=unnamed
-
-" ## DISPLAY
 
 " encoding
 set encoding=utf-8
-
-" colors
-set t_Co=256
-syntax enable
-colorscheme my_colors
 
 function! HighlightAnnotations()
   syn keyword vimTodo contained HACK OPTIMIZE REVIEW
@@ -35,104 +31,11 @@ function! HighlightAnnotations()
 endfunction
 autocmd Syntax * call HighlightAnnotations()
 
-" show the tab line
-set showtabline=2
-
-" show the ruler
-set ruler
-
-" show line numbers
-set number
-
-" highlight the opening/closing parens, braces, etc
-set showmatch
-
-" highlight the current line and column
-set cursorline
-set cursorcolumn
-
-" use single bar in insert mode
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-" ## SEARCH
-
-" find as you type
-set incsearch
-
-" highlight matches
-set hlsearch
-
-" only search case when an uppercase letter appears
-set ignorecase
-set smartcase
-
-" make search results appear in the middle of the screen
-nmap n nzz
-nmap N Nzz
-nmap * *zz
-nmap # #zz
-nmap g* g*zz
-nmap g# g#z
-
-" Open a Quickfix window for the last search.
-nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-" Ag for the last search.
-nnoremap <silent> <leader>? :execute "Ag! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ag over Ruby files for the last search.
-nnoremap <silent> <leader>?r :execute "Ag! --ruby '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ag over HTML files for the last search.
-nnoremap <silent> <leader>?h :execute "Ag! --html '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ag over JavaScript files for the last search.
-nnoremap <silent> <leader>?j :execute "Ag! --js '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-
-" clear search highlighting
-noremap <silent><leader>cs :nohls<CR>
-
-" ## QUICKFIX
-
-nmap <C-J> :cnext<CR>
-nmap <C-K> :cprevious<CR>
-
-" ## SPACING
-
-" tabs are 2 spaces
-set softtabstop=2
-set tabstop=2
-
-" use spaces when tabbing
-set expandtab
-
-" indent is 2 spaces
-set shiftwidth=2
-
-" keeps indentation going on the next line
-set autoindent
-
-" indent automatically when needed
-set smartindent
-
-" turns on the C indentation standard
-set cindent
-
-" stop comment indenting
-set cinkeys-=0#
-
-" ## MISC
-
 " intuitive backspacing in insert mode
 set backspace=indent,eol,start
 
 " sudo write
 ca w!! w !sudo tee >/dev/null "%"
-
-" no more shift
-map ; :
 
 " arg!
 map <F1> <ESC>
@@ -163,9 +66,6 @@ autocmd Filetype gitcommit setlocal spell
 nnoremap + <C-a>
 nnoremap - <C-x>
 
-" never enter Ex mode
-nnoremap Q <nop>
-
 " clean whitespace
 map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -178,25 +78,140 @@ function! BetterComments ()
 endfunction
 autocmd FileType ruby,eruby call BetterComments()
 
+"" UI
+
+" colors
+set t_Co=256
+syntax enable
+colorscheme my_colors
+
+" show the tab line
+set showtabline=2
+
+" show the ruler
+set ruler
+
+" show line numbers
+set number
+
+" highlight the opening/closing parens, braces, etc
+set showmatch
+
+" highlight the current line and column
+set cursorline
+set cursorcolumn
+
+" use single bar in insert mode
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" always show the status line
+set laststatus=2
+
+" make it look powerline esque
+let g:airline_powerline_fonts=1
+let g:airline_theme='powerlineish'
+
+" pretty tabs
+let g:airline#extensions#tabline#enabled=1
+
+" do not how buffer counts
+let g:airline#extensions#tabline#show_tab_nr=0
+
+" do not show the buffer when only one tab exists
+let g:airline#extensions#tabline#show_buffers=0
+
+""" CUT/COPY/PASTE
+
+" copy text to the OS clipboard
+set clipboard=unnamed
+
+Plugin 'maxbrunsfeld/vim-yankstack'
+
+let g:yankstack_map_keys = 0
+nmap <C-p> <Plug>yankstack_substitute_older_paste
+nmap <C-n> <Plug>yankstack_substitute_newer_paste
+
+""" SEARCH
+
+" find as you type
+set incsearch
+
+" highlight matches
+set hlsearch
+
+" clear search highlighting
+noremap <silent><leader>cs :nohls<CR>
+
+" only search case when an uppercase letter appears
+set ignorecase
+set smartcase
+
+" make search results appear in the middle of the screen
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#z
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+Plugin 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
+
+Plugin 'rking/ag.vim'
+
+let g:ag_prg="ag --noheading --nocolor --nogroup --column --nobreak"
+
+" Ag for the last search.
+nnoremap <silent> <leader>? :execute "Ag! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag over Ruby files for the last search.
+nnoremap <silent> <leader>?r :execute "Ag! --ruby '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag over HTML files for the last search.
+nnoremap <silent> <leader>?h :execute "Ag! --html '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Ag over JavaScript files for the last search.
+nnoremap <silent> <leader>?j :execute "Ag! --js '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+
+""" QUICKFIX
+
+nmap <C-J> :cnext<CR>
+nmap <C-K> :cprevious<CR>
+
+""" SPACING
+
+" tabs are 2 spaces
+set softtabstop=2
+set tabstop=2
+
+" use spaces when tabbing
+set expandtab
+
+" indent is 2 spaces
+set shiftwidth=2
+
+" keeps indentation going on the next line
+set autoindent
+
+" indent automatically when needed
+set smartindent
+
+" turns on the C indentation standard
+set cindent
+
+" stop comment indenting
+set cinkeys-=0#
+
 " ## ADDONS
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-" Language/Framework
-"
-" rails              = RoR support
-" vim-clojure-static = clojure support
-" markdown@tpope     = markdown support
-" vim-ruby           = ruby support
-" vim-elixir         = elixir support
-"
-" Plugins
-"
-" ag             = adds support for the ag command
-" airline        = better vim statusline
 " matchit.zip    = more complete '%' matching
 " Auto_Pairs     = automatically adds closing paren, quote, etc
 " fugitive       = built-in support for git
@@ -204,9 +219,6 @@ Plugin 'VundleVim/Vundle.vim'
 " vim-easy-align = alignment helper
 " ctrlp          = file searching
 " commentary     = easily add/remove commenting
-" Yankstack      = cycle through previous pastes after pasting
-" IndexedSearch  = shows 'Nth match out of M' when searching
-" endwise        = adds 'end' to Ruby blocks
 " neocomplcache  = completion as you type
 " neosnippet     = expandable snippets
 " surround       = change surrounding stuff (parens, quotes, tags, etc)
@@ -214,53 +226,22 @@ Plugin 'VundleVim/Vundle.vim'
 " speeddating    = improved inc/dec support
 " switch.vim     = switch between items in a predefined list (e.g. true, false)
 " Syntastic      = syntax checking
-" editorconfig   = generic per project editor configs
 " vim-slime      = send text from vim to a tmux window (usually a repl)
 
-Plugin 'rking/ag.vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-fugitive'
-Plugin 'henrik/vim-indexed-search'
 Plugin 'matchit.zip'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
-Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jpalardy/vim-slime'
-Plugin 'tpope/vim-markdown'
 Plugin 'Shougo/neosnippet.vim'
-Plugin 'guns/vim-clojure-static'
 Plugin 'AndrewRadev/switch.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'editorconfig/editorconfig-vim'
-
-" ### vim-elixir
-
-" run code
-nmap <Leader>ec :!elixir %<CR>
-
-" run mix tasks
-nmap <Leader>mt :!mix test<CR>
-
-" ### markdown@tpope
-
-let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
-
-" ### yankstack
-
-let g:yankstack_map_keys = 0
-nmap <C-p> <Plug>yankstack_substitute_older_paste
-nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
 " ### neosnippet
 
@@ -333,36 +314,6 @@ nnoremap <leader>gm :Gmove
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Extradite<cr>
 
-" ### ag
-
-let g:ag_prg="ag --noheading --nocolor --nogroup --column --nobreak"
-
-" ### vim-airline
-
-" always show the status line
-set laststatus=2
-
-" make it look powerline esque
-let g:airline_powerline_fonts=1
-let g:airline_theme='powerlineish'
-
-" pretty tabs
-let g:airline#extensions#tabline#enabled=1
-
-" do not how buffer counts
-let g:airline#extensions#tabline#show_tab_nr=0
-
-" do not show the buffer when only one tab exists
-let g:airline#extensions#tabline#show_buffers=0
-
-" ### rails
-
-" open in a new tab
-map gn <C-W>gf
-
-" open in the current tab
-map go gf
-
 " ### vim-easy-align
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -400,15 +351,71 @@ nnoremap <leader>el :Errors<cr>
 nnoremap <leader>er :SyntasticReset<cr>
 nnoremap <leader>et :SyntasticToggleMode<cr>
 
-" ### editorconfig-vim
-
-" don't mess with Fugitive or remote files
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-
 " ### vim-slime
 
 let g:slime_target = "tmux"
 
-" for Vundle
+"" Languages
+
+""" Ruby
+
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise' " adds 'end' to Ruby blocks
+
+autocmd FileType eruby set filetype=eruby.html.javascript
+
+"""" Rails
+
+Plugin 'tpope/vim-rails'
+
+" open in a new tab
+map gn <C-W>gf
+
+" open in the current tab
+map go gf
+
+""" Elixir
+
+Plugin 'elixir-lang/vim-elixir'
+
+" run code
+nmap <Leader>ec :!elixir %<CR>
+
+" run mix tasks
+nmap <Leader>mt :!mix test<CR>
+
+""" Clojure
+
+Plugin 'guns/vim-clojure-static'
+
+""" F#
+
+autocmd BufNewFile,BufReadPost *.fsx\= set filetype=fsharp
+autocmd FileType fsharp setlocal commentstring=//\ %s
+
+""" JavaScript
+
+autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
+autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
+
+""" CSS
+
+autocmd FileType sass set filetype=css
+autocmd FileType scss set filetype=css
+
+""" Markdown
+
+Plugin 'tpope/vim-markdown'
+
+let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
+
+"" EditorConfig
+
+Plugin 'editorconfig/editorconfig-vim' " generic per project editor configs
+
+" don't mess with Fugitive or remote files
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+"" Vundle
 call vundle#end()
 filetype plugin indent on
