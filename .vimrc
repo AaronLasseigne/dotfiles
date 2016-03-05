@@ -1,5 +1,6 @@
-" for VAM
-set nocompatible | filetype indent plugin on | syn on
+" for Vundle
+set nocompatible
+filetype off
 
 " link file types
 autocmd FileType eruby set filetype=eruby.html.javascript
@@ -58,7 +59,6 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
-
 
 " ## SEARCH
 
@@ -180,6 +180,11 @@ autocmd FileType ruby,eruby call BetterComments()
 
 " ## ADDONS
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
 " Language/Framework
 "
 " rails              = RoR support
@@ -212,27 +217,32 @@ autocmd FileType ruby,eruby call BetterComments()
 " editorconfig   = generic per project editor configs
 " vim-slime      = send text from vim to a tmux window (usually a repl)
 
-fun! SetupVAM()
-  let c = get(g:, 'vim_addon_manager', {})
-  let g:vim_addon_manager = c
-  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
-
-  " Force your ~/.vim/after directory to be last in &rtp always:
-  " let g:vim_addon_manager.rtp_list_hook = 'vam#ForceUsersAfterDirectoriesToBeLast'
-
-  " most used options you may want to use:
-  " let c.log_to_buf = 1
-  " let c.auto_install = 0
-  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
-  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
-    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
-        \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
-  endif
-
-  " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'vim-easy-align', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'commentary', 'vim-ruby', 'yankstack', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
-endfun
-call SetupVAM()
+Plugin 'rking/ag.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'int3/vim-extradite'
+Plugin 'tpope/vim-fugitive'
+Plugin 'henrik/vim-indexed-search'
+Plugin 'matchit.zip'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jpalardy/vim-slime'
+Plugin 'tpope/vim-markdown'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'guns/vim-clojure-static'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'editorconfig/editorconfig-vim'
 
 " ### vim-elixir
 
@@ -398,3 +408,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " ### vim-slime
 
 let g:slime_target = "tmux"
+
+" for Vundle
+call vundle#end()
+filetype plugin indent on
