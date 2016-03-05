@@ -131,6 +131,62 @@ set cinkeys-=0#
 
 " /==== SPACING ====
 
+" ==== MISC ====
+
+" intuitive backspacing in insert mode
+set backspace=indent,eol,start
+
+" sudo write
+ca w!! w !sudo tee >/dev/null "%"
+
+" no more shift
+map ; :
+
+" arg!
+map <F1> <ESC>
+
+" new
+map <F4> :tabe<CR>
+
+" open
+map <F5> :tabe
+
+" close
+map <F6> :qa<CR>
+
+" toggle line numbers
+map <F7> :set nonumber!<CR>
+
+" toggle pasting
+set pastetoggle=<F8>
+
+" toggle spell checking
+nmap <F10> :setlocal spell! spelllang=en_us<CR>
+imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
+
+" add spell checking to git commit messages
+autocmd Filetype gitcommit setlocal spell
+
+" easier number increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" never enter Ex mode
+nnoremap Q <nop>
+
+" clean whitespace
+map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" shortcuts via misspell
+iabbrev al@ aaron.lasseigne@gmail.com
+
+function! BetterComments ()
+  setlocal comments-=:# " remove standard comments
+  setlocal comments+=f:# " replace with comments that don't get automatically created on a return
+endfunction
+autocmd FileType ruby,eruby call BetterComments()
+
+" /==== MISC ====
 
 " ==== Addons ====
 
@@ -189,6 +245,16 @@ fun! SetupVAM()
   call vam#ActivateAddons(['matchit.zip', 'rails', 'Auto_Pairs', 'fugitive', 'vim-easy-align', 'github:ctrlpvim/ctrlp.vim', 'extradite', 'commentary', 'vim-ruby', 'yankstack', 'IndexedSearch', 'endwise', 'neosnippet', 'surround', 'repeat', 'vim-airline', 'github:vim-airline/vim-airline-themes', 'markdown@tpope', 'vim-clojure-static', 'switch', 'vim-elixir', 'speeddating', 'Syntastic', 'ag', 'editorconfig-vim', 'vim-slime'], {'auto_install': 0})
 endfun
 call SetupVAM()
+
+" == elixir ==
+
+" run code
+nmap <Leader>ec :!elixir %<CR>
+
+" run mix tasks
+nmap <Leader>mt :!mix test<CR>
+
+" /== elixir ==
 
 " == markdown ==
 
@@ -376,62 +442,3 @@ let g:slime_target = "tmux"
 " /== vim-slime ==
 
 " /==== Addons ====
-
-" intuitive backspacing in insert mode
-set backspace=indent,eol,start
-
-" sudo write
-ca w!! w !sudo tee >/dev/null "%"
-
-" no more shift
-map ; :
-
-" arg!
-map <F1> <ESC>
-
-" new
-map <F4> :tabe<CR>
-
-" open
-map <F5> :tabe
-
-" close
-map <F6> :qa<CR>
-
-" toggle line numbers
-map <F7> :set nonumber!<CR>
-
-" toggle pasting
-set pastetoggle=<F8>
-
-" toggle spell checking
-nmap <F10> :setlocal spell! spelllang=en_us<CR>
-imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
-
-" add spell checking to git commit messages
-autocmd Filetype gitcommit setlocal spell
-
-" easier number increment/decrement
-nnoremap + <C-a>
-nnoremap - <C-x>
-
-" never enter Ex mode
-nnoremap Q <nop>
-
-" clean whitespace
-map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
-" run elixir code
-nmap <Leader>ec :!elixir %<CR>
-
-" run elixir mix tasks
-nmap <Leader>mt :!mix test<CR>
-
-" shortcuts via misspell
-iabbrev al@ aaron.lasseigne@gmail.com
-
-function! BetterComments ()
-  setlocal comments-=:# " remove standard comments
-  setlocal comments+=f:# " replace with comments that don't get automatically created on a return
-endfunction
-autocmd FileType ruby,eruby call BetterComments()
