@@ -25,7 +25,7 @@ set mouse=a
 set encoding=utf-8
 
 " intuitive backspacing in insert mode
-set backspace=indent,eol,start
+set backspace=indent,start
 
 " sudo write
 ca w!! w !sudo tee >/dev/null "%"
