@@ -7,7 +7,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-"" MISC
+"" Core
 
 " leader
 let mapleader=','
@@ -23,13 +23,6 @@ set mouse=a
 
 " encoding
 set encoding=utf-8
-
-function! HighlightAnnotations()
-  syn keyword vimTodo contained HACK OPTIMIZE REVIEW
-  syn keyword rubyTodo contained HACK REVIEW
-  syn keyword javaScriptCommentTodo contained HACK OPTIMIZE REVIEW
-endfunction
-autocmd Syntax * call HighlightAnnotations()
 
 " intuitive backspacing in insert mode
 set backspace=indent,eol,start
@@ -49,9 +42,6 @@ map <F5> :tabe
 " close
 map <F6> :qa<CR>
 
-" toggle line numbers
-map <F7> :set nonumber!<CR>
-
 " toggle pasting
 set pastetoggle=<F8>
 
@@ -59,24 +49,38 @@ set pastetoggle=<F8>
 nmap <F10> :setlocal spell! spelllang=en_us<CR>
 imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 
-" add spell checking to git commit messages
-autocmd Filetype gitcommit setlocal spell
-
-" easier number increment/decrement
-nnoremap + <C-a>
-nnoremap - <C-x>
-
 " clean whitespace
 map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" shortcuts via misspell
-iabbrev al@ aaron.lasseigne@gmail.com
+Plugin 'matchit.zip' " more complete '%' matching
 
-function! BetterComments ()
-  setlocal comments-=:# " remove standard comments
-  setlocal comments+=f:# " replace with comments that don't get automatically created on a return
-endfunction
-autocmd FileType ruby,eruby call BetterComments()
+Plugin 'Shougo/neocomplcache.vim' " completion as you type
+
+" turn it on
+let g:neocomplcache_enable_at_startup = 1
+
+" only search case when an uppercase letter appears
+let g:neocomplcache_enable_smart_case = 1
+
+" add completion for various file types
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+Plugin 'jpalardy/vim-slime' " send text from vim to a tmux window (usually a repl)
+
+let g:slime_target = "tmux"
 
 "" UI
 
@@ -87,6 +91,8 @@ colorscheme my_colors
 
 " show the tab line
 set showtabline=2
+" toggle line numbers
+map <F7> :set nonumber!<CR>
 
 " show the ruler
 set ruler
@@ -129,7 +135,42 @@ let g:airline#extensions#tabline#show_tab_nr=0
 " do not show the buffer when only one tab exists
 let g:airline#extensions#tabline#show_buffers=0
 
-""" CUT/COPY/PASTE
+"" Spacing
+
+" tabs are 2 spaces
+set softtabstop=2
+set tabstop=2
+
+" use spaces when tabbing
+set expandtab
+
+" indent is 2 spaces
+set shiftwidth=2
+
+" keeps indentation going on the next line
+set autoindent
+
+" indent automatically when needed
+set smartindent
+
+" turns on the C indentation standard
+set cindent
+
+" stop comment indenting
+set cinkeys-=0#
+
+Plugin 'junegunn/vim-easy-align'
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+map <leader>a= gaip=
+map <leader>a: gaip:
+
+"" Cut, Copy, and Paste
 
 " copy text to the OS clipboard
 set clipboard=unnamed
@@ -140,7 +181,7 @@ let g:yankstack_map_keys = 0
 nmap <C-p> <Plug>yankstack_substitute_older_paste
 nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
-""" SEARCH
+"" Search
 
 " find as you type
 set incsearch
@@ -166,8 +207,6 @@ nmap g# g#z
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 
-Plugin 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
-
 Plugin 'rking/ag.vim'
 
 let g:ag_prg="ag --noheading --nocolor --nogroup --column --nobreak"
@@ -181,98 +220,9 @@ nnoremap <silent> <leader>?h :execute "Ag! --html '" . substitute(substitute(sub
 " Ag over JavaScript files for the last search.
 nnoremap <silent> <leader>?j :execute "Ag! --js '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
-""" QUICKFIX
+Plugin 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
 
-nmap <C-J> :cnext<CR>
-nmap <C-K> :cprevious<CR>
-
-""" SPACING
-
-" tabs are 2 spaces
-set softtabstop=2
-set tabstop=2
-
-" use spaces when tabbing
-set expandtab
-
-" indent is 2 spaces
-set shiftwidth=2
-
-" keeps indentation going on the next line
-set autoindent
-
-" indent automatically when needed
-set smartindent
-
-" turns on the C indentation standard
-set cindent
-
-" stop comment indenting
-set cinkeys-=0#
-
-" ## ADDONS
-
-" matchit.zip    = more complete '%' matching
-" Auto_Pairs     = automatically adds closing paren, quote, etc
-" fugitive       = built-in support for git
-" extradite      = plugin for fugitive that provides tig like interface
-" vim-easy-align = alignment helper
-" ctrlp          = file searching
-" commentary     = easily add/remove commenting
-" neocomplcache  = completion as you type
-" neosnippet     = expandable snippets
-" surround       = change surrounding stuff (parens, quotes, tags, etc)
-" repeat         = adds "." support for surround and speeddating
-" speeddating    = improved inc/dec support
-" switch.vim     = switch between items in a predefined list (e.g. true, false)
-" Syntastic      = syntax checking
-" vim-slime      = send text from vim to a tmux window (usually a repl)
-
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-commentary'
-Plugin 'int3/vim-extradite'
-Plugin 'tpope/vim-fugitive'
-Plugin 'matchit.zip'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/syntastic'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'jpalardy/vim-slime'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'AndrewRadev/switch.vim'
-
-" ### neosnippet
-
-let g:neosnippet#snippets_directory = '~/.vim/snippets'
-set completeopt-=preview
-
-" ### neocomplcache
-
-" turn it on
-let g:neocomplcache_enable_at_startup = 1
-
-" only search case when an uppercase letter appears
-let g:neocomplcache_enable_smart_case = 1
-
-" add completion for various file types
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" ### ctrlp.vim
+Plugin 'ctrlpvim/ctrlp.vim' " file searching
 
 " ignore stuff when searching
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*,*/_site/*,*/node_modules/*,*/target/*
@@ -298,7 +248,52 @@ let g:ctrlp_max_height = 20
 " enable cache between sessions (reset with F5 in a search)
 let g:ctrlp_clear_cache_on_exit = 0
 
-" ### fugitive (and extradite)
+"" Quickfix
+
+nmap <C-J> :cnext<CR>
+nmap <C-K> :cprevious<CR>
+
+"" Editing Toggles
+
+Plugin 'tpope/vim-repeat' " adds '.' support for surround and speeddating
+
+Plugin 'tpope/vim-surround' " change surrounding stuff (parens, quotes, tags, etc)
+
+Plugin 'tpope/vim-commentary' " easily add/remove commenting
+
+Plugin 'AndrewRadev/switch.vim' " alternate between items in a predefined list (e.g. true, false)
+
+let g:switch_mapping = "<leader>s"
+
+" additional definitions
+let g:switch_custom_definitions =
+    \ [
+    \   ['to ', 'to_not ']
+    \ ]
+
+""" Increment and Decrement
+
+" easier number increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+Plugin 'tpope/vim-speeddating' " improved support
+
+"" Typing Assistants
+
+Plugin 'jiangmiao/auto-pairs' " automatically adds closing paren, quote, etc
+
+Plugin 'Shougo/neosnippet.vim' " expandable snippets
+
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
+set completeopt-=preview
+
+"" Version Control
+
+" add spell checking to git commit messages
+autocmd Filetype gitcommit setlocal spell
+
+Plugin 'tpope/vim-fugitive' " support for git
 
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gD :diffoff!<cr><c-w>h:bd<cr>
@@ -312,57 +307,19 @@ nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove
 nnoremap <leader>gr :Gremove<cr>
+
+Plugin 'int3/vim-extradite' " plugin for fugitive that provides tig like interface
+
 nnoremap <leader>gl :Extradite<cr>
-
-" ### vim-easy-align
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-map <leader>a= gaip=
-map <leader>a: gaip:
-
-" ### switch
-
-let g:switch_mapping = "<leader>s"
-
-" additional definitions
-let g:switch_custom_definitions =
-    \ [
-    \   ['to ', 'to_not ']
-    \ ]
-
-" ### Syntastic
-
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
-
-let g:syntastic_elixir_checkers = ['elixir']
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-" Some checkers have security issues and have to be manually enabled.
-let g:syntastic_enable_elixir_checker = 1
-
-nnoremap <leader>el :Errors<cr>
-nnoremap <leader>er :SyntasticReset<cr>
-nnoremap <leader>et :SyntasticToggleMode<cr>
-
-" ### vim-slime
-
-let g:slime_target = "tmux"
 
 "" Languages
 
 """ Ruby
 
+autocmd FileType eruby set filetype=eruby.html.javascript
+
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise' " adds 'end' to Ruby blocks
-
-autocmd FileType eruby set filetype=eruby.html.javascript
 
 """" Rails
 
@@ -395,6 +352,8 @@ autocmd FileType fsharp setlocal commentstring=//\ %s
 
 """ JavaScript
 
+Plugin 'pangloss/vim-javascript'
+
 autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
 autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
 
@@ -408,6 +367,23 @@ autocmd FileType scss set filetype=css
 Plugin 'tpope/vim-markdown'
 
 let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
+
+"" Linting
+
+Plugin 'scrooloose/syntastic' " syntax checking
+
+nnoremap <leader>el :Errors<cr>
+nnoremap <leader>er :SyntasticReset<cr>
+nnoremap <leader>et :SyntasticToggleMode<cr>
+
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
+
+let g:syntastic_elixir_checkers = ['elixir']
+" Some checkers have security issues and have to be manually enabled.
+let g:syntastic_enable_elixir_checker = 1
+
+let g:syntastic_javascript_checkers = ['eslint']
 
 "" EditorConfig
 
