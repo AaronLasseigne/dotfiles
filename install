@@ -12,6 +12,10 @@ done
 ln -sf "$current_dir/mine.zsh" ~/.oh-my-zsh/custom/mine.zsh
 ln -sf "$current_dir/mine.zsh-theme" ~/.oh-my-zsh/themes/mine.zsh-theme
 
+mkdir -p ~/.config
+ln -sf ~/.vim ~/.config/nvim
+ln -sf ~/.vimrc ~/.config/nvim/init.vim
+
 mkdir -p ~/.vim/colors
 ln -sf "$current_dir/my_colors.vim" ~/.vim/colors/my_colors.vim
 ln -sfh "$current_dir/snippets" ~/.vim/snippets
