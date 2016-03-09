@@ -84,7 +84,8 @@ let g:slime_target = "tmux"
 " colors
 set t_Co=256
 syntax enable
-colorscheme my_colors
+let g:zenburn_high_Contrast = 1
+colorscheme zenburn
 
 " show the tab line
 set showtabline=2

@@ -18,6 +18,7 @@ ln -sf ~/.vimrc ~/.config/nvim/init.vim
 
 mkdir -p ~/.vim/colors
 ln -sf "$current_dir/my_colors.vim" ~/.vim/colors/my_colors.vim
+ln -sf "$current_dir/zenburn.vim" ~/.vim/colors/zenburn.vim
 ln -sfh "$current_dir/snippets" ~/.vim/snippets
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
