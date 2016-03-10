@@ -266,7 +266,8 @@ let g:switch_mapping = "<leader>s"
 " additional definitions
 let g:switch_custom_definitions =
     \ [
-    \   ['to ', 'to_not ']
+    \   ['to ', 'to_not '],
+    \   ['const ', 'let ']
     \ ]
 
 """ Increment and Decrement
