@@ -1,6 +1,7 @@
 [user]
   name = Aaron Lasseigne
   email = aaron.lasseigne@gmail.com
+  signingkey = Aaron Lasseigne <aaron.lasseigne@gmail.com>
 [core]
   editor = vim
   pager = less -inSFX
@@ -43,3 +44,5 @@
   autocorrect = 1
 [stash]
   showPatch = true
+[commit]
+  gpgsign = true
