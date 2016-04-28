@@ -3,7 +3,6 @@
   email = aaron.lasseigne@gmail.com
   signingkey = Aaron Lasseigne <aaron.lasseigne@gmail.com>
 [core]
-  editor = vim
   pager = less -inSFX
 	excludesfile = ~/.gitignore_global
 [color]
