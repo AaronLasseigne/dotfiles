@@ -1,7 +1,7 @@
 # install plugins
 set plugins segment
 for plugin in $plugins
-  if [ (fisher ls | grep $plugin) ]
+  if [ -z (fisher ls | grep $plugin) ]
     fisher $plugin
   end
 end
