@@ -43,6 +43,13 @@ for file in \.*; do
   fi
 done
 
+# copy fish config
+mkdir -p ~/.config/fish/functions
+for file in config/fish/functions/*; do
+  file_name=$(echo -n $file | sed "s#config/fish/functions/##")
+  ln -sf "$current_dir/$file" "~/.config/fish/functions/$file_name"
+done
+
 mkdir -p ~/.config
 ln -sf ~/.vim ~/.config/nvim
 ln -sf ~/.vimrc ~/.config/nvim/init.vim
