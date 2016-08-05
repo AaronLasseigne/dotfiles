@@ -44,6 +44,8 @@ for file in config/fish/functions/*; do
   file_name=$(echo -n $file | sed "s#config/fish/functions/##")
   ln -sf "$current_dir/$file" ~/.config/fish/functions/$file_name
 done
+# fzf completion
+/usr/local/opt/fzf/install
 
 # copy dot files to home dir
 for file in \.*; do
