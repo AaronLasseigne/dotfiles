@@ -4,7 +4,7 @@ function fish_prompt --description 'My custom prompt'
   # in a git directory
   if [ (git rev-parse --show-toplevel ^/dev/null) ]
     set dirty_flag;
-    if [ (git status --porcelain) ]
+    if [ (git status --porcelain | head -n1) ]
       set dirty_flag '+ '
     end
 
