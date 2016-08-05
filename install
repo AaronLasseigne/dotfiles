@@ -1,16 +1,47 @@
 #!/bin/bash
 
+# install homebrew
+if [ -z "$(which brew)" ]; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# install basic programs
+programs=(
+  fish
+  fzf
+  git
+  hub
+  neovim
+  the_silver_searcher
+  tig
+  tmux
+  wget
+)
+for program in ${programs[@]}; do
+  if [ -z "$(brew list | grep $program)" ]; then
+    brew install $program
+  fi
+done
+if [ -z "$(which mux)" ]; then
+  gem install tmuxinator
+fi
+
+# change to fish shell
+if [ "$SHELL" -ne "/usr/local/bin/fish" ]; then
+  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+  chsh -s /usr/local/bin/fish
+  fish_update_completions
+fi
+
 current_dir=`pwd`
-# copy files to home dir
+
+# copy dot files to home dir
 for file in \.*; do
   # skip .git, . and ..
   if [[ "${file}" != '.git' && "${file}" != '.gitignore' && "${file}" != '.' && "${file}" != '..' ]]; then
     ln -sf "$current_dir/$file" ~/$file
   fi
 done
-
-ln -sf "$current_dir/mine.zsh" ~/.oh-my-zsh/custom/mine.zsh
-ln -sf "$current_dir/mine.zsh-theme" ~/.oh-my-zsh/themes/mine.zsh-theme
 
 mkdir -p ~/.config
 ln -sf ~/.vim ~/.config/nvim
@@ -28,5 +59,3 @@ mkdir -p ~/bin
 ln -sf "$current_dir/bin/cb" ~/bin/cb
 ln -sf "$current_dir/bin/tmux_battery_charge_indicator.sh" ~/bin/tmux_battery_charge_indicator.sh
 ln -sf "$current_dir/bin/hcp" ~/bin/hcp
-
-ln -sfh "$current_dir/.hammerspoon" ~/.hammerspoon
