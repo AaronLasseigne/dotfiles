@@ -12,4 +12,4 @@ if [ (which rbenv) ]
   status --is-interactive; and . (rbenv init -|psub)
 end
 
-set PATH /usr/local/bin $PATH
+set PATH ~/bin $PATH
