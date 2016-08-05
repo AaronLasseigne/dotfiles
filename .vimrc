@@ -1,3 +1,6 @@
+"" vim and fish do not always get along
+set shell=/bin/bash
+
 "" Vundle
 set nocompatible
 filetype off
