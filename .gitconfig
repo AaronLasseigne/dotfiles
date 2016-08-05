@@ -35,6 +35,7 @@
   sa = stash apply
   sd = stash drop
   search = log -m -S
+  e = edit
 [diff]
   noprefix = true
   renames = copies
