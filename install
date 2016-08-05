@@ -49,7 +49,7 @@ done
 for file in \.*; do
   # skip .git, . and ..
   if [[ "${file}" != '.git' && "${file}" != '.gitignore' && "${file}" != '.' && "${file}" != '..' ]]; then
-    ln -sf "$current_dir/$file" ~/$file
+    ln -sfh "$current_dir/$file" ~/$file
   fi
 done
 
