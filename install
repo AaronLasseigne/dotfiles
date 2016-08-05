@@ -1,8 +1,10 @@
 #!/bin/bash
 
+current_dir=`pwd`
+
 # install homebrew
 if [ -z "$(which brew)" ]; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # install basic programs
@@ -27,13 +29,21 @@ if [ -z "$(which mux)" ]; then
 fi
 
 # change to fish shell
-if [ "$SHELL" -ne "/usr/local/bin/fish" ]; then
+if [ "$SHELL" != "/usr/local/bin/fish" ]; then
   echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
   chsh -s /usr/local/bin/fish
-  fish_update_completions
 fi
-
-current_dir=`pwd`
+# install fisherman
+mkdir -p ~/.config/fish/functions
+if [ ! -f ~/.config/fish/functions/fisher.fish ]; then
+  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+fi
+# copy fish config
+ln -sf "$current_dir/config/fish/config.fish" ~/.config/fish/config.fish
+for file in config/fish/functions/*; do
+  file_name=$(echo -n $file | sed "s#config/fish/functions/##")
+  ln -sf "$current_dir/$file" ~/.config/fish/functions/$file_name
+done
 
 # copy dot files to home dir
 for file in \.*; do
@@ -41,13 +51,6 @@ for file in \.*; do
   if [[ "${file}" != '.git' && "${file}" != '.gitignore' && "${file}" != '.' && "${file}" != '..' ]]; then
     ln -sf "$current_dir/$file" ~/$file
   fi
-done
-
-# copy fish config
-mkdir -p ~/.config/fish/functions
-for file in config/fish/functions/*; do
-  file_name=$(echo -n $file | sed "s#config/fish/functions/##")
-  ln -sf "$current_dir/$file" "~/.config/fish/functions/$file_name"
 done
 
 mkdir -p ~/.config
