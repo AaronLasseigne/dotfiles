@@ -1,3 +1,5 @@
+set -U EDITOR nvim
+
 # install plugins
 set plugins segment
 for plugin in $plugins
