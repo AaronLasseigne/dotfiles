@@ -1,14 +1,9 @@
 "" vim and fish do not always get along
 set shell=/bin/bash
 
-"" Vundle
-set nocompatible
-filetype off
+"" Plug
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.config/nvim/plugged')
 
 "" Core
 
@@ -52,9 +47,9 @@ imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 " clean whitespace
 map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-Plugin 'matchit.zip' " more complete '%' matching
+Plug 'matchit.zip' " more complete '%' matching
 
-Plugin 'Shougo/neocomplcache.vim' " completion as you type
+Plug 'Shougo/neocomplcache.vim' " completion as you type
 
 " turn it on
 let g:neocomplcache_enable_at_startup = 1
@@ -78,7 +73,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
-Plugin 'jpalardy/vim-slime' " send text from vim to a tmux window (usually a repl)
+Plug 'jpalardy/vim-slime' " send text from vim to a tmux window (usually a repl)
 
 let g:slime_target = "tmux"
 
@@ -117,8 +112,8 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " always show the status line
 set laststatus=2
@@ -160,7 +155,7 @@ set cindent
 " stop comment indenting
 set cinkeys-=0#
 
-Plugin 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -176,7 +171,7 @@ map <leader>a: gaip:
 " copy text to the OS clipboard
 set clipboard=unnamed
 
-Plugin 'maxbrunsfeld/vim-yankstack'
+Plug 'maxbrunsfeld/vim-yankstack'
 
 let g:yankstack_map_keys = 0
 nmap <C-p> <Plug>yankstack_substitute_older_paste
@@ -208,7 +203,7 @@ nmap g# g#z
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
 let g:ag_prg="ag --noheading --nocolor --nogroup --column --nobreak"
 
@@ -221,9 +216,9 @@ nnoremap <silent> <leader>?h :execute "Ag! --html '" . substitute(substitute(sub
 " Ag over JavaScript files for the last search.
 nnoremap <silent> <leader>?j :execute "Ag! --js '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
-Plugin 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
+Plug 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
 
-Plugin 'ctrlpvim/ctrlp.vim' " file searching
+Plug 'ctrlpvim/ctrlp.vim' " file searching
 
 " ignore stuff when searching
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*,*/_site/*,*/node_modules/*,*/target/*
@@ -256,13 +251,13 @@ nmap <C-K> :cprevious<CR>
 
 "" Editing Toggles
 
-Plugin 'tpope/vim-repeat' " adds '.' support for surround and speeddating
+Plug 'tpope/vim-repeat' " adds '.' support for surround and speeddating
 
-Plugin 'tpope/vim-surround' " change surrounding stuff (parens, quotes, tags, etc)
+Plug 'tpope/vim-surround' " change surrounding stuff (parens, quotes, tags, etc)
 
-Plugin 'tpope/vim-commentary' " easily add/remove commenting
+Plug 'tpope/vim-commentary' " easily add/remove commenting
 
-Plugin 'AndrewRadev/switch.vim' " alternate between items in a predefined list (e.g. true, false)
+Plug 'AndrewRadev/switch.vim' " alternate between items in a predefined list (e.g. true, false)
 
 let g:switch_mapping = "<leader>s"
 
@@ -279,13 +274,13 @@ let g:switch_custom_definitions =
 nnoremap + <C-a>
 nnoremap - <C-x>
 
-Plugin 'tpope/vim-speeddating' " improved support
+Plug 'tpope/vim-speeddating' " improved support
 
 "" Typing Assistants
 
-Plugin 'jiangmiao/auto-pairs' " automatically adds closing paren, quote, etc
+Plug 'jiangmiao/auto-pairs' " automatically adds closing paren, quote, etc
 
-Plugin 'Shougo/neosnippet.vim' " expandable snippets
+Plug 'Shougo/neosnippet.vim' " expandable snippets
 
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 set completeopt-=preview
@@ -295,7 +290,7 @@ set completeopt-=preview
 " add spell checking to git commit messages
 autocmd Filetype gitcommit setlocal spell
 
-Plugin 'tpope/vim-fugitive' " support for git
+Plug 'tpope/vim-fugitive' " support for git
 
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gD :diffoff!<cr><c-w>h:bd<cr>
@@ -310,7 +305,7 @@ nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove
 nnoremap <leader>gr :Gremove<cr>
 
-Plugin 'int3/vim-extradite' " plugin for fugitive that provides tig like interface
+Plug 'int3/vim-extradite' " plugin for fugitive that provides tig like interface
 
 nnoremap <leader>gl :Extradite<cr>
 
@@ -320,12 +315,12 @@ nnoremap <leader>gl :Extradite<cr>
 
 autocmd FileType eruby set filetype=eruby.html.javascript
 
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-endwise' " adds 'end' to Ruby blocks
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise' " adds 'end' to Ruby blocks
 
 """" Rails
 
-Plugin 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 
 " open in a new tab
 map gn <C-W>gf
@@ -335,7 +330,7 @@ map go gf
 
 """ Elixir
 
-Plugin 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir'
 
 " run code
 nmap <Leader>ec :!elixir %<CR>
@@ -345,7 +340,7 @@ nmap <Leader>mt :!mix test<CR>
 
 """ Clojure
 
-Plugin 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-static'
 
 """ F#
 
@@ -354,7 +349,7 @@ autocmd FileType fsharp setlocal commentstring=//\ %s
 
 """ JavaScript
 
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
 autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
@@ -367,15 +362,15 @@ autocmd FileType scss set filetype=css
 
 """ Markdown
 
-Plugin 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 
 let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
 
-Plugin 'reedes/vim-wordy'
+Plug 'reedes/vim-wordy'
 
 "" Linting
 
-Plugin 'scrooloose/syntastic' " syntax checking
+Plug 'scrooloose/syntastic' " syntax checking
 
 nnoremap <leader>el :Errors<cr>
 nnoremap <leader>er :SyntasticReset<cr>
@@ -392,11 +387,10 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 "" EditorConfig
 
-Plugin 'editorconfig/editorconfig-vim' " generic per project editor configs
+Plug 'editorconfig/editorconfig-vim' " generic per project editor configs
 
 " don't mess with Fugitive or remote files
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-"" Vundle
-call vundle#end()
-filetype plugin indent on
+"" Plug
+call plug#end()

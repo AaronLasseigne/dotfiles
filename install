@@ -38,7 +38,6 @@ if [ "$SHELL" != "/usr/local/bin/fish" ]; then
   chsh -s /usr/local/bin/fish
 fi
 # install fisherman
-mkdir -p ~/.config/fish/functions
 if [ ! -f ~/.config/fish/functions/fisher.fish ]; then
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 fi
@@ -53,9 +52,8 @@ mkdir -p ~/.config/nvim
 for file in $(ls "$current_dir/config/nvim"); do
   ln -sfh "$current_dir/config/nvim/$file" ~/.config/nvim
 done
-mkdir -p ~/.config/nvim/bundle
-if [ ! -d ~/.config/nvim/bundle/Vundle.vim ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # copy dot files to home dir
