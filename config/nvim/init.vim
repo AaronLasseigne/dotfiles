@@ -5,7 +5,7 @@ set shell=/bin/bash
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -287,7 +287,7 @@ Plugin 'jiangmiao/auto-pairs' " automatically adds closing paren, quote, etc
 
 Plugin 'Shougo/neosnippet.vim' " expandable snippets
 
-let g:neosnippet#snippets_directory = '~/.vim/snippets'
+let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 set completeopt-=preview
 
 "" Version Control
@@ -370,6 +370,8 @@ autocmd FileType scss set filetype=css
 Plugin 'tpope/vim-markdown'
 
 let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
+
+Plugin 'reedes/vim-wordy'
 
 "" Linting
 

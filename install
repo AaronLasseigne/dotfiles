@@ -23,7 +23,7 @@ for program in ${programs[@]}; do
   if [ -z "$(brew list | grep $program)" ]; then
     brew install $program
 
-    if [ "$program" ==  "fzf" ]; then
+    if [ "$program" == "fzf" ]; then
       /usr/local/opt/fzf/install
     fi
   fi
@@ -44,10 +44,19 @@ if [ ! -f ~/.config/fish/functions/fisher.fish ]; then
 fi
 # copy fish config
 ln -sf "$current_dir/config/fish/config.fish" ~/.config/fish/config.fish
-for file in config/fish/functions/*; do
-  file_name=$(echo -n $file | sed "s#config/fish/functions/##")
-  ln -sf "$current_dir/$file" ~/.config/fish/functions/$file_name
+for file in $(ls config/fish/functions); do
+  ln -sf "$current_dir/config/fish/functions/$file" ~/.config/fish/functions/$file_name
 done
+
+# neovim
+mkdir -p ~/.config/nvim
+for file in $(ls "$current_dir/config/nvim"); do
+  ln -sfh "$current_dir/config/nvim/$file" ~/.config/nvim
+done
+mkdir -p ~/.config/nvim/bundle
+if [ ! -d ~/.config/nvim/bundle/Vundle.vim ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+fi
 
 # copy dot files to home dir
 for file in \.*; do
@@ -56,18 +65,6 @@ for file in \.*; do
     ln -sfh "$current_dir/$file" ~/$file
   fi
 done
-
-mkdir -p ~/.config
-ln -sf ~/.vim ~/.config/nvim
-ln -sf ~/.vimrc ~/.config/nvim/init.vim
-
-mkdir -p ~/.vim/colors
-ln -sf "$current_dir/zenburn.vim" ~/.vim/colors/zenburn.vim
-ln -sfh "$current_dir/snippets" ~/.vim/snippets
-mkdir -p ~/.vim/bundle
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
 
 mkdir -p ~/bin
 for file in bin/*; do
