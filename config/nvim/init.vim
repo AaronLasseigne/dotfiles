@@ -315,12 +315,12 @@ nnoremap <leader>gl :Extradite<cr>
 
 autocmd FileType eruby set filetype=eruby.html.javascript
 
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise' " adds 'end' to Ruby blocks
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'tpope/vim-endwise', { 'for': 'ruby' } " adds 'end' to Ruby blocks
 
 """" Rails
 
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
 " open in a new tab
 map gn <C-W>gf
@@ -330,7 +330,7 @@ map go gf
 
 """ Elixir
 
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir' " something causes 'for' to not work with markdown
 
 " run code
 nmap <Leader>ec :!elixir %<CR>
@@ -340,7 +340,7 @@ nmap <Leader>mt :!mix test<CR>
 
 """ Clojure
 
-Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 
 """ F#
 
@@ -349,7 +349,7 @@ autocmd FileType fsharp setlocal commentstring=//\ %s
 
 """ JavaScript
 
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
 autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
 autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
@@ -362,11 +362,11 @@ autocmd FileType scss set filetype=css
 
 """ Markdown
 
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
 let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
 
-Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-wordy', { 'for': 'markdown' }
 
 "" Linting
 
@@ -393,4 +393,5 @@ Plug 'editorconfig/editorconfig-vim' " generic per project editor configs
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 "" Plug
+
 call plug#end()
