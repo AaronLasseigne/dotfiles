@@ -358,6 +358,7 @@ Plugin 'pangloss/vim-javascript'
 
 autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
 autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
+autocmd BufNewFile,BufReadPost *.hbs set filetype=html.javascript
 
 """ CSS
 
