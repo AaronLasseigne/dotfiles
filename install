@@ -14,7 +14,7 @@ programs=(
   git
   hub
   neovim
-  the_silver_searcher
+  ripgrep
   tig
   tmux
   wget
