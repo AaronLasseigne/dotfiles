@@ -18,6 +18,58 @@ function bindKey(key, fn)
   hs.hotkey.bind({"cmd", "ctrl"}, key, fn)
 end
 
+function bindLoneModifierKey(modName, modifiers, key)
+  modToCode = {
+    ['left shift'] = 56,
+    ['ctrl'] = 59,
+    ['right shift'] = 60
+  }
+  codeToMod = {
+    [56] = 'shift', -- left
+    [59] = 'ctrl',
+    [60] = 'shift' -- right
+  }
+
+  displayLoneTap = null
+  locked = false
+
+  hs.caffeinate.watcher.new(function(eventType)
+    if eventType == hs.caffeinate.watcher.screensDidLock then
+      locked = true
+      displayLoneTap = null
+    end
+    if eventType == hs.caffeinate.watcher.screensDidUnlock then
+      locked = false
+      displayLoneTap = null
+    end
+  end):start()
+
+  hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(eventType)
+    displayLoneTap = null
+  end):start()
+
+  hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(eventType)
+    if locked then
+      return
+    end
+
+    keyCode = eventType:getKeyCode()
+
+    pressedDown = eventType:getFlags()[codeToMod[keyCode]]
+    if pressedDown then
+      displayLoneTap = keyCode
+    else
+      if keyCode == modToCode[modName] and keyCode == displayLoneTap then
+        hs.eventtap.keyStroke(modifiers, key)
+        displayLoneTap = null
+      end
+    end
+  end):start()
+end
+bindLoneModifierKey('ctrl', {}, 'escape')
+bindLoneModifierKey('left shift', {'shift'}, '9')
+bindLoneModifierKey('right shift', {'shift'}, '0')
+
 positions = {
   maximized = hs.layout.maximized,
   centered = {x=0.15, y=0.15, w=0.7, h=0.7},
