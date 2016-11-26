@@ -11,7 +11,6 @@ end
 
 # for rbenv
 if [ (which rbenv) ]
-  set PATH /usr/local/opt/rbenv/shims /usr/local/opt/rbenv/bin $PATH
   status --is-interactive; and . (rbenv init -|psub)
 end
 
