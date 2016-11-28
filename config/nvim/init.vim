@@ -28,9 +28,6 @@ set backspace=indent,eol,start
 " sudo write
 ca w!! w !sudo tee >/dev/null "%"
 
-" arg!
-map <F1> <ESC>
-
 " new
 map <F4> :tabe<CR>
 
