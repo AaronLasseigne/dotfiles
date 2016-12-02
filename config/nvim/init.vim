@@ -214,18 +214,18 @@ map <silent> <leader>t :FzfWindows<CR>
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 
-Plug 'rking/ag.vim'
+Plug 'jremmen/vim-ripgrep'
 
-let g:ag_prg="rg --vimgrep"
+let g:rg_derive_root=1
 
-" Ag for the last search.
-nnoremap <silent> <leader>? :execute "Ag! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ag over Ruby files for the last search.
-nnoremap <silent> <leader>?r :execute "Ag! -truby '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ag over HTML files for the last search.
-nnoremap <silent> <leader>?h :execute "Ag! -thtml '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
-" Ag over JavaScript files for the last search.
-nnoremap <silent> <leader>?j :execute "Ag! -tjs '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Rg for the last search.
+nnoremap <silent> <leader>? :execute "Rg '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Rg over Ruby files for the last search.
+nnoremap <silent> <leader>?r :execute "Rg -truby '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Rg over HTML files for the last search.
+nnoremap <silent> <leader>?h :execute "Rg -thtml '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
+" Rg over JavaScript files for the last search.
+nnoremap <silent> <leader>?j :execute "Rg -tjs '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
 Plug 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
 
