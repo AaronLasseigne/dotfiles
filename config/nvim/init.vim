@@ -197,6 +197,25 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#z
 
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+
+let g:fzf_command_prefix = 'Fzf'
+
+" file search
+map <silent> <leader>f :FzfFiles<CR>
+
+" MRU search
+map <silent> <leader>r :FzfHistory<CR>
+
+" buffer search
+map <silent> <leader>b :FzfBuffers<CR>
+
+" mark search
+map <silent> <leader>m :FzfMarks<CR>
+
+" git status search
+map <silent> <leader>g :FzfGFiles?<CR>
+
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 
@@ -215,31 +234,31 @@ nnoremap <silent> <leader>?j :execute "Ag! -tjs '" . substitute(substitute(subst
 
 Plug 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
 
-Plug 'ctrlpvim/ctrlp.vim' " file searching
+" Plug 'ctrlpvim/ctrlp.vim' " file searching
 
 " ignore stuff when searching
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*,*/_site/*,*/node_modules/*,*/target/*
+" set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*,*/_site/*,*/node_modules/*,*/target/*
 
 " map the search command
-let g:ctrlp_map = '<leader>t'
+" let g:ctrlp_map = '<leader>t'
 
 " map MRU search command
-map <leader>r :CtrlPMRU<CR>
+" map <leader>r :CtrlPMRU<CR>
 
 " map buffers search command
-map <leader>b :CtrlPBuffer<CR>
+" map <leader>b :CtrlPBuffer<CR>
 
 " max MRU files to remember
-let g:ctrlp_mruf_max = 15
+" let g:ctrlp_mruf_max = 15
 
 " allow more than one file to be opened at a time
-let g:ctrlp_open_multi = '1t'
+" let g:ctrlp_open_multi = '1t'
 
 " increase the max height
-let g:ctrlp_max_height = 20
+" let g:ctrlp_max_height = 20
 
 " enable cache between sessions (reset with F5 in a search)
-let g:ctrlp_clear_cache_on_exit = 0
+" let g:ctrlp_clear_cache_on_exit = 0
 
 "" Quickfix
 
