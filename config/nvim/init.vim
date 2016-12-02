@@ -208,6 +208,9 @@ map <silent> <leader>m :FzfMarks<CR>
 " git status search
 map <silent> <leader>g :FzfGFiles?<CR>
 
+" window/tab search
+map <silent> <leader>t :FzfWindows<CR>
+
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 
