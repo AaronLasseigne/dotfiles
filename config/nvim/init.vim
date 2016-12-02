@@ -62,14 +62,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
 Plug 'jpalardy/vim-slime' " send text from vim to a tmux window (usually a repl)
 
 let g:slime_target = "tmux"
@@ -296,11 +288,6 @@ Plug 'tpope/vim-speeddating' " improved support
 "" Typing Assistants
 
 Plug 'jiangmiao/auto-pairs' " automatically adds closing paren, quote, etc
-
-Plug 'Shougo/neosnippet.vim' " expandable snippets
-
-let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
-set completeopt-=preview
 
 "" Version Control
 
