@@ -27,7 +27,7 @@ for program in ${programs[@]}; do
     fi
   fi
 done
-if [ -z "$(which neovim)" ]; then
+if [ -z "$(brew list || grep neovim)" ]; then
   brew install neovim/neovim/neovim
 fi
 if [ -z "$(which mux)" ]; then
