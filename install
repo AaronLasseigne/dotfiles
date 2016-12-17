@@ -13,7 +13,6 @@ programs=(
   fzf
   git
   hub
-  neovim
   ripgrep
   tig
   tmux
@@ -28,6 +27,9 @@ for program in ${programs[@]}; do
     fi
   fi
 done
+if [ -z "$(which neovim)" ]; then
+  brew install neovim/neovim/neovim
+fi
 if [ -z "$(which mux)" ]; then
   gem install tmuxinator
 fi
