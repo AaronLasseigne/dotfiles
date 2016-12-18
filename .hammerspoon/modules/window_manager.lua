@@ -145,8 +145,11 @@ hs.fnutils.each(grid, function(entry)
     hs.fnutils.find(units, function(unit)
       index = index + 1
 
-      local geo = hs.geometry.new(unit):fromUnitRect(screen:frame()):floor()
-      return windowGeo:equals(geo)
+      local geo = screen:fromUnitRect(unit)
+      -- sometimes the screen reports slightly larger than the usable space
+      local geoWithWiggle = hs.geometry.copy(geo)
+      geoWithWiggle.h = geoWithWiggle.h - 1
+      return windowGeo:equals(geo) or windowGeo:equals(geoWithWiggle)
     end)
     if index == #units then index = 0 end
 
