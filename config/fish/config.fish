@@ -1,5 +1,5 @@
 set -U EDITOR 'nvim -p'
-set -U FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+set -U FZF_DEFAULT_COMMAND 'rg --smart-case --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # install plugins
 set plugins segment
