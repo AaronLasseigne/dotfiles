@@ -1,3 +1,3 @@
 #!/usr/bin/env fish
 
-git status --porcelain | awk '{ print $2 }' | fzf --select-1 --exit-0 | fish -c "xargs $EDITOR"
+git status --porcelain | awk '{ print $2 }' | eval "fzf --select-1 --exit-0 $FZF_DEFAULT_OPTS" | eval "xargs $EDITOR"
