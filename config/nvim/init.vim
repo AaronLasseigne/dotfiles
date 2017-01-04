@@ -1,6 +1,11 @@
 "" vim and fish do not always get along
 set shell=/bin/bash
 
+"" Python
+
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 "" Plug
 
 call plug#begin('~/.config/nvim/plugged')
@@ -46,13 +51,13 @@ map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 Plug 'matchit.zip' " more complete '%' matching
 
-Plug 'Shougo/neocomplcache.vim' " completion as you type
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' } " completion as you type
 
 " turn it on
-let g:neocomplcache_enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 " only search case when an uppercase letter appears
-let g:neocomplcache_enable_smart_case = 1
+let g:deoplete#enable_smart_case = 1
 
 " add completion for various file types
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
