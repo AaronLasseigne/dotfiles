@@ -321,6 +321,8 @@ Plug 'int3/vim-extradite' " plugin for fugitive that provides tig like interface
 
 nnoremap <leader>gl :Extradite<cr>
 
+Plug 'airblade/vim-gitgutter'
+
 "" Languages
 
 """ Ruby
