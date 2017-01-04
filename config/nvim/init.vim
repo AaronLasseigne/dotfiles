@@ -168,11 +168,11 @@ nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
 "" Search
 
-" find as you type
-set incsearch
+Plug 'haya14busa/incsearch.vim'
 
-" highlight matches
-set hlsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " clear search highlighting
 noremap <silent><leader>cs :nohls<CR>
