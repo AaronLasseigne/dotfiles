@@ -197,6 +197,7 @@ nmap g# g#z
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 let g:fzf_command_prefix = 'Fzf'
+let g:fzf_files_options = '--preview "begin; cat {}; or tree -C {}; end 2> /dev/null | head -200"'
 
 " file search
 map <silent> <leader>f :FzfFiles<CR>
@@ -221,7 +222,8 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 
 Plug 'jremmen/vim-ripgrep'
 
-let g:rg_derive_root=1
+let g:rg_derive_root = 1
+let g:rg_command = "rg --vimgrep --type-add 'css:*.{scss,sass}' --smart-case $argv"
 
 " Rg for the last search.
 nnoremap <silent> <leader>? :execute "Rg '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
