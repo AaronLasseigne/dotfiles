@@ -51,7 +51,7 @@ map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 Plug 'matchit.zip' " more complete '%' matching
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' } " completion as you type
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion as you type
 
 " turn it on
 let g:deoplete#enable_at_startup = 1
