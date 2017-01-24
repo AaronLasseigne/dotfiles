@@ -27,6 +27,10 @@ for program in ${programs[@]}; do
     fi
   fi
 done
+# shims FTW
+if [ -z "$(which reattach-to-user-namespace)" ]; then
+  brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
+fi
 if [ -z "$(brew list || grep neovim)" ]; then
   brew install neovim/neovim/neovim
 fi
