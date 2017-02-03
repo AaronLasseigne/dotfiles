@@ -332,11 +332,13 @@ Plug 'airblade/vim-gitgutter'
 
 "" Languages
 
+Plug 'sheerun/vim-polyglot'
+" let g:polyglot_disabled = ['markdown']
+
 """ Ruby
 
 autocmd FileType eruby set filetype=eruby.html.javascript
 
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise', { 'for': 'ruby' } " adds 'end' to Ruby blocks
 
 """" Rails
@@ -351,17 +353,11 @@ map go gf
 
 """ Elixir
 
-Plug 'elixir-lang/vim-elixir' " something causes 'for' to not work with markdown
-
 " run code
 nmap <Leader>ec :!elixir %<CR>
 
 " run mix tasks
 nmap <Leader>mt :!mix test<CR>
-
-""" Clojure
-
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 
 """ F#
 
@@ -369,8 +365,6 @@ autocmd BufNewFile,BufReadPost *.fsx\= set filetype=fsharp
 autocmd FileType fsharp setlocal commentstring=//\ %s
 
 """ JavaScript
-
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
 autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
 autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
@@ -382,10 +376,6 @@ autocmd FileType sass set filetype=css
 autocmd FileType scss set filetype=css
 
 """ Markdown
-
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-
-let g:markdown_fenced_languages = ['clojure', 'diff', 'elixir', 'javascript', 'lua', 'ruby', 'sh']
 
 Plug 'reedes/vim-wordy', { 'for': 'markdown' }
 
