@@ -241,32 +241,6 @@ nnoremap <silent> <leader>?j :execute "Rg -tjs '" . substitute(substitute(substi
 
 Plug 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
 
-" Plug 'ctrlpvim/ctrlp.vim' " file searching
-
-" ignore stuff when searching
-" set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*/doc/*,*/_site/*,*/node_modules/*,*/target/*
-
-" map the search command
-" let g:ctrlp_map = '<leader>t'
-
-" map MRU search command
-" map <leader>r :CtrlPMRU<CR>
-
-" map buffers search command
-" map <leader>b :CtrlPBuffer<CR>
-
-" max MRU files to remember
-" let g:ctrlp_mruf_max = 15
-
-" allow more than one file to be opened at a time
-" let g:ctrlp_open_multi = '1t'
-
-" increase the max height
-" let g:ctrlp_max_height = 20
-
-" enable cache between sessions (reset with F5 in a search)
-" let g:ctrlp_clear_cache_on_exit = 0
-
 "" Quickfix
 
 nmap <C-J> :cnext<CR>
