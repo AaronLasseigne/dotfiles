@@ -298,9 +298,11 @@ nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove
 nnoremap <leader>gr :Gremove<cr>
 
-Plug 'int3/vim-extradite' " plugin for fugitive that provides tig like interface
 
-nnoremap <leader>gl :Extradite<cr>
+Plug 'junegunn/gv.vim'
+
+nnoremap <leader>gl :GV!<cr>
+vnoremap <leader>gl :GV!<cr>
 
 Plug 'airblade/vim-gitgutter'
 
