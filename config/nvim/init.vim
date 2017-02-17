@@ -244,6 +244,7 @@ Plug 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
 
 nmap <C-J> :cnext<CR>
 nmap <C-K> :cprevious<CR>
+nmap <C-Q> :cclose<CR>
 
 "" Editing Toggles
 
