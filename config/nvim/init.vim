@@ -227,7 +227,7 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/gj %'<CR>:copen<CR>
 Plug 'jremmen/vim-ripgrep'
 
 let g:rg_derive_root = 1
-let g:rg_command = "rg --vimgrep $argv"
+let g:rg_command = "rg --vimgrep --smart-case $argv"
 
 " Rg for the last search.
 nnoremap <silent> <leader>? :execute "Rg '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
