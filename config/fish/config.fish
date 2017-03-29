@@ -10,4 +10,4 @@ for plugin in $plugins
   end
 end
 
-set PATH ~/bin $PATH
+set PATH ~/bin (yarn global bin) $PATH
