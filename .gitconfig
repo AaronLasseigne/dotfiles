@@ -47,3 +47,5 @@
   showPatch = true
 [commit]
   gpgsign = true
+[rerere]
+	enabled = true
