@@ -147,9 +147,9 @@ hs.fnutils.each(grid, function(entry)
 
       local geo = screen:fromUnitRect(unit)
       -- sometimes the screen reports slightly larger than the usable space
-      local geoWithWiggle = hs.geometry.copy(geo)
-      geoWithWiggle.h = geoWithWiggle.h - 1
-      return windowGeo:equals(geo) or windowGeo:equals(geoWithWiggle)
+      -- on iMac retina it the size might differ up to 5 pixels so simple equals won't work
+      -- we check that the centerd and left edge are close enough
+      return windowGeo:distance(geo) < 10 and math.abs(windowGeo.x - geo.x) < 1
     end)
     if index == #units then index = 0 end
 
