@@ -204,7 +204,7 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
 
 " file search
-map <silent> <leader>f :FzfFiles<CR>
+map <silent> <leader>f :FzfGFiles<CR>
 
 " MRU search
 map <silent> <leader>r :FzfHistory<CR>
