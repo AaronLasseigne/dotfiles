@@ -49,7 +49,7 @@ imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 " clean whitespace
 map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-Plug 'matchit.zip' " more complete '%' matching
+Plug 'vim-scripts/matchit.zip' " more complete '%' matching
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion as you type
 
