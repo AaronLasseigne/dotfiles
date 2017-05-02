@@ -82,6 +82,7 @@ nnoremap <leader>o :OnlineThesaurusCurrentWord<CR>
 set t_Co=256
 syntax enable
 let g:zenburn_high_Contrast = 1
+let g:zenburn_old_Visual = 1
 colorscheme zenburn
 
 " show the tab line
