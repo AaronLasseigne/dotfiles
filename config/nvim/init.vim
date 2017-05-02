@@ -306,6 +306,9 @@ vnoremap <leader>gl :GV!<cr>
 
 Plug 'airblade/vim-gitgutter'
 
+set updatetime=250
+let g:gitgutter_realtime = 1
+
 "" Languages
 
 Plug 'sheerun/vim-polyglot'
