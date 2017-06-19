@@ -47,5 +47,5 @@ function doubleBindModifierKey(modName, modifiers, key)
   end):start()
 end
 doubleBindModifierKey('ctrl', {}, 'escape')
-doubleBindModifierKey('left shift', {'shift'}, '9')
-doubleBindModifierKey('right shift', {'shift'}, '0')
+-- doubleBindModifierKey('left shift', {'shift'}, '9')
+-- doubleBindModifierKey('right shift', {'shift'}, '0')
