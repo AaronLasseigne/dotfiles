@@ -200,6 +200,9 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#z
 
+" make * and # work with the current visual selection
+Plug 'nelstrom/vim-visual-star-search'
+
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 let g:fzf_command_prefix = 'Fzf'
