@@ -252,6 +252,9 @@ nmap <C-Q> :cclose<CR>
 
 "" Editing Toggles
 
+Plug 'wellle/targets.vim' " adds lots of handy additional target options
+Plug 'michaeljsmith/vim-indent-object' " adds vii and vaI for targeting around indentation
+
 Plug 'tpope/vim-repeat' " adds '.' support for surround and speeddating
 
 Plug 'tpope/vim-surround' " change surrounding stuff (parens, quotes, tags, etc)
