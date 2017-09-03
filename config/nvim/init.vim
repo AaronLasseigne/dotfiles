@@ -374,6 +374,7 @@ nnoremap <leader>er :SyntasticReset<cr>
 nnoremap <leader>et :SyntasticToggleMode<cr>
 
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_rubocop_exe = 'bundle exec rubocop'
 let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
 
 let g:syntastic_elixir_checkers = ['elixir']
