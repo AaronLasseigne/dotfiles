@@ -163,8 +163,9 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-map <leader>a= gaip=
-map <leader>a: gaip:
+" using vii from vim-indent-object
+map <leader>a= viigaip=
+map <leader>a: viigaip:
 
 "" Cut, Copy, and Paste
 
