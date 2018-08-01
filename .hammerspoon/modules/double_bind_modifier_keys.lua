@@ -10,42 +10,27 @@ function doubleBindModifierKey(modName, modifiers, key)
     [60] = 'shift' -- right
   }
 
-  local displayLoneTap = null
-  local locked = false
+  local ms_wait = 150
+  local ns_wait = ms_wait * 1000000
 
-  hs.caffeinate.watcher.new(function(eventType)
-    if eventType == hs.caffeinate.watcher.screensDidLock then
-      locked = true
-      displayLoneTap = null
-    end
-    if eventType == hs.caffeinate.watcher.screensDidUnlock then
-      locked = false
-      displayLoneTap = null
-    end
-  end):start()
-
-  hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(eventType)
-    displayLoneTap = null
-  end):start()
-
+  local keyDownAt = 0
   hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(eventType)
-    if locked then
-      return
+    local keyCode = modToCode[modName]
+
+    if eventType:getKeyCode() ~= keyCode then
+      return false
     end
 
-    keyCode = eventType:getKeyCode()
-
-    pressedDown = eventType:getFlags()[codeToMod[keyCode]]
-    if pressedDown then
-      displayLoneTap = keyCode
+    keyDown = eventType:getFlags()[codeToMod[keyCode]]
+    if keyDown then
+      keyDownAt = eventType:timestamp()
     else
-      if keyCode == modToCode[modName] and keyCode == displayLoneTap then
+      if (eventType:timestamp() - keyDownAt) <= ns_wait then
         hs.eventtap.keyStroke(modifiers, key)
-        displayLoneTap = null
       end
     end
   end):start()
 end
 doubleBindModifierKey('ctrl', {}, 'escape')
--- doubleBindModifierKey('left shift', {'shift'}, '9')
--- doubleBindModifierKey('right shift', {'shift'}, '0')
+doubleBindModifierKey('left shift', {'shift'}, '9')
+doubleBindModifierKey('right shift', {'shift'}, '0')
