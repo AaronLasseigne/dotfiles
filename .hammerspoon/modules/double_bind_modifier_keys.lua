@@ -1,17 +1,4 @@
 function doubleBindModifierKey(modName, modifiers, key)
-  local modToCode = {
-    ['left shift'] = 56,
-    ['ctrl'] = 59,
-    ['right shift'] = 60,
-    ['left ctrl'] = 62
-  }
-  local codeToMod = {
-    [56] = 'shift', -- left
-    [59] = 'ctrl',
-    [60] = 'shift', -- right
-    [62] = 'ctrl' -- caps lock remapped via the system
-  }
-
   local ms_wait = 150
   local ns_wait = ms_wait * 1000000
 
@@ -20,13 +7,14 @@ function doubleBindModifierKey(modName, modifiers, key)
     keyDownAt = 0
   end):start()
   hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(eventType)
-    local keyCode = modToCode[modName]
+    local keyCode = hs.keycodes.map[modName]
 
     if eventType:getKeyCode() ~= keyCode then
       return false
     end
 
-    keyDown = eventType:getFlags()[codeToMod[keyCode]]
+    local genericModName = modName:gsub("^right", "")
+    keyDown = eventType:getFlags()[genericModName]
     if keyDown then
       keyDownAt = eventType:timestamp()
     else
@@ -37,6 +25,6 @@ function doubleBindModifierKey(modName, modifiers, key)
   end):start()
 end
 doubleBindModifierKey('ctrl', {}, 'escape')
-doubleBindModifierKey('left ctrl', {}, 'escape')
-doubleBindModifierKey('left shift', {'shift'}, '9')
-doubleBindModifierKey('right shift', {'shift'}, '0')
+doubleBindModifierKey('rightctrl', {}, 'escape')
+doubleBindModifierKey('shift', {'shift'}, '9')
+doubleBindModifierKey('rightshift', {'shift'}, '0')
