@@ -30,7 +30,7 @@
   lpwa = "!sh -c 'git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" --author=\"$1\" && echo \"\"' -"
   bl = blame -w -M -C -C -C
   sl = stash list
-  ss = stash save
+  ss = stash push
   sp = stash pop --index
   sa = stash apply
   sd = stash drop
