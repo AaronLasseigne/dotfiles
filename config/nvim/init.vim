@@ -177,6 +177,12 @@ let g:yankstack_map_keys = 0
 nmap <C-p> <Plug>yankstack_substitute_older_paste
 nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
+" copy code to the OS clipboard
+
+Plug 'AaronLasseigne/yank-code'
+
+vmap <leader>y :YankCode<CR>
+
 "" Search
 
 Plug 'haya14busa/incsearch.vim'
