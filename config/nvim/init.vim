@@ -181,7 +181,7 @@ nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
 Plug 'AaronLasseigne/yank-code'
 
-vmap <leader>y :YankCode<CR>
+map <leader>y <plug>YankCode
 
 "" Search
 
