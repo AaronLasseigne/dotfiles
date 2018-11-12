@@ -3,10 +3,10 @@ set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.g
 set -x FZF_DEFAULT_OPTS '--preview "begin; cat {}; or tree -C {}; end 2> /dev/null | head -200"'
 
 # install plugins
-set plugins done imgcat rbenv segment
+set plugins 'franciscolourenco/done' 'daenney/rbenv' 'jorgebucaran/fish-segment'
 for plugin in $plugins
   if [ -z (fisher ls | grep $plugin) ]
-    fisher $plugin
+    fisher add $plugin
   end
 end
 
