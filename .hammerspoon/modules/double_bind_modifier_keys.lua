@@ -1,5 +1,5 @@
 function doubleBindModifierKey(modName, modifiers, key)
-  local ms_wait = 150
+  local ms_wait = 140
   local ns_wait = ms_wait * 1000000
 
   local keyDownAt = 0
