@@ -4,7 +4,7 @@
   signingkey = Aaron Lasseigne <aaron.lasseigne@gmail.com>
 [core]
   pager = less -inSFX
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = nvim
 [color]
   ui = true
@@ -34,7 +34,7 @@
   sp = stash pop --index
   sa = stash apply
   sd = stash drop
-  search = log -m -S
+  search = log -m --reverse -S
   e = edit
 [diff]
   noprefix = true
@@ -48,4 +48,4 @@
 [commit]
   gpgsign = true
 [rerere]
-	enabled = true
+  enabled = true
