@@ -330,7 +330,7 @@ Plug 'sheerun/vim-polyglot'
 
 """ Ruby
 
-autocmd FileType eruby set filetype=eruby.html.javascript
+autocmd FileType eruby set filetype=eruby.html
 
 Plug 'tpope/vim-endwise', { 'for': 'ruby' } " adds 'end' to Ruby blocks
 
@@ -374,21 +374,19 @@ Plug 'reedes/vim-wordy', { 'for': 'markdown' }
 
 "" Linting
 
-Plug 'scrooloose/syntastic' " syntax checking
+Plug 'w0rp/ale' " syntax checking
 
-nnoremap <leader>el :Errors<cr>
-nnoremap <leader>er :SyntasticReset<cr>
-nnoremap <leader>et :SyntasticToggleMode<cr>
+let g:ale_linters = { 'erb': [] }
 
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_ruby_rubocop_exe = 'bundle exec rubocop'
-let g:syntastic_ruby_rubocop_quiet_messages = { "level": [] }
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_ruby_rubocop_options = '-D'
 
-let g:syntastic_elixir_checkers = ['elixir']
-" Some checkers have security issues and have to be manually enabled.
-let g:syntastic_enable_elixir_checker = 1
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
 
-let g:syntastic_javascript_checkers = ['eslint']
+" nnoremap <leader>el :Errors<cr>
+nnoremap <leader>ed :ALEDetail<cr>
+nnoremap <leader>et :ALEToggle<cr>
 
 "" EditorConfig
 
