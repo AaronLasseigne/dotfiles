@@ -13,6 +13,7 @@ programs=(
   fzf
   git
   hub
+  neovim
   ripgrep
   terminal-notifier
   tig
@@ -31,12 +32,6 @@ done
 # shims FTW
 if [ -z "$(which reattach-to-user-namespace)" ]; then
   brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
-fi
-if [ -z "$(brew list || grep neovim)" ]; then
-  brew install neovim/neovim/neovim
-fi
-if [ -z "$(which mux)" ]; then
-  gem install tmuxinator
 fi
 
 # change to fish shell
