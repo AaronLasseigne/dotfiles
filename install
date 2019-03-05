@@ -17,6 +17,7 @@ programs=(
   ripgrep
   terminal-notifier
   tig
+  tree
   tmux
   wget
 )
