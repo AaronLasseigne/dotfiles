@@ -147,7 +147,8 @@ set shiftwidth=2
 set autoindent
 
 " indent automatically when needed
-set smartindent
+set autoindent
+filetype plugin indent on
 
 " turns on the C indentation standard
 set cindent
