@@ -71,11 +71,6 @@ Plug 'jpalardy/vim-slime' " send text from vim to a tmux window (usually a repl)
 
 let g:slime_target = "tmux"
 
-Plug 'beloglazov/vim-online-thesaurus'
-
-let g:online_thesaurus_map_keys = 0
-nnoremap <leader>o :OnlineThesaurusCurrentWord<CR>
-
 "" UI
 
 " colors
