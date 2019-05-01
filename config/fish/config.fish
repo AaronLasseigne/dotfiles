@@ -5,3 +5,4 @@ set -x RUBYMOTION_ANDROID_NDK '/Users/aaron/.rubymotion-android/ndk'
 set -x RUBYMOTION_ANDROID_SDK '/Users/aaron/.rubymotion-android/sdk'
 
 set PATH ~/bin (yarn global bin) $PATH
+source (brew --prefix asdf)/asdf.fish
