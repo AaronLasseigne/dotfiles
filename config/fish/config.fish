@@ -6,3 +6,5 @@ set -x RUBYMOTION_ANDROID_SDK '/Users/aaron/.rubymotion-android/sdk'
 
 source (brew --prefix asdf)/asdf.fish
 set PATH ~/bin (yarn global bin) $PATH
+# to put brew installs before system installs
+set -g fish_user_paths "/usr/local/bin" $fish_user_paths
