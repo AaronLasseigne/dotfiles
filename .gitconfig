@@ -18,7 +18,7 @@
   po = push origin
   l = pull
   lo = pull origin
-  lr = pull --rebase=preserve
+  lr = pull --rebase=merges
   d = diff
   dc = diff --cached
   dp = "!sh -c 'git d $1^..$1' -"
