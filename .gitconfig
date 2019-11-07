@@ -2,7 +2,7 @@
   name = Aaron Lasseigne
   email = aaron.lasseigne@gmail.com
 [core]
-  pager = less -inSFX
+  pager = diff-so-fancy | less -iSRFX
   excludesfile = ~/.gitignore_global
   editor = nvim
 [color]
