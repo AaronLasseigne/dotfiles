@@ -51,13 +51,10 @@ map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 Plug 'vim-scripts/matchit.zip' " more complete '%' matching
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion as you type
-
-" turn it on
-let g:deoplete#enable_at_startup = 1
-
-" only search case when an uppercase letter appears
-let g:deoplete#enable_smart_case = 1
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" :CocInstall coc-solargraph
+" :CocInstall coc-tsserver
+" :CocInstall coc-css
 
 " add completion for various file types
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -74,11 +71,7 @@ let g:slime_target = "tmux"
 "" UI
 
 " colors
-set t_Co=256
-syntax enable
-let g:zenburn_high_Contrast = 1
-let g:zenburn_old_Visual = 1
-colorscheme zenburn
+Plug 'morhetz/gruvbox'
 
 " show the tab line
 set showtabline=2
@@ -108,14 +101,16 @@ else
 endif
 
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+
+" enable coc support
+let g:airline#extensions#coc#enabled = 1
 
 " always show the status line
 set laststatus=2
 
 " make it look powerline esque
 let g:airline_powerline_fonts=1
-let g:airline_theme='powerlineish'
+let g:airline_theme='gruvbox'
 
 " pretty tabs
 let g:airline#extensions#tabline#enabled=1
@@ -273,7 +268,8 @@ let g:switch_custom_definitions =
     \ [
     \   ['to ', 'to_not '],
     \   ['const ', 'let '],
-    \   ['hide', 'show']
+    \   ['hide', 'show'],
+    \   ['TRUE', 'FALSE']
     \ ]
 
 """ Increment and Decrement
@@ -370,15 +366,12 @@ Plug 'reedes/vim-wordy', { 'for': 'markdown' }
 
 "" Linting
 
-Plug 'w0rp/ale' " syntax checking
+Plug 'dense-analysis/ale' " syntax checking
 
 let g:ale_linters = { 'erb': [] }
 
 let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_rubocop_options = '-D'
-
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
 
 " nnoremap <leader>el :Errors<cr>
 nnoremap <leader>ed :ALEDetail<cr>
@@ -394,3 +387,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 "" Plug
 
 call plug#end()
+
+" has to be here so gruvbox is loaded
+set termguicolors
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_light = "hard"
+colorscheme gruvbox
