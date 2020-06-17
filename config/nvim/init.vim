@@ -349,12 +349,6 @@ nmap <Leader>mt :!mix test<CR>
 autocmd BufNewFile,BufReadPost *.fsx\= set filetype=fsharp
 autocmd FileType fsharp setlocal commentstring=//\ %s
 
-""" JavaScript
-
-autocmd BufNewFile,BufReadPost *.es6 set filetype=javascript
-autocmd BufNewFile,BufReadPost *.jsx set filetype=javascript
-autocmd BufNewFile,BufReadPost *.hbs set filetype=html
-
 """ CSS
 
 autocmd FileType sass set filetype=css
