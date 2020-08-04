@@ -32,7 +32,7 @@
   sd = stash drop
   search = log -m --reverse -S
   e = edit
-  conflict = "!git diff --name-only --diff-filter=U | uniq | xargs $EDITOR"
+  conflicts = "!git diff --name-only --diff-filter=U | uniq | xargs $EDITOR"
   sw = switch
   re = restore
 [diff]
