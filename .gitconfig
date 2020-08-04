@@ -15,9 +15,7 @@
   st = status
   cp = cherry-pick
   p = push
-  po = push origin
   l = pull
-  lo = pull origin
   lr = pull --rebase=merges
   d = diff
   dc = diff --cached
@@ -27,7 +25,6 @@
   lpa = "!sh -c 'git lp --author=\"$1\"' -"
   lpw = "!git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" && echo ''"
   lpwa = "!sh -c 'git log --pretty=format:\"%Cred%h%Creset %ci %cn %Cgreen%s%Creset\" --since=\"8 days ago\" --author=\"$1\" && echo \"\"' -"
-  bl = blame -w -M -C -C -C
   sl = stash list
   ss = stash push
   sp = stash pop --index
