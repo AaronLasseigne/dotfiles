@@ -9,6 +9,7 @@ fi
 
 # install basic programs
 programs=(
+  asdf
   diff-so-fancy
   fish
   fzf
