@@ -6,4 +6,6 @@ source (brew --prefix asdf)/asdf.fish
 # to put brew installs before system installs
 set -g fish_user_paths "/usr/local/bin" "/usr/local/sbin" $fish_user_paths
 
-source ~/.config/fish/config.local.fish
+if test -e ~/.config/fish/config.local.fish
+  source ~/.config/fish/config.local.fish
+end
