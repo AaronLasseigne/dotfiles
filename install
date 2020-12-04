@@ -10,6 +10,7 @@ fi
 # install basic programs
 programs=(
   asdf
+  bat
   diff-so-fancy
   fish
   fzf
@@ -24,7 +25,7 @@ programs=(
   wget
 )
 for program in ${programs[@]}; do
-  if [ -z "$(brew list | grep $program)" ]; then
+  if [ -z "$(brew list --formula | grep $program)" ]; then
     brew install $program
 
     if [ "$program" == "fzf" ]; then
@@ -34,7 +35,7 @@ for program in ${programs[@]}; do
 done
 # shims FTW
 if [ -z "$(which reattach-to-user-namespace)" ]; then
-  brew install reattach-to-user-namespace --with-wrap-pbcopy-and-pbpaste
+  brew install reattach-to-user-namespace
 fi
 
 # change to fish shell
