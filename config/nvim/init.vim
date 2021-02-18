@@ -56,6 +56,11 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " :CocInstall coc-tsserver
 " :CocInstall coc-css
 
+nmap <leader>od <Plug>(coc-definition)
+nmap <leader>ot <Plug>(coc-type-definition)
+nmap <leader>oi <Plug>(coc-implementation)
+nmap <leader>or <Plug>(coc-references)
+
 " add completion for various file types
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
