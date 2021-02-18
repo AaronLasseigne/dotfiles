@@ -1,3 +1,3 @@
-function g --wraps 'git' --description 'Git'
+function g --wraps git --description 'git'
   hub $argv
 end

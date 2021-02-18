@@ -1,3 +1,3 @@
-function mkdir --description 'Make directories with intermediates'
+function mkdir --wraps mkdir --description 'Make directories with intermediates'
   command mkdir -p $argv
 end

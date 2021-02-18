@@ -1,3 +1,3 @@
-function df --description 'Display free disk space with human readable sizes'
+function df --wraps df --description 'Disk space with human readable output'
   command df -H $argv
 end
