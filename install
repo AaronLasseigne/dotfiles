@@ -53,6 +53,13 @@ for file in $(ls config/fish/functions); do
   ln -sf "$current_dir/config/fish/functions/$file" ~/.config/fish/functions/$file_name
 done
 
+# asdf
+if [ -z "$(asdf plugin list | grep direnv)" ]; then
+  asdf plugin-add direnv
+  asdf install direnv $(asdf list-all direnv | tail -n1)
+  asdf global direnv $(asdf list direnv | tail -n1)
+fi
+
 # neovim
 mkdir -p ~/.config/nvim
 for file in $(ls "$current_dir/config/nvim"); do

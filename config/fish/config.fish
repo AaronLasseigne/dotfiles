@@ -11,3 +11,5 @@ set -g fish_user_paths "/usr/local/bin" "/usr/local/sbin" $fish_user_paths
 if test -e ~/.config/fish/config.local.fish
   source ~/.config/fish/config.local.fish
 end
+
+asdf exec direnv hook fish | source
