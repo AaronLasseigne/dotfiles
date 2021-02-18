@@ -65,9 +65,12 @@ fi
 # copy dot files to home dir
 for file in \.*; do
   # skip .git, . and ..
-  if [[ "${file}" != '.git' && "${file}" != '.gitignore' && "${file}" != '.' && "${file}" != '..' ]]; then
+  if [[ "${file}" != '.git' && "${file}" != '.gitignore' && "${file}" != '.' && "${file}" != '..' && "${file}" != '.config' ]]; then
     ln -sfh "$current_dir/$file" ~/$file
   fi
+done
+for file in $(ls "$current_dir/.config"); do
+  ln -sfh "$current_dir/.config/$file" ~/.config/$file
 done
 
 mkdir -p ~/bin
