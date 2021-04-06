@@ -49,6 +49,7 @@ if [ ! -f ~/.config/fish/functions/fisher.fish ]; then
 fi
 # copy fish config
 ln -sf "$current_dir/config/fish/config.fish" ~/.config/fish/config.fish
+ln -sf "$current_dir/config/fish/fish_plugins" ~/.config/fish/fish_plugins
 for file in $(ls config/fish/functions); do
   ln -sf "$current_dir/config/fish/functions/$file" ~/.config/fish/functions/$file_name
 done
