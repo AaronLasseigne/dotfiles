@@ -46,3 +46,7 @@
   showPatch = true
 [rerere]
   enabled = true
+[github]
+  user = AaronLasseigne
+[credential]
+  helper = osxkeychain
