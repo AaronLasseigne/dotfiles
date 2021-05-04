@@ -6,6 +6,8 @@ set -x FZF_DEFAULT_OPTS '--preview "begin; bat {} --color=always; or tree -C {};
 
 source /usr/local/opt/asdf/asdf.fish
 
+fish_add_path ~/bin
+
 if test -e ~/.config/fish/config.local.fish
   source ~/.config/fish/config.local.fish
 end
