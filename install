@@ -12,6 +12,7 @@ programs=(
   asdf
   bat
   diff-so-fancy
+  exa
   fish
   fzf
   git
