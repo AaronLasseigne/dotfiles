@@ -2,13 +2,13 @@ function fish_prompt --description 'My custom prompt'
   set last_status $status
 
   # in a git directory
-  if [ (git rev-parse --show-toplevel ^/dev/null) ]
+  if [ (git rev-parse --show-toplevel 2> /dev/null) ]
     set dirty_flag;
     if [ (git status --porcelain | head -n1) ]
       set dirty_flag '+ '
     end
 
-    set ref (git symbolic-ref HEAD ^/dev/null)
+    set ref (git symbolic-ref HEAD 2> /dev/null)
     if [ $status -ne 0 ]
       # print ref info
       set ref (git show-ref --head -s --abbrev | head -n1)
