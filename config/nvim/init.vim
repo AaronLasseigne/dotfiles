@@ -359,10 +359,6 @@ autocmd FileType fsharp setlocal commentstring=//\ %s
 autocmd FileType sass set filetype=css
 autocmd FileType scss set filetype=css
 
-""" Markdown
-
-Plug 'reedes/vim-wordy', { 'for': 'markdown' }
-
 "" Linting
 
 Plug 'dense-analysis/ale' " syntax checking
