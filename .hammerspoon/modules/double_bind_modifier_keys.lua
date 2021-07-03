@@ -1,4 +1,4 @@
-function DoubleBindModifierKey(modName, modifiers, key)
+local function doubleBindModifierKey(modName, modifiers, key)
   local ms_wait = 140
   local ns_wait = ms_wait * 1000000
 
@@ -24,7 +24,7 @@ function DoubleBindModifierKey(modName, modifiers, key)
     end
   end):start()
 end
-DoubleBindModifierKey('ctrl', {}, 'escape')
-DoubleBindModifierKey('rightctrl', {}, 'escape')
-DoubleBindModifierKey('shift', {'shift'}, '9')
-DoubleBindModifierKey('rightshift', {'shift'}, '0')
+doubleBindModifierKey('ctrl', {}, 'escape')
+doubleBindModifierKey('rightctrl', {}, 'escape')
+doubleBindModifierKey('shift', {'shift'}, '9')
+doubleBindModifierKey('rightshift', {'shift'}, '0')
