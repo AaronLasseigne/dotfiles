@@ -1,6 +1,7 @@
 set fish_greeting
 
 set -x EDITOR 'nvim -p'
+set -x BAT_THEME 'gruvbox-dark'
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 set -x FZF_DEFAULT_OPTS '--preview "begin; bat {} --color=always; or tree -C {}; end 2> /dev/null | head -200"'
 
