@@ -258,7 +258,7 @@ Plug 'tpope/vim-repeat' " adds '.' support for surround and speeddating
 
 Plug 'tpope/vim-surround' " change surrounding stuff (parens, quotes, tags, etc)
 
-Plug 'tpope/vim-commentary' " easily add/remove commenting
+Plug 'b3nj5m1n/kommentary' " easily add/remove commenting
 
 Plug 'AndrewRadev/switch.vim' " alternate between items in a predefined list (e.g. true, false)
 
