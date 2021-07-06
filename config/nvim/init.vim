@@ -239,8 +239,6 @@ nnoremap <silent> <leader>?h :execute "Rg -thtml '" . substitute(substitute(subs
 " Rg over JavaScript files for the last search.
 nnoremap <silent> <leader>?j :execute "Rg -tjs '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
-Plug 'henrik/vim-indexed-search' " shows 'Nth match out of M' when searching
-
 "" Quickfix
 
 nmap <C-J> :cnext<CR>
