@@ -200,7 +200,8 @@ nmap g# g#z
 " make * and # work with the current visual selection
 Plug 'nelstrom/vim-visual-star-search'
 
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 let g:fzf_command_prefix = 'Fzf'
 
