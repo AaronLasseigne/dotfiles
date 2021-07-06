@@ -167,13 +167,8 @@ map <leader>a: gaip:
 " copy text to the OS clipboard
 set clipboard=unnamed
 
-Plug 'maxbrunsfeld/vim-yankstack'
-
-let g:yankstack_map_keys = 0
-nmap <C-p> <Plug>yankstack_substitute_older_paste
-nmap <C-n> <Plug>yankstack_substitute_newer_paste
-
-" copy code to the OS clipboard
+" make Y work like C
+nmap Y y$
 
 Plug 'AaronLasseigne/yank-code'
 
