@@ -49,8 +49,6 @@ imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 " clean whitespace
 map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-Plug 'vim-scripts/matchit.zip' " more complete '%' matching
-
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " :CocInstall coc-solargraph
 " :CocInstall coc-tsserver
