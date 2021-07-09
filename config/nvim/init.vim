@@ -288,16 +288,15 @@ autocmd Filetype gitcommit setlocal spell
 
 Plug 'tpope/vim-fugitive' " support for git
 
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gd :Gdiffsplit<cr>
 nnoremap <leader>gD :diffoff!<cr><c-w>h:bd<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gb :Git blame -w -M -C<cr>
 vnoremap <leader>gb :Git blame -w -M -C<cr>
 nnoremap <leader>gco :Gcheckout<cr>
-nnoremap <leader>gci :Gcommit<cr>
-nnoremap <leader>gm :Gmove
-nnoremap <leader>gr :Gremove<cr>
+nnoremap <leader>gci :Git commit<cr>
+nnoremap <leader>gm :Gmove<space>
+nnoremap <leader>gr :GDelete<cr>
 
 
 Plug 'junegunn/gv.vim'
