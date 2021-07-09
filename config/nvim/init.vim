@@ -292,10 +292,8 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gD :diffoff!<cr><c-w>h:bd<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gb :Git blame<cr>
-vnoremap <leader>gb :Git blame<cr>
-nnoremap <leader>gB :Git blame -w -M -C<cr>
-vnoremap <leader>gB :Git blame -w -M -C<cr>
+nnoremap <leader>gb :Git blame -w -M -C<cr>
+vnoremap <leader>gb :Git blame -w -M -C<cr>
 nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove
