@@ -339,11 +339,6 @@ nmap <Leader>ec :!elixir %<CR>
 " run mix tasks
 nmap <Leader>mt :!mix test<CR>
 
-""" F#
-
-autocmd BufNewFile,BufReadPost *.fsx\= set filetype=fsharp
-autocmd FileType fsharp setlocal commentstring=//\ %s
-
 """ CSS
 
 autocmd FileType sass set filetype=css
