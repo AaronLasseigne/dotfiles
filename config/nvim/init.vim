@@ -317,6 +317,7 @@ Plug 'sheerun/vim-polyglot'
 """ Ruby
 
 autocmd FileType eruby set filetype=eruby.html
+autocmd BufNewFile,BufReadPost *.gemfile set filetype=ruby
 
 Plug 'tpope/vim-endwise', { 'for': 'ruby' } " adds 'end' to Ruby blocks
 
