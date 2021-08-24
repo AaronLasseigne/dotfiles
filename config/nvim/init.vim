@@ -55,6 +55,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " :CocInstall coc-css
 
 nmap <leader>od <Plug>(coc-definition)
+nmap <leader>td :call CocAction('jumpDefinition', 'tabe')<CR>
 nmap <leader>ot <Plug>(coc-type-definition)
 nmap <leader>oi <Plug>(coc-implementation)
 nmap <leader>or <Plug>(coc-references)
