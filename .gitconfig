@@ -35,6 +35,8 @@
   conflicts = "!git diff --name-only --diff-filter=U | uniq | xargs $EDITOR"
   sw = switch
   re = restore
+  amend = commit --amend --no-edit
+  clear = restore --worktree --staged .
 [diff]
   noprefix = true
   renames = copies
