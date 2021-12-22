@@ -1,4 +1,4 @@
-Pry.config.editor = 'vim'
+Pry.config.editor = ENV['EDITOR']
 
 # Load plugins (only those I whitelist)
 Pry.config.should_load_plugins = true
