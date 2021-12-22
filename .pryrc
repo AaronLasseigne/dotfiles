@@ -15,4 +15,14 @@ end
 
 if defined?(Rails) && Rails.env
   extend Rails::ConsoleMethods
+
+  Pry::Commands.block_command 'log-sql', 'Log SQL calls to STDOUT' do |enabled|
+    if enabled == 'false'
+      ActiveRecord::Base.logger = nil
+      output.puts 'SQL logging disabled'
+    else
+      ActiveRecord::Base.logger = Logger.new(STDOUT)
+      output.puts 'SQL logging enabled'
+    end
+  end
 end
