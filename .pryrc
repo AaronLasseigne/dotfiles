@@ -7,11 +7,8 @@ Pry.config.should_load_plugins = true
 # Launch Pry with access to the entire Rails stack.
 # If you have Pry in your Gemfile, you can pass: ./script/console --irb=pry instead.
 # If you don't, you can load it through the lines below :)
-rails = File.join Dir.getwd, 'config', 'environment.rb'
-
-if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
-  require rails
-end
+rails = File.join(Dir.getwd, 'config', 'environment.rb')
+require rails if File.exist?(rails)
 
 if defined?(Rails) && Rails.env
   extend Rails::ConsoleMethods
@@ -26,3 +23,6 @@ if defined?(Rails) && Rails.env
     end
   end
 end
+
+local = File.join(ENV['HOME'], '.pryrc.local')
+load local if File.exist?(local)
