@@ -53,6 +53,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " :CocInstall coc-solargraph
 " :CocInstall coc-tsserver
 " :CocInstall coc-css
+" :CocInstall coc-snippets
 
 nmap <leader>od <Plug>(coc-definition)
 nmap <leader>td :call CocAction('jumpDefinition', 'tabe')<CR>
@@ -280,6 +281,9 @@ Plug 'tpope/vim-speeddating' " improved support
 "" Typing Assistants
 
 Plug 'jiangmiao/auto-pairs' " automatically adds closing paren, quote, etc
+
+Plug 'honza/vim-snippets'
+imap <C-e> <Plug>(coc-snippets-expand)
 
 "" Version Control
 
