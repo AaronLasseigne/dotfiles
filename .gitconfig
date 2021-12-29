@@ -36,7 +36,7 @@
   sw = switch
   re = restore
   amend = commit --amend --no-edit
-  clear = restore --worktree --staged .
+  gone = "!git restore --worktree --staged . && git clean --force -d"
 [diff]
   noprefix = true
   renames = copies
