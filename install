@@ -77,6 +77,12 @@ for file in $(ls "$current_dir/config/coc/ultisnips"); do
   ln -sfh "$current_dir/config/coc/ultisnips/$file" ~/.config/coc/ultisnips
 done
 
+# karabiner elements custom modifications
+mkdir -p ~/.config/karabiner/assets/complex_modifications
+for file in $(ls "$current_dir/config/karabiner/complex_modifications"); do
+  ln -sfh "$current_dir/config/karabiner/complex_modifications/$file" ~/.config/karabiner/assets/complex_modifications
+done
+
 # copy dot files to home dir
 for file in \.*; do
   # skip .git, . and ..
