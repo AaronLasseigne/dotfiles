@@ -15,7 +15,7 @@ function fish_prompt --description 'My custom prompt'
       segment 424242 fdd835 " \uE0A0 $ref $dirty_flag"
     else
       # print branch info
-      set ref (echo -n $ref | sed "s#refs/heads/##")
+      set ref (git branch --show-current)
       segment eee 1b5e20 " \uE0A0 $ref $dirty_flag"
     end
   end
