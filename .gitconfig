@@ -15,6 +15,7 @@
   st = status
   cp = cherry-pick
   p = push
+  pu = "!git push --set-upstream origin $(git branch --show-current)"
   l = pull
   lr = pull --rebase=merges
   d = diff
