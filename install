@@ -11,7 +11,7 @@ fi
 programs=(
   asdf
   bat
-  diff-so-fancy
+  delta
   exa
   fish
   fzf

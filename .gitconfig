@@ -2,7 +2,7 @@
   name = Aaron Lasseigne
   email = aaron.lasseigne@gmail.com
 [core]
-  pager = diff-so-fancy | less -iSRFX
+  pager = delta
   excludesfile = ~/.gitignore_global
   editor = nvim
 [color]
@@ -41,6 +41,7 @@
 [diff]
   noprefix = true
   renames = copies
+  colorMoved = default
 [push]
   default = simple
 [help]
@@ -55,5 +56,8 @@
   helper = osxkeychain
 [init]
   defaultBranch = main
+[delta]
+  line-numbers = true
+  side-by-side = true
 [include]
   path = ~/.gitconfig.local
