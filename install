@@ -11,11 +11,11 @@ fi
 programs=(
   asdf
   bat
-  delta
   exa
   fish
   fzf
   git
+  git-delta
   hub
   neovim
   ripgrep
