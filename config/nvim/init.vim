@@ -43,6 +43,7 @@ map <F6> :qa<CR>
 set pastetoggle=<F8>
 
 " toggle spell checking
+setlocal spell spelllang=en_us
 nmap <F10> :setlocal spell! spelllang=en_us<CR>
 imap <F10> <C-o>:setlocal spell! spelllang=en_us<CR>
 
