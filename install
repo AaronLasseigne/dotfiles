@@ -11,7 +11,7 @@ fi
 programs=(
   asdf
   bat
-  exa
+  eza
   fish
   fzf
   git
