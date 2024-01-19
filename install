@@ -34,10 +34,6 @@ for program in ${programs[@]}; do
     fi
   fi
 done
-# shims FTW
-if [ -z "$(which reattach-to-user-namespace)" ]; then
-  brew install reattach-to-user-namespace
-fi
 
 # change to fish shell
 if [ "$SHELL" != "/usr/local/bin/fish" ]; then
