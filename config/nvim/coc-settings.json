@@ -1,3 +1,4 @@
 {
-  "suggest.noselect": true
+  "suggest.noselect": true,
+  "snippets.ultisnips.pythonPrompt": false
 }

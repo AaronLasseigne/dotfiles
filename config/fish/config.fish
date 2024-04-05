@@ -5,7 +5,9 @@ set -x BAT_THEME 'gruvbox-dark'
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 set -x FZF_DEFAULT_OPTS '--preview "begin; bat --color=always --style=numbers {}; or tree -C {}; end 2> /dev/null | head -200"'
 
-source /usr/local/opt/asdf/libexec/asdf.fish
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 fish_add_path ~/bin
 

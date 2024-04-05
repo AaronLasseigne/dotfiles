@@ -4,23 +4,28 @@ current_dir=`pwd`
 
 # install homebrew
 if [ -z "$(which brew)" ]; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# install basic programs
+# install basic erograms
 programs=(
   asdf
   bat
+  bluesnooze
   eza
   fish
   fzf
+  gh
   git
   git-delta
   hub
   neovim
+  procs
   ripgrep
   terminal-notifier
   tig
+  tokei
   tree
   tmux
   wget
@@ -30,15 +35,15 @@ for program in ${programs[@]}; do
     brew install $program
 
     if [ "$program" == "fzf" ]; then
-      /usr/local/opt/fzf/install
+      /opt/homebrew/opt/fzf/install
     fi
   fi
 done
 
 # change to fish shell
-if [ "$SHELL" != "/usr/local/bin/fish" ]; then
-  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
-  chsh -s /usr/local/bin/fish
+if [ "$SHELL" != "/opt/homebrew/bin/fish" ]; then
+  echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
+  chsh -s /opt/homebrew/bin/fish
 fi
 # install fisherman
 if [ ! -f ~/.config/fish/functions/fisher.fish ]; then
