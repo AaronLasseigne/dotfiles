@@ -61,6 +61,16 @@ nmap <leader>td :call CocAction('jumpDefinition', 'tabe')<CR>
 nmap <leader>ot <Plug>(coc-type-definition)
 nmap <leader>oi <Plug>(coc-implementation)
 nmap <leader>or <Plug>(coc-references)
+nmap <leader>sd :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 " add completion for various file types
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
