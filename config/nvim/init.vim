@@ -362,13 +362,6 @@ let g:ale_ruby_rubocop_options = '-D'
 nnoremap <leader>ed :ALEDetail<cr>
 nnoremap <leader>et :ALEToggle<cr>
 
-"" EditorConfig
-
-Plug 'editorconfig/editorconfig-vim' " generic per project editor configs
-
-" don't mess with Fugitive or remote files
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-
 "" Plug
 
 call plug#end()
