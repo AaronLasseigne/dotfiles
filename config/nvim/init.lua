@@ -1,8 +1,14 @@
+-- Core
+
 -- leader
 vim.g.mapleader = ','
 
 -- no more shift
 vim.keymap.set('', ';', ':')
+
+-- spell checking
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
 
 -- UI
 
@@ -39,7 +45,7 @@ vim.keymap.set('n', 'Y', 'y$')
 -- Search
 
 -- clear search highlighting
-vim.keymap.set('', '<leader>cs', function() vim.cmd('noh') end, { silent = true, noremap = true })
+vim.keymap.set('', '<leader>cs', function() vim.cmd('noh') end, { silent = true })
 
 -- only search case when an uppercase letter appears
 vim.opt.ignorecase = true
@@ -52,6 +58,15 @@ vim.keymap.set('n', '*', '*zz')
 vim.keymap.set('n', '#', '#zz')
 vim.keymap.set('n', 'g*', 'g*zz')
 vim.keymap.set('n', 'g#', 'g#zz')
+
+-- Misc
+
+-- clean whitespace
+vim.keymap.set('', '<leader>W', function()
+  local save_cursor = vim.fn.getpos('.')
+  vim.cmd([[%s/\s\+$//e]])
+  vim.fn.setpos('.', save_cursor)
+end)
 
 -- Plugin Management
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -79,7 +94,8 @@ require('lazy').setup({
 
         vim.g.gruvbox_contrast_dark = 'hard'
         vim.g.gruvbox_contrast_light = 'hard'
-
+      end,
+      config = function()
         vim.cmd('colorscheme gruvbox')
       end
     },
@@ -103,6 +119,157 @@ require('lazy').setup({
         -- do not show the buffer when only one tab exists
         vim.g['airline#extensions#tabline#show_buffers'] = false
       end
+    },
+    'jiangmiao/auto-pairs', -- automatically adds closing paren, quote, etc
+    'wellle/targets.vim', -- adds lots of handy additional target options
+    'michaeljsmith/vim-indent-object', -- adds vii and vaI for targeting around indentation
+    'tpope/vim-repeat', -- adds '.' support for surround and speeddating
+    'tpope/vim-surround', -- change surrounding stuff (parens, quotes, tags, etc)
+    {
+      'numToStr/Comment.nvim', -- easily add/remove commenting
+      lazy = false,
+      config = function()
+        require('Comment').setup()
+      end
+    },
+    {
+      'AndrewRadev/switch.vim', -- alternate between items in a predefined list (e.g. true, false)
+      init = function()
+        vim.g.switch_mapping = '<leader>s'
+
+        vim.g.switch_custom_definitions = {
+          { 'to ', 'to_not ' },
+          { 'const ', 'let ' },
+          { 'hide', 'show' },
+          { 'TRUE', 'FALSE' }
+        }
+      end
+    },
+    {
+      'jpalardy/vim-slime', -- send text from vim to a tmux window (usually a repl)
+      init = function()
+        vim.g.slime_target = 'tmux'
+      end
+    },
+    {
+      'junegunn/vim-easy-align',
+      keys = {
+        { 'ga', '<Plug>(EasyAlign)', mode = { 'n', 'x' } }, -- n = for a motion/text object (e.g. gaip); x = in visual mode (e.g. vipga)
+        { '<leader>a=', 'gaip=', mode = '' },
+        { '<leader>a:', 'gaip:', mode = '' }
+      }
+    },
+    {
+      'tpope/vim-speeddating', -- improved increment/decrement support
+      keys = {
+        { '+', '<Plug>SpeedDatingUp' },
+        { '-', '<Plug>SpeedDatingDown' }
+      }
+    },
+    {
+      'AaronLasseigne/yank-code',
+      keys = {
+        { '<leader>y', '<Plug>YankCode', mode = '' }
+      }
+    },
+    {
+      'tpope/vim-endwise', -- adds 'end' to Ruby blocks
+      ft = 'ruby'
+    },
+    {
+      'tpope/vim-rails',
+      keys = {
+        { 'gn', '<C-w>gf' },
+        { 'go', 'gf' }
+      },
+      ft = 'ruby'
+    },
+    {
+      'dense-analysis/ale', -- syntax checking
+      lazy = false,
+      keys = {
+        { '<leader>ed', ':ALEDetail<CR>' },
+        { '<leader>et', ':ALEToggle<CR>' }
+      },
+      init = function()
+        vim.g.ale_linters = { erb = {} }
+
+        vim.g.ale_ruby_rubocop_executable = 'bundle'
+        vim.g.ale_ruby_rubocop_options = '-D'
+      end
+    },
+    'nelstrom/vim-visual-star-search', -- make * and # work with the current visual selection
+    {
+      'airblade/vim-gitgutter',
+      init = function()
+        vim.opt.updatetime = 200
+      end
+    },
+    {
+      'neovim/nvim-lspconfig',
+      init = function()
+        local lspconfig = require('lspconfig')
+        lspconfig.solargraph.setup {}
+        lspconfig.tsserver.setup{}
+        lspconfig.lua_ls.setup{}
+
+        -- Global mappings.
+        -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+        -- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+        -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+        -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+        -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+        -- Use LspAttach autocommand to only map the following keys
+        -- after the language server attaches to the current buffer
+        vim.api.nvim_create_autocmd('LspAttach', {
+          group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+          callback = function(ev)
+            -- Enable completion triggered by <c-x><c-o>
+            vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+            -- Buffer local mappings.
+            -- See `:help vim.lsp.*` for documentation on any of the below functions
+            local opts = { buffer = ev.buf }
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+            vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+            vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+            vim.keymap.set('n', '<leader>wl', function()
+              print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end, opts)
+            vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+            vim.keymap.set('n', '<leader>f', function()
+              vim.lsp.buf.format { async = true }
+            end, opts)
+          end,
+        })
+      end
     }
+  },
+},
+{ -- Lazy settings
+  ui = {
+    icons = {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      require = '🌙',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
   }
 })

@@ -20,6 +20,7 @@ programs=(
   git
   git-delta
   hub
+  lua-language-server
   neovim
   procs
   ripgrep
