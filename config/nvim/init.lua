@@ -200,18 +200,26 @@ require('lazy').setup({
     },
     'nelstrom/vim-visual-star-search', -- make * and # work with the current visual selection
     {
-      'airblade/vim-gitgutter',
+      'lewis6991/gitsigns.nvim',
       init = function()
-        vim.opt.updatetime = 200
+        require('gitsigns').setup {
+          on_attach = function(bufnr)
+            local gitsigns = require('gitsigns')
+            vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+
+            vim.api.nvim_set_hl(0, 'GitsignsCurrentLineBlame', { link = 'Todo' })
+          end
+        }
       end
     },
+    'nvim-treesitter/nvim-treesitter',
     {
       'neovim/nvim-lspconfig',
       init = function()
         local lspconfig = require('lspconfig')
         lspconfig.solargraph.setup {}
-        lspconfig.tsserver.setup{}
-        lspconfig.lua_ls.setup{}
+        lspconfig.tsserver.setup {}
+        lspconfig.lua_ls.setup {}
 
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -245,12 +253,48 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-            vim.keymap.set('n', '<leader>f', function()
-              vim.lsp.buf.format { async = true }
-            end, opts)
+            -- vim.keymap.set('n', '<leader>f', function()
+            --   vim.lsp.buf.format { async = true }
+            -- end, opts)
           end,
         })
       end
+    },
+    {
+      'nvim-telescope/telescope.nvim',
+      branch = '0.1.x',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      init = function()
+        local builtin = require('telescope.builtin')
+        vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+        vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+      end,
+      config = function()
+        require('telescope').setup {
+          pickers = {
+            buffers = {
+              mappings = {
+                n = {
+                  ['d'] = 'delete_buffer'
+                }
+              }
+            }
+          }
+        }
+      end
+    },
+    {
+      'tpope/vim-fugitive', -- support for git
+      keys = {
+        { '<leader>gd', ':Gdiffsplit<CR>' },
+        { '<leader>gD', ':diffoff!<CR><C-w>h:bd<CR>' },
+        { '<leader>gs', ':Git<cr>' },
+        { '<leader>gb', ':Git blame -w -M -C<cr>' },
+        { '<leader>gm', ':Gmove<space>' },
+        { '<leader>gr', ':GDelete<cr>' }
+      }
     }
   },
 },
