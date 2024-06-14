@@ -126,13 +126,6 @@ require('lazy').setup({
     'tpope/vim-repeat', -- adds '.' support for surround and speeddating
     'tpope/vim-surround', -- change surrounding stuff (parens, quotes, tags, etc)
     {
-      'numToStr/Comment.nvim', -- easily add/remove commenting
-      lazy = false,
-      config = function()
-        require('Comment').setup()
-      end
-    },
-    {
       'AndrewRadev/switch.vim', -- alternate between items in a predefined list (e.g. true, false)
       init = function()
         vim.g.switch_mapping = '<leader>s'
