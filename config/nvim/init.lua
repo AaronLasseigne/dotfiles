@@ -211,7 +211,7 @@ require('lazy').setup({
       init = function()
         local lspconfig = require('lspconfig')
         lspconfig.solargraph.setup {}
-        lspconfig.tsserver.setup {}
+        lspconfig.ts_ls.setup {}
         lspconfig.lua_ls.setup {}
 
         -- Global mappings.
