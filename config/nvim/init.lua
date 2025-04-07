@@ -99,25 +99,17 @@ require('lazy').setup({
         vim.cmd('colorscheme gruvbox')
       end
     },
+    'nvim-tree/nvim-web-devicons',
     {
-      'vim-airline/vim-airline',
+      'nvim-lualine/lualine.nvim',
       lazy = false,
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
       init = function()
-        -- always show the status line
-        vim.g.laststatus = 2
-
-        -- make it look powerline esque
-        vim.g.airline_powerline_fonts = true
-        vim.g.airline_theme = 'gruvbox'
-
-        -- pretty tabs
-        vim.g['airline#extensions#tabline#enabled'] = true
-
-        -- do not how buffer counts
-        vim.g['airline#extensions#tabline#show_tab_nr'] = false
-
-        -- do not show the buffer when only one tab exists
-        vim.g['airline#extensions#tabline#show_buffers'] = false
+        require('lualine').setup {
+          options = {
+            theme = 'gruvbox'
+          }
+        }
       end
     },
     'jiangmiao/auto-pairs', -- automatically adds closing paren, quote, etc
