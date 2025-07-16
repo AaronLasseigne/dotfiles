@@ -11,7 +11,6 @@ fi
 # install basic programs
 programs=(
   bat
-  bluesnooze
   eza
   fd
   fish
