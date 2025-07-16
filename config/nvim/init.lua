@@ -172,20 +172,6 @@ require('lazy').setup({
       },
       ft = 'ruby'
     },
-    {
-      'dense-analysis/ale', -- syntax checking
-      lazy = false,
-      keys = {
-        { '<leader>ed', ':ALEDetail<CR>' },
-        { '<leader>et', ':ALEToggle<CR>' }
-      },
-      init = function()
-        vim.g.ale_linters = { erb = {} }
-
-        vim.g.ale_ruby_rubocop_executable = 'bundle'
-        vim.g.ale_ruby_rubocop_options = '-D'
-      end
-    },
     'nelstrom/vim-visual-star-search', -- make * and # work with the current visual selection
     {
       'lewis6991/gitsigns.nvim',
