@@ -341,20 +341,47 @@ require('lazy').setup({
     }
   },
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
     opts = {
     },
     keys = {
       {
-        "<leader>?",
+        '<leader>?',
         function()
-          require("which-key").show({ global = false })
+          require('which-key').show({ global = false })
         end,
-        desc = "Buffer Local Keymaps (which-key)",
+        desc = 'Buffer Local Keymaps (which-key)',
       },
     },
+  },
+  {
+    'nanozuki/tabby.nvim',
+    keys = {
+      { '<leader>tg', ':Tabby jump_to_tab<CR>', desc = 'Go To' },
+      { '<leader>t<', ':-tabmove<CR>', desc = 'Move Left' },
+      { '<leader>t>', ':+tabmove<CR>', desc = 'Move Right' }
+    },
+    config = function()
+      require('tabby').setup({
+        preset = 'tab_only'
+      })
+    end,
+    init = function()
+      require('which-key').add({
+        { '<leader>t', group = 'Tab' }
+      })
+    end
   }
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   version = '*',
+  --   dependencies = 'nvim-tree/nvim-web-devicons',
+  --   mode = 'tabs',
+  --   init = function()
+  --     require('bufferline').setup{}
+  --   end
+  -- }
 },
 { -- Lazy settings
   ui = {
