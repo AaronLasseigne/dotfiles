@@ -45,7 +45,7 @@ vim.keymap.set('n', 'Y', 'y$')
 -- Search
 
 -- clear search highlighting
-vim.keymap.set('', '<leader>cs', function() vim.cmd('noh') end, { silent = true })
+vim.keymap.set('', '<leader>cs', function() vim.cmd('noh') end, { desc = 'Clear Search Highlight', silent = true })
 
 -- only search case when an uppercase letter appears
 vim.opt.ignorecase = true
@@ -66,7 +66,7 @@ vim.keymap.set('', '<leader>W', function()
   local save_cursor = vim.fn.getpos('.')
   vim.cmd([[%s/\s\+$//e]])
   vim.fn.setpos('.', save_cursor)
-end)
+end, { desc = 'Whitespace Cleanup' })
 
 -- Plugin Management
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -142,10 +142,15 @@ require('lazy').setup({
     {
       'junegunn/vim-easy-align',
       keys = {
-        { 'ga', '<Plug>(EasyAlign)', mode = { 'n', 'x' } }, -- n = for a motion/text object (e.g. gaip); x = in visual mode (e.g. vipga)
-        { '<leader>a=', 'gaip=', mode = '' },
-        { '<leader>a:', 'gaip:', mode = '' }
-      }
+        { '<leader>aa', '<Plug>(EasyAlign)', mode = { 'n', 'x' }, desc = 'Any' }, -- n = for a motion/text object (e.g. gaip); x = in visual mode (e.g. vipga)
+        { '<leader>a=', 'gaip=', mode = '', desc = '=' },
+        { '<leader>a:', 'gaip:', mode = '', desc = ':' }
+      },
+      init = function()
+        require('which-key').add({
+          { '<leader>a', group = 'Align' }
+        })
+      end
     },
     {
       'tpope/vim-speeddating', -- improved increment/decrement support
@@ -157,7 +162,7 @@ require('lazy').setup({
     {
       'AaronLasseigne/yank-code',
       keys = {
-        { '<leader>y', '<Plug>YankCode', mode = '' }
+        { '<leader>y', '<Plug>YankCode', mode = '', desc = 'Yank Code' }
       }
     },
     {
@@ -179,7 +184,7 @@ require('lazy').setup({
         require('gitsigns').setup {
           on_attach = function(bufnr)
             local gitsigns = require('gitsigns')
-            vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+            vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = 'Toggle Inline Blame' })
 
             vim.api.nvim_set_hl(0, 'GitsignsCurrentLineBlame', { link = 'Todo' })
           end
@@ -197,10 +202,13 @@ require('lazy').setup({
 
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-        vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-        vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist)
+        require('which-key').add({
+          { '<leader>d', group = 'Diagnostic' }
+        })
+        vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = 'Open' })
+        vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { desc = 'Prev' })
+        vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = 'Next' })
+        vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'List' })
 
         vim.diagnostic.config({
           virtual_text = true -- show diagnostics
@@ -222,11 +230,6 @@ require('lazy').setup({
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-            vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-            vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
-            vim.keymap.set('n', '<leader>wl', function()
-              print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end, opts)
             vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
@@ -296,12 +299,15 @@ require('lazy').setup({
       branch = '0.1.x',
       dependencies = { 'nvim-lua/plenary.nvim' },
       init = function()
+        require('which-key').add({
+          { '<leader>f', group = 'Find' }
+        })
         local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-        vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
-        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+        vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffer' })
+        vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'File' })
+        vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live Search' })
+        vim.keymap.set('n', '<leader>fs', builtin.grep_string, { desc = 'Selection Search' })
+        vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help' })
       end,
       config = function()
         require('telescope').setup {
@@ -320,15 +326,35 @@ require('lazy').setup({
     {
       'tpope/vim-fugitive', -- support for git
       keys = {
-        { '<leader>gd', ':Gdiffsplit<CR>' },
-        { '<leader>gD', ':diffoff!<CR><C-w>h:bd<CR>' },
-        { '<leader>gs', ':Git<cr>' },
-        { '<leader>gb', ':Git blame -w -M -C<cr>' },
-        { '<leader>gm', ':Gmove<space>' },
-        { '<leader>gr', ':GDelete<cr>' }
-      }
+        { '<leader>gd', ':Gdiffsplit<CR>', desc = 'Open Diff Split' },
+        { '<leader>gD', ':diffoff!<CR><C-w>h:bd<CR>', desc = 'Close Diff Split' },
+        { '<leader>gs', ':Git<cr>', desc = 'Status' },
+        { '<leader>gb', ':Git blame -w -M -C<cr>', desc = 'Blame'},
+        { '<leader>gm', ':Gmove<space>', desc = 'Move' },
+        { '<leader>gr', ':GDelete<cr>', desc = 'Delete' }
+      },
+      init = function()
+        require('which-key').add({
+          { '<leader>g', group = 'Git' }
+        })
+      end
     }
   },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  }
 },
 { -- Lazy settings
   ui = {
