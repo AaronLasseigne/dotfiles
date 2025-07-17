@@ -373,15 +373,6 @@ require('lazy').setup({
       })
     end
   }
-  -- {
-  --   'akinsho/bufferline.nvim',
-  --   version = '*',
-  --   dependencies = 'nvim-tree/nvim-web-devicons',
-  --   mode = 'tabs',
-  --   init = function()
-  --     require('bufferline').setup{}
-  --   end
-  -- }
 },
 { -- Lazy settings
   ui = {
