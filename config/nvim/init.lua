@@ -45,7 +45,7 @@ vim.keymap.set('n', 'Y', 'y$')
 -- Search
 
 -- clear search highlighting
-vim.keymap.set('', '<leader>cs', function() vim.cmd('noh') end, { desc = 'Clear Search Highlight', silent = true })
+vim.keymap.set('', '<leader>sc', function() vim.cmd('noh') end, { desc = 'Clear Search Highlight', silent = true })
 
 -- only search case when an uppercase letter appears
 vim.opt.ignorecase = true
@@ -224,19 +224,18 @@ require('lazy').setup({
 
             -- Buffer local mappings.
             -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local opts = { buffer = ev.buf }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-            vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-            -- vim.keymap.set('n', '<leader>f', function()
-            --   vim.lsp.buf.format { async = true }
-            -- end, opts)
+            require('which-key').add({
+              { '<leader>c', group = 'Code' }
+            })
+            vim.keymap.set('n', '<leader>cl', vim.lsp.buf.declaration, { buffer = ev.buf, desc = 'Declaration' })
+            vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { buffer = ev.buf, desc = 'Definition' })
+            vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, { buffer = ev.buf, desc = 'Hover' })
+            vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, { buffer = ev.buf, desc = 'Implementation' })
+            vim.keymap.set('n', '<leader>cs', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = 'Signature' })
+            vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = 'Type Definition' })
+            vim.keymap.set('n', '<leader>crn', vim.lsp.buf.rename, { buffer = ev.buf, desc = 'Rename' })
+            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = 'Code Action' })
+            vim.keymap.set('n', '<leader>cr', vim.lsp.buf.references, { buffer = ev.buf, desc = 'References' })
           end,
         })
       end
