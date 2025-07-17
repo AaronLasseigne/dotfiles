@@ -7,7 +7,8 @@ config.color_scheme = 'GruvboxDark'
 -- Key Bindings
 config.keys = {
   { key = 'LeftArrow',  mods = 'CMD', action = wezterm.action{ActivateTabRelative=-1} },
-  { key = 'RightArrow', mods = 'CMD', action = wezterm.action{ActivateTabRelative=1} }
+  { key = 'RightArrow', mods = 'CMD', action = wezterm.action{ActivateTabRelative=1} },
+  { key = 'f', mods = 'CMD', action = wezterm.action.Search({ CaseInSensitiveString = '' }) }
 }
 
 -- Tabs
