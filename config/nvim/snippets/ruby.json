@@ -1,0 +1,7 @@
+{
+  "Puts Debug": {
+    "prefix": "putsd",
+    "body": ["puts '=' * 10", "puts $0.inspect", "puts '=' * 10"],
+    "description": "Puts debugging"
+  }
+}
