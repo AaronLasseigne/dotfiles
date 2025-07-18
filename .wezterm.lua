@@ -3,12 +3,16 @@ local config = wezterm.config_builder()
 
 config.font_size = 14
 config.color_scheme = 'GruvboxDark'
-config.default_cwd = '~/'
 
 -- Key Bindings
 config.keys = {
+  -- Tabs
   { key = 'LeftArrow',  mods = 'CMD', action = wezterm.action{ActivateTabRelative=-1} },
   { key = 'RightArrow', mods = 'CMD', action = wezterm.action{ActivateTabRelative=1} },
+  { key = 't', mods = 'CMD', action = wezterm.action.SpawnCommandInNewTab { cwd=wezterm.home_dir } },
+  -- Window
+  { key = 'n', mods = 'CMD', action = wezterm.action.SpawnCommandInNewWindow { cwd=wezterm.home_dir } },
+  -- Search
   { key = 'f', mods = 'CMD', action = wezterm.action.Search({ CaseInSensitiveString = '' }) }
 }
 
