@@ -12,3 +12,5 @@ fish_add_path ~/bin
 if test -e ~/.config/fish/config.local.fish
   source ~/.config/fish/config.local.fish
 end
+
+fish_add_path ~/.luarocks/bin

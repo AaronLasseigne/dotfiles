@@ -160,10 +160,13 @@ require('lazy').setup({
       }
     },
     {
-      'AaronLasseigne/yank-code',
+      'AaronLasseigne/yank-code.nvim',
       keys = {
-        { '<leader>y', '<Plug>YankCode', mode = '', desc = 'Yank Code' }
-      }
+        { '<leader>y', ':YankCode<CR>', mode = '', desc = 'Yank Code' }
+      },
+      config = function()
+        require('yank-code').setup()
+      end
     },
     {
       'tpope/vim-endwise', -- adds 'end' to Ruby blocks
@@ -229,7 +232,9 @@ require('lazy').setup({
             })
             vim.keymap.set('n', '<leader>cl', vim.lsp.buf.declaration, { buffer = ev.buf, desc = 'Declaration' })
             vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { buffer = ev.buf, desc = 'Definition' })
-            vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, { buffer = ev.buf, desc = 'Hover' })
+            vim.keymap.set('n', '<leader>ch', function()
+              vim.lsp.buf.hover({ border = 'single' })
+            end, { buffer = ev.buf, desc = 'Hover' })
             vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, { buffer = ev.buf, desc = 'Implementation' })
             vim.keymap.set('n', '<leader>cs', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = 'Signature' })
             vim.keymap.set('n', '<leader>ct', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = 'Type Definition' })
