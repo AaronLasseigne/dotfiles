@@ -99,6 +99,31 @@ require('lazy').setup({
         vim.cmd('colorscheme gruvbox')
       end
     },
+    {
+      'folke/snacks.nvim',
+      priority = 1000,
+      lazy = false,
+      opts = {
+        bigfile = { enabled = true },
+        dashboard = {
+          enabled = true,
+          preset = {
+            keys = {
+              { icon = ' ', key = 'f', desc = 'Find File', action = ':lua Snacks.dashboard.pick("files")' },
+              { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+              { icon = ' ', key = 'g', desc = 'Find Text', action = ':lua Snacks.dashboard.pick("live_grep")' },
+              { icon = ' ', key = 'r', desc = 'Recent Files', action = ':lua Snacks.dashboard.pick("oldfiles")' },
+              { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+              { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+            }
+          }
+        },
+        gitbrowse = { enabled = true }
+      },
+      keys = {
+        { '<leader>go', ':lua Snacks.gitbrowse.open()<CR>', desc = 'Open in browser' },
+      }
+    },
     'nvim-tree/nvim-web-devicons',
     {
       'nvim-lualine/lualine.nvim',
