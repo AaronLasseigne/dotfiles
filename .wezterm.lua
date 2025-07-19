@@ -1,6 +1,7 @@
 local wezterm = require('wezterm')
 local config = wezterm.config_builder()
 
+config.font = wezterm.font 'JetBrainsMono Nerd Font Mono'
 config.font_size = 14
 config.color_scheme = 'GruvboxDark'
 
@@ -20,7 +21,18 @@ config.keys = {
 local tabline = wezterm.plugin.require('https://github.com/michaelbrusegard/tabline.wez')
 tabline.setup({
   options = {
-    theme = 'GruvboxDark'
+    theme = 'GruvboxDark',
+    theme_overrides = {
+      tab = {
+        active = { fg = '#fbf1c7', bg = '#458588' },
+        inactive = { fg = '#fbf1c7', bg = '#282828' },
+        inactive_hover = { fg = '#ffffff', bg = '#83a598' },
+      }
+    },
+    tab_separators = {
+      left = wezterm.nerdfonts.pl_left_hard_divider,
+      right = '' -- wezterm.nerdfonts.ple_left_hard_divider_inverse doesn't work for some reason
+    }
   },
   sections = {
     tabline_a = { 'mode' },
