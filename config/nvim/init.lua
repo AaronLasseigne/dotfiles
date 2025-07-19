@@ -45,7 +45,7 @@ vim.keymap.set('n', 'Y', 'y$')
 -- Search
 
 -- clear search highlighting
-vim.keymap.set('', '<leader>sc', function() vim.cmd('noh') end, { desc = 'Clear Search Highlight', silent = true })
+vim.keymap.set('', '<leader>vsc', function() vim.cmd('noh') end, { desc = 'Clear Search Highlight', silent = true })
 
 -- only search case when an uppercase letter appears
 vim.opt.ignorecase = true
@@ -347,6 +347,7 @@ require('lazy').setup({
           require('which-key').show({ global = false })
         end,
         desc = 'Buffer Local Keymaps (which-key)',
+        true
       }
     },
     config = function()
@@ -366,7 +367,9 @@ require('lazy').setup({
       vim.opt.showtabline = 2
 
       require('which-key').add({
-        { '<leader>t', group = 'Tab' }
+        { '<leader>t', group = 'Tab' },
+        { '<leader>v', group = 'Vim' },
+        { '<leader>vs', group = 'Search' }
       })
 
       require('tabby').setup({
