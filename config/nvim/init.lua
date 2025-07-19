@@ -359,16 +359,14 @@ require('lazy').setup({
       { '<leader>t<', ':-tabmove<CR>', desc = 'Move Left' },
       { '<leader>t>', ':+tabmove<CR>', desc = 'Move Right' }
     },
-    config = function()
-      require('tabby').setup({
-        preset = 'tab_only'
-      })
-    end,
     init = function()
       require('which-key').add({
         { '<leader>t', group = 'Tab' }
       })
-    end
+      require('tabby').setup({
+        preset = 'tab_only'
+      })
+    end,
   }
 },
 { -- Lazy settings
