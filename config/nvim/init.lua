@@ -340,8 +340,6 @@ require('lazy').setup({
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
-    opts = {
-    },
     keys = {
       {
         '<leader>?',
@@ -349,8 +347,13 @@ require('lazy').setup({
           require('which-key').show({ global = false })
         end,
         desc = 'Buffer Local Keymaps (which-key)',
-      },
+      }
     },
+    config = function()
+      require('which-key').add({
+        { '<leader>*', hidden = true } -- not sure where this comes from
+      })
+    end
   },
   {
     'nanozuki/tabby.nvim',
