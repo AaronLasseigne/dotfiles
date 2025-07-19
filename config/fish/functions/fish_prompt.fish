@@ -12,30 +12,30 @@ function fish_prompt --description 'My custom prompt'
     if [ $status -ne 0 ]
       # print ref info
       set ref (git show-ref --head -s --abbrev | head -n1)
-      segment 424242 fdd835 " \uE0A0 $ref $dirty_flag"
+      segment 282828 d79921 " \uE0A0 $ref $dirty_flag"
     else
       # print branch info
       set ref (git branch --show-current)
-      segment eee 1b5e20 " \uE0A0 $ref $dirty_flag"
+      segment 282828 98971a " \uE0A0 $ref $dirty_flag"
     end
   end
 
   # current directory
   set current_dir (prompt_pwd)
-  segment bdbdbd 424242 " $current_dir "
+  segment fbf1c7 504945 " $current_dir "
 
   # background jobs
   if [ (jobs -l | wc -l) -gt 0 ]
-    segment eee ef6c00 ' %% '
+    segment fbf1c7 d65d0e ' %% '
   end
 
   # failed exit
   if [ $last_status -ne 0 ]
-    segment eee b71c1c ' ! '
+    segment fbf1c7 cc241d ' ! '
   end
 
   segment_close
 
   echo
-  echo '> '
+  echo '➜ '
 end
