@@ -360,9 +360,12 @@ require('lazy').setup({
       { '<leader>t>', ':+tabmove<CR>', desc = 'Move Right' }
     },
     init = function()
+      vim.opt.showtabline = 2
+
       require('which-key').add({
         { '<leader>t', group = 'Tab' }
       })
+
       require('tabby').setup({
         preset = 'tab_only'
       })
