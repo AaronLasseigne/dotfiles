@@ -40,6 +40,8 @@ tabline.setup({
     tabline_c = {},
     tab_active = {
       'index',
+      wezterm.nerdfonts.pl_left_soft_divider,
+      ' ',
       { 'parent', padding = 0 },
       '/',
       { 'cwd', padding = { left = 0, right = 1 } },
@@ -47,6 +49,8 @@ tabline.setup({
     },
     tab_inactive = {
       'index',
+      wezterm.nerdfonts.pl_left_soft_divider,
+      ' ',
       { 'parent', padding = 0 },
       '/',
       { 'cwd', padding = { left = 0, right = 1 } },
