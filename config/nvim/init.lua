@@ -290,7 +290,13 @@ require('lazy').setup({
     {
       'nvim-telescope/telescope.nvim',
       branch = '0.1.x',
-      dependencies = { 'nvim-lua/plenary.nvim' },
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        'jonarrien/telescope-cmdline.nvim',
+      },
+      keys = {
+        { ';', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
+      },
       init = function()
         require('which-key').add({
           { '<leader>f', group = 'Find' }
@@ -314,6 +320,7 @@ require('lazy').setup({
             }
           }
         }
+        require("telescope").load_extension('cmdline')
       end
     },
     {
