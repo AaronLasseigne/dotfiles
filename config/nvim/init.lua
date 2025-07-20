@@ -207,16 +207,15 @@ require('lazy').setup({
     },
     'nelstrom/vim-visual-star-search', -- make * and # work with the current visual selection
     {
-      'lewis6991/gitsigns.nvim',
-      init = function()
-        require('gitsigns').setup {
-          on_attach = function(bufnr)
-            local gitsigns = require('gitsigns')
-            vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = 'Toggle Inline Blame' })
-
-            vim.api.nvim_set_hl(0, 'GitsignsCurrentLineBlame', { link = 'Todo' })
-          end
-        }
+      'echasnovski/mini.diff',
+      version = '*',
+      config = function()
+        require('mini.diff').setup({
+          view = {
+            style = 'sign'
+          }
+        })
+        vim.api.nvim_set_hl(0, 'SignColumn', { link = 'Normal' })
       end
     },
     'nvim-treesitter/nvim-treesitter',
