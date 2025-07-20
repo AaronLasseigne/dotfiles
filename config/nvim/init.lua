@@ -193,10 +193,7 @@ require('lazy').setup({
         require('yank-code').setup()
       end
     },
-    {
-      'tpope/vim-endwise', -- adds 'end' to Ruby blocks
-      ft = 'ruby'
-    },
+    { 'tpope/vim-endwise' },
     {
       'tpope/vim-rails',
       keys = {
