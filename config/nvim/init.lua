@@ -320,7 +320,7 @@ require('lazy').setup({
             }
           }
         }
-        require("telescope").load_extension('cmdline')
+        require('telescope').load_extension('cmdline')
       end
     },
     {
