@@ -292,10 +292,6 @@ require('lazy').setup({
       branch = '0.1.x',
       dependencies = {
         'nvim-lua/plenary.nvim',
-        'jonarrien/telescope-cmdline.nvim',
-      },
-      keys = {
-        { ';', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
       },
       init = function()
         require('which-key').add({
@@ -320,7 +316,6 @@ require('lazy').setup({
             }
           }
         }
-        require('telescope').load_extension('cmdline')
       end
     },
     {
@@ -379,6 +374,17 @@ require('lazy').setup({
         preset = 'tab_only'
       })
     end,
+  },
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
+    },
+    config = function()
+      require('noice').setup()
+    end
   }
 },
 { -- Lazy settings
