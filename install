@@ -40,6 +40,7 @@ for program in ${programs[@]}; do
     fi
   fi
 done
+brew install --cask --no-quarantine middleclick
 
 # change to fish shell
 if [ "$SHELL" != "/opt/homebrew/bin/fish" ]; then
