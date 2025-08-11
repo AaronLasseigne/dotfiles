@@ -219,10 +219,9 @@ require('lazy').setup({
     {
       'neovim/nvim-lspconfig',
       init = function()
-        local lspconfig = require('lspconfig')
-        lspconfig.solargraph.setup {}
-        lspconfig.ts_ls.setup {}
-        lspconfig.lua_ls.setup {}
+        vim.lsp.enable('solargraph')
+        vim.lsp.enable('lua_ls')
+        vim.lsp.enable('rust_analyzer')
 
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -385,7 +384,11 @@ require('lazy').setup({
     config = function()
       require('noice').setup()
     end
-  }
+  },
+  {
+    'mason-org/mason.nvim',
+    opts = {}
+  },
 },
 { -- Lazy settings
   ui = {
