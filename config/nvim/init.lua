@@ -301,6 +301,7 @@ require('lazy').setup({
         vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'File' })
         vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live Search' })
         vim.keymap.set('n', '<leader>fs', builtin.grep_string, { desc = 'Selection Search' })
+        vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Recent' })
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help' })
       end,
       config = function()
