@@ -391,7 +391,7 @@ local packages = {
 }
 
 -- Local Config
-local local_config_file = '/Users/aaron.lasseigne/.config/nvim/init.local.lua'
+local local_config_file = os.getenv('HOME') .. '/.config/nvim/init.local.lua'
 local local_config = io.open(local_config_file)
 if local_config then
   loadfile(local_config_file, 't', { table = table, packages = packages })()
