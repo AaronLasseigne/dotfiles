@@ -196,8 +196,8 @@ local packages = {
   {
     'tpope/vim-rails',
     keys = {
-      { 'gn', '<C-w>gf' },
-      { 'go', 'gf' }
+      { '<leader>cn', '<C-w>gf', desc = 'Rails Magic Open (new tab)' },
+      { '<leader>co', 'gf', desc = 'Rails Magic Open' }
     },
     ft = 'ruby'
   },
