@@ -218,7 +218,7 @@ local packages = {
   {
     'neovim/nvim-lspconfig',
     init = function()
-      vim.lsp.enable('solargraph')
+      vim.lsp.enable('ruby-lsp')
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('rust_analyzer')
 
