@@ -50,6 +50,7 @@ fi
 # install fisherman
 if [ ! -f ~/.config/fish/functions/fisher.fish ]; then
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+  fisher update
 fi
 # copy fish config
 ln -sf "$current_dir/config/fish/config.fish" ~/.config/fish/config.fish
