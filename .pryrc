@@ -11,8 +11,6 @@ rails = File.join(Dir.getwd, 'config', 'environment.rb')
 require rails if File.exist?(rails)
 
 if defined?(Rails) && Rails.env
-  extend Rails::ConsoleMethods
-
   Pry::Commands.block_command 'log-sql', 'Log SQL calls to STDOUT' do |enabled|
     if enabled == 'false'
       ActiveRecord::Base.logger = nil
