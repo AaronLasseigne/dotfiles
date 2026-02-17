@@ -42,6 +42,9 @@ vim.opt.clipboard = 'unnamedplus'
 -- make Y work like C
 vim.keymap.set('n', 'Y', 'y$')
 
+-- yank the file name
+vim.keymap.set('n', '<leader>yf', ':let @+ = expand("%")<CR>', { desc = 'Yank Filename' })
+
 -- Search
 
 -- clear search highlighting
