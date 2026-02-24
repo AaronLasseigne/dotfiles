@@ -391,6 +391,7 @@ local packages = {
     'mason-org/mason.nvim',
     opts = {}
   },
+  'wsdjeg/vim-fetch', -- allows for opening with a line/column number from terminal or :e
 }
 
 -- Local Config
