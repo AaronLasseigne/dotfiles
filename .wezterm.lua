@@ -9,7 +9,9 @@ config.color_scheme = 'GruvboxDark'
 config.keys = {
   -- Tabs
   { key = 'LeftArrow',  mods = 'CMD', action = wezterm.action{ActivateTabRelative=-1} },
+  { key = 'LeftArrow',  mods = 'CMD|SHIFT', action = wezterm.action.MoveTabRelative(-1) },
   { key = 'RightArrow', mods = 'CMD', action = wezterm.action{ActivateTabRelative=1} },
+  { key = 'RightArrow', mods = 'CMD|SHIFT', action = wezterm.action.MoveTabRelative(1) },
   { key = 't', mods = 'CMD', action = wezterm.action.SpawnCommandInNewTab { cwd=wezterm.home_dir } },
   -- Window
   { key = 'n', mods = 'CMD', action = wezterm.action.SpawnCommandInNewWindow { cwd=wezterm.home_dir } },
