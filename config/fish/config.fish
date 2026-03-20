@@ -8,6 +8,7 @@ set -x FZF_DEFAULT_OPTS '--preview "begin; bat --color=always --style=numbers {}
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 fish_add_path ~/bin
+fish_add_path /Applications/WezTerm.app/Contents/MacOS
 
 if test -e ~/.config/fish/config.local.fish
   source ~/.config/fish/config.local.fish
