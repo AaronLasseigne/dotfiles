@@ -255,6 +255,7 @@ local packages = {
           })
           vim.keymap.set('n', '<leader>cl', vim.lsp.buf.declaration, { buffer = ev.buf, desc = 'Declaration' })
           vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { buffer = ev.buf, desc = 'Definition' })
+          vim.keymap.set('n', '<leader>cD', '<cmd>tab split | lua vim.lsp.buf.definition()<cr>', { buffer = ev.buf, desc = 'Definition (New Tab)' })
           vim.keymap.set('n', '<leader>ch', function()
             vim.lsp.buf.hover({ border = 'single' })
           end, { buffer = ev.buf, desc = 'Hover' })
